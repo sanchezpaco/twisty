@@ -1,0 +1,74 @@
+/* The app's tokens (app/src/app.css, app/src/lib/map/theme.ts), so the store art speaks the app's look. */
+:root {
+  --bg: #07090d;
+  --land: #0b0e14;
+  --text: #eef1f7;
+  --text-muted: #8f98ab;
+  --text-faint: #5c657a;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --amber: #ffb547;
+  --coral: #ff6b57;
+  --pink: #ff2e6e;
+  --gradient: linear-gradient(120deg, var(--amber) 0%, var(--coral) 45%, var(--pink) 100%);
+  /* The twisty rating ramp, flowing to epic. */
+  --r1: #5b95f2;
+  --r2: #1fc8d8;
+  --r3: #ffd166;
+  --r4: #ff8a3d;
+  --r5: #ff2e6e;
+  --font-ui: 'Inter Variable', system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', var(--font-ui);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* The word the whole product is about, in the logo's gradient. */
+.accent {
+  font-style: normal;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* As in the app's panel header (Panel.svelte): lowercase, bold, tight. */
+.wordmark {
+  font: 700 1em/1 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* The legend's five colours, as the set's signature mark. */
+.ramp {
+  display: flex;
+  gap: 8px;
+}
+
+.ramp i {
+  display: block;
+  width: 26px;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.ramp i:nth-child(1) { background: var(--r1); }
+.ramp i:nth-child(2) { background: var(--r2); }
+.ramp i:nth-child(3) { background: var(--r3); }
+.ramp i:nth-child(4) { background: var(--r4); }
+.ramp i:nth-child(5) { background: var(--r5); }
+
+.logo {
+  display: block;
+}

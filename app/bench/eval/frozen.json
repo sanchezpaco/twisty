@@ -1,0 +1,1977 @@
+{
+ "seed": 20261016,
+ "from": {
+  "commit": "1e1ce57",
+  "dataHash": "4525f9aa27229e67",
+  "data": {
+   "source": "spain-latest.osm.pbf",
+   "nodes": 649409,
+   "edges": 889934
+  },
+  "tripsHash": "14d0bb6bdaf32664",
+  "roadsHash": "f6dc445bbafe05aa",
+  "createdAt": "2026-10-16T11:35:26.424Z",
+  "roads": {
+   "vidra-sant-privat": {
+    "located": true,
+    "deadEnd": false
+   },
+   "mare-de-deu-del-mont": {
+    "located": true,
+    "deadEnd": true
+   },
+   "tost": {
+    "located": true,
+    "deadEnd": true
+   },
+   "santa-engracia": {
+    "located": true,
+    "deadEnd": true
+   },
+   "jv-7032-segura": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-35-tuejar-titaguas": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-35-titaguas-border": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-345-villar-alpuente": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-345-alpuente-titaguas": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-363-losilla-ademuz": {
+    "located": true,
+    "deadEnd": false
+   },
+   "giv-5221-oix-beget": {
+    "located": true,
+    "deadEnd": false
+   },
+   "c-462-coll-de-port": {
+    "located": true,
+    "deadEnd": false
+   },
+   "c-462-tuixent-la-seu": {
+    "located": true,
+    "deadEnd": false
+   },
+   "bv-5114-santa-fe": {
+    "located": true,
+    "deadEnd": false
+   },
+   "bv-5301-montseny": {
+    "located": true,
+    "deadEnd": false
+   },
+   "c-28-bonaigua": {
+    "located": true,
+    "deadEnd": false
+   },
+   "n-260-port-del-canto": {
+    "located": true,
+    "deadEnd": false
+   },
+   "n-621-hermida": {
+    "located": true,
+    "deadEnd": false
+   },
+   "n-625-beyos-ponton": {
+    "located": true,
+    "deadEnd": false
+   },
+   "as-227-somiedo": {
+    "located": true,
+    "deadEnd": false
+   },
+   "ca-643-lunada": {
+    "located": true,
+    "deadEnd": false
+   },
+   "n-502-puerto-del-pico": {
+    "located": true,
+    "deadEnd": false
+   },
+   "a-4132-alpujarra": {
+    "located": true,
+    "deadEnd": false
+   },
+   "a-337-la-ragua": {
+    "located": true,
+    "deadEnd": false
+   },
+   "a-397-ronda-san-pedro": {
+    "located": true,
+    "deadEnd": false
+   },
+   "ca-9104-palomas": {
+    "located": true,
+    "deadEnd": false
+   },
+   "a-1702-maestrazgo": {
+    "located": true,
+    "deadEnd": false
+   },
+   "cv-70-confrides": {
+    "located": true,
+    "deadEnd": false
+   }
+  },
+  "accepted": []
+ },
+ "trips": [
+  {
+   "id": "cross-001",
+   "name": "Dumbría → Pereiró",
+   "from": [
+    -9.118,
+    43.0104
+   ],
+   "to": [
+    -8.7318,
+    42.2098
+   ]
+  },
+  {
+   "id": "cross-002",
+   "name": "Peleagonzalo → La Barganiza",
+   "from": [
+    -5.4827,
+    41.4822
+   ],
+   "to": [
+    -5.7562,
+    43.4411
+   ]
+  },
+  {
+   "id": "cross-003",
+   "name": "Sepulcro-Hilario → Tormón",
+   "from": [
+    -6.1862,
+    40.6989
+   ],
+   "to": [
+    -1.3545,
+    40.2026
+   ]
+  },
+  {
+   "id": "cross-006",
+   "name": "Cuevas del Campo → Barceo",
+   "from": [
+    -2.9316,
+    37.6086
+   ],
+   "to": [
+    -6.452,
+    41.0613
+   ]
+  },
+  {
+   "id": "cross-007",
+   "name": "Castellterçol → Lladó",
+   "from": [
+    2.1231,
+    41.7503
+   ],
+   "to": [
+    2.8121,
+    42.2479
+   ]
+  },
+  {
+   "id": "cross-009",
+   "name": "Fuentes de Ebro → Alcuéscar",
+   "from": [
+    -0.6287,
+    41.5114
+   ],
+   "to": [
+    -6.2284,
+    39.1801
+   ]
+  },
+  {
+   "id": "cross-011",
+   "name": "A Caridá → Arredondo",
+   "from": [
+    -6.829,
+    43.551
+   ],
+   "to": [
+    -3.6018,
+    43.2745
+   ]
+  },
+  {
+   "id": "cross-013",
+   "name": "Villablanca → El Real de la Jara",
+   "from": [
+    -7.3423,
+    37.3028
+   ],
+   "to": [
+    -6.1511,
+    37.9494
+   ]
+  },
+  {
+   "id": "cross-014",
+   "name": "Villayón → Villasdardo",
+   "from": [
+    -6.7046,
+    43.4477
+   ],
+   "to": [
+    -6.162,
+    41.0042
+   ]
+  },
+  {
+   "id": "cross-020",
+   "name": "Muñó → Zumaia",
+   "from": [
+    -5.6466,
+    43.4349
+   ],
+   "to": [
+    -2.2571,
+    43.2967
+   ]
+  },
+  {
+   "id": "cross-021",
+   "name": "Minas Prehistoricas de Texeo (Edad de Cobre) → Alfondeguilla",
+   "from": [
+    -5.899,
+    43.1868
+   ],
+   "to": [
+    -0.269,
+    39.8377
+   ]
+  },
+  {
+   "id": "cross-023",
+   "name": "el Mirador del Penedès → Unzué / Untzue",
+   "from": [
+    1.4269,
+    41.2982
+   ],
+   "to": [
+    -1.6263,
+    42.6515
+   ]
+  },
+  {
+   "id": "cross-029",
+   "name": "Caniles → Simat de la Valldigna",
+   "from": [
+    -2.7224,
+    37.4362
+   ],
+   "to": [
+    -0.3115,
+    39.0435
+   ]
+  },
+  {
+   "id": "cross-030",
+   "name": "Guadamur → Pedreña",
+   "from": [
+    -4.1489,
+    39.8114
+   ],
+   "to": [
+    -3.7676,
+    43.4386
+   ]
+  },
+  {
+   "id": "cross-037",
+   "name": "Calicasas → Castro de Filabres",
+   "from": [
+    -3.6186,
+    37.2733
+   ],
+   "to": [
+    -2.44,
+    37.1844
+   ]
+  },
+  {
+   "id": "cross-039",
+   "name": "Balmaseda → Fuente del Maestre",
+   "from": [
+    -3.1945,
+    43.194
+   ],
+   "to": [
+    -6.4484,
+    38.5269
+   ]
+  },
+  {
+   "id": "fixed-valencia-los-santos",
+   "name": "València → Los Santos (Ademuz)",
+   "from": [
+    -0.3763,
+    39.4699
+   ],
+   "to": [
+    -1.28005,
+    40.10779
+   ]
+  },
+  {
+   "id": "great-a-1702-maestrazgo",
+   "name": "Alcañiz → Cantavieja",
+   "from": [
+    -0.13,
+    41.0507
+   ],
+   "to": [
+    -0.4062,
+    40.5253
+   ]
+  },
+  {
+   "id": "great-a-1702-maestrazgo-ends",
+   "name": "la Vall d'Alba → Vinaceite",
+   "from": [
+    -0.0351,
+    40.1759
+   ],
+   "to": [
+    -0.5793,
+    41.266
+   ]
+  },
+  {
+   "id": "great-a-337-la-ragua-ends",
+   "name": "Alamedilla → Adra",
+   "from": [
+    -3.2444,
+    37.5816
+   ],
+   "to": [
+    -3.0204,
+    36.7488
+   ]
+  },
+  {
+   "id": "great-a-397-ronda-san-pedro",
+   "name": "Sevilla → Marbella",
+   "from": [
+    -5.9953,
+    37.3886
+   ],
+   "to": [
+    -4.8856,
+    36.509
+   ]
+  },
+  {
+   "id": "great-a-4132-alpujarra",
+   "name": "Lanjarón → Cádiar",
+   "from": [
+    -3.4802,
+    36.9181
+   ],
+   "to": [
+    -3.1803,
+    36.9462
+   ]
+  },
+  {
+   "id": "great-as-227-somiedo-ends",
+   "name": "Berducéu → Quintana del Castillo",
+   "from": [
+    -6.2881,
+    43.483
+   ],
+   "to": [
+    -6.0467,
+    42.6609
+   ]
+  },
+  {
+   "id": "great-bv-5301-montseny",
+   "name": "Granollers → Vic",
+   "from": [
+    2.2876,
+    41.608
+   ],
+   "to": [
+    2.2546,
+    41.9302
+   ]
+  },
+  {
+   "id": "great-bv-5301-montseny-ends",
+   "name": "Sant Pol de Mar → la Quar",
+   "from": [
+    2.6238,
+    41.603
+   ],
+   "to": [
+    1.9808,
+    42.105
+   ]
+  },
+  {
+   "id": "great-c-28-bonaigua",
+   "name": "la Pobla de Segur → Vielha",
+   "from": [
+    0.9673,
+    42.2474
+   ],
+   "to": [
+    0.7955,
+    42.7018
+   ]
+  },
+  {
+   "id": "great-c-462-coll-de-port",
+   "name": "Solsona → la Seu d'Urgell",
+   "from": [
+    1.5184,
+    41.9946
+   ],
+   "to": [
+    1.456,
+    42.3576
+   ]
+  },
+  {
+   "id": "great-c-462-coll-de-port-ends",
+   "name": "Sant Salvador de Guardiola → Lladorre",
+   "from": [
+    1.7671,
+    41.6798
+   ],
+   "to": [
+    1.2494,
+    42.6209
+   ]
+  },
+  {
+   "id": "great-c-462-tuixent-la-seu-ends",
+   "name": "Serrateix → Esterri de Cardós",
+   "from": [
+    1.7765,
+    41.946
+   ],
+   "to": [
+    1.262,
+    42.5925
+   ]
+  },
+  {
+   "id": "great-ca-9104-palomas",
+   "name": "Arcos de la Frontera → Ronda",
+   "from": [
+    -5.8063,
+    36.7505
+   ],
+   "to": [
+    -5.1666,
+    36.7421
+   ]
+  },
+  {
+   "id": "great-ca-9104-palomas-ends",
+   "name": "Montellano → Alcalá de los Gazules",
+   "from": [
+    -5.5713,
+    36.9951
+   ],
+   "to": [
+    -5.7239,
+    36.4619
+   ]
+  },
+  {
+   "id": "great-cv-345-alpuente-titaguas-ends",
+   "name": "El Toro → Boniches",
+   "from": [
+    -0.7484,
+    39.9825
+   ],
+   "to": [
+    -1.6242,
+    39.9855
+   ]
+  },
+  {
+   "id": "great-cv-345-villar-alpuente-ends",
+   "name": "San Antonio de Benagéber → Zafrilla",
+   "from": [
+    -0.5001,
+    39.5619
+   ],
+   "to": [
+    -1.6184,
+    40.1945
+   ]
+  },
+  {
+   "id": "great-cv-35-titaguas-border-ends",
+   "name": "Yátova → Valdemoro-Sierra",
+   "from": [
+    -0.8085,
+    39.3849
+   ],
+   "to": [
+    -1.7671,
+    40.101
+   ]
+  },
+  {
+   "id": "great-cv-363-losilla-ademuz-ends",
+   "name": "Gátova → Huélamo",
+   "from": [
+    -0.5206,
+    39.7696
+   ],
+   "to": [
+    -1.8098,
+    40.2766
+   ]
+  },
+  {
+   "id": "great-cv-70-confrides-ends",
+   "name": "Castalla → Benidorm",
+   "from": [
+    -0.6703,
+    38.5957
+   ],
+   "to": [
+    -0.1291,
+    38.5406
+   ]
+  },
+  {
+   "id": "great-giv-5221-oix-beget",
+   "name": "Olot → Camprodon",
+   "from": [
+    2.489,
+    42.1822
+   ],
+   "to": [
+    2.3649,
+    42.3128
+   ]
+  },
+  {
+   "id": "great-giv-5221-oix-beget-ends",
+   "name": "la Bisbal d'Empordà → Estavar",
+   "from": [
+    3.0396,
+    41.9599
+   ],
+   "to": [
+    1.9961,
+    42.4687
+   ]
+  },
+  {
+   "id": "great-jv-7032-segura",
+   "name": "Cazorla → Yeste",
+   "from": [
+    -3.0039,
+    37.9129
+   ],
+   "to": [
+    -2.319,
+    38.3669
+   ]
+  },
+  {
+   "id": "great-jv-7032-segura-ends",
+   "name": "Yeste → Chiclana de Segura",
+   "from": [
+    -2.319,
+    38.3669
+   ],
+   "to": [
+    -3.0428,
+    38.3116
+   ]
+  },
+  {
+   "id": "great-n-260-port-del-canto-ends",
+   "name": "Vielha → Capolat",
+   "from": [
+    0.7955,
+    42.7018
+   ],
+   "to": [
+    1.7529,
+    42.0776
+   ]
+  },
+  {
+   "id": "great-n-502-puerto-del-pico",
+   "name": "Talavera de la Reina → Ávila",
+   "from": [
+    -4.8312,
+    39.9604
+   ],
+   "to": [
+    -4.7002,
+    40.6565
+   ]
+  },
+  {
+   "id": "great-n-502-puerto-del-pico-ends",
+   "name": "San Román de los Montes → Sigeres",
+   "from": [
+    -4.7322,
+    40.0674
+   ],
+   "to": [
+    -4.9334,
+    40.7988
+   ]
+  },
+  {
+   "id": "great-n-621-hermida",
+   "name": "San Vicente de la Barquera → Riaño",
+   "from": [
+    -4.4003,
+    43.3832
+   ],
+   "to": [
+    -5.0057,
+    42.9756
+   ]
+  },
+  {
+   "id": "great-n-621-hermida-ends",
+   "name": "Posada de Llanes → Polentinos",
+   "from": [
+    -4.8631,
+    43.4241
+   ],
+   "to": [
+    -4.5265,
+    42.9388
+   ]
+  },
+  {
+   "id": "great-n-625-beyos-ponton",
+   "name": "Llanes → Riaño",
+   "from": [
+    -4.7531,
+    43.4211
+   ],
+   "to": [
+    -5.0057,
+    42.9756
+   ]
+  },
+  {
+   "id": "great-n-625-beyos-ponton-ends",
+   "name": "Colunga → Villalba de Guardo",
+   "from": [
+    -5.2707,
+    43.4851
+   ],
+   "to": [
+    -4.8234,
+    42.7217
+   ]
+  },
+  {
+   "id": "great-vidra-sant-privat",
+   "name": "Ripoll → Olot",
+   "from": [
+    2.1932,
+    42.1982
+   ],
+   "to": [
+    2.489,
+    42.1822
+   ]
+  },
+  {
+   "id": "great-vidra-sant-privat-ends",
+   "name": "Serrateix → Cornellà del Terri",
+   "from": [
+    1.7765,
+    41.946
+   ],
+   "to": [
+    2.8157,
+    42.0898
+   ]
+  },
+  {
+   "id": "h2h-t1",
+   "name": "València → Los Santos de Maimona",
+   "from": [
+    -0.3763,
+    39.4699
+   ],
+   "to": [
+    -6.3818,
+    38.4494
+   ]
+  },
+  {
+   "id": "h2h-t2",
+   "name": "Madrid → Granada",
+   "from": [
+    -3.7035,
+    40.4168
+   ],
+   "to": [
+    -3.5995,
+    37.1735
+   ]
+  },
+  {
+   "id": "h2h-t3",
+   "name": "Jaca → Benasque",
+   "from": [
+    -0.5494,
+    42.5693
+   ],
+   "to": [
+    0.5237,
+    42.6053
+   ]
+  },
+  {
+   "id": "h2h-t4",
+   "name": "Santander → Oviedo",
+   "from": [
+    -3.81,
+    43.4619
+   ],
+   "to": [
+    -5.8484,
+    43.3619
+   ]
+  },
+  {
+   "id": "h2h-t5",
+   "name": "Madrid → Plasencia",
+   "from": [
+    -3.7035,
+    40.4168
+   ],
+   "to": [
+    -6.0902,
+    40.0299
+   ]
+  },
+  {
+   "id": "h2h-t6",
+   "name": "València → Alicante",
+   "from": [
+    -0.3763,
+    39.4697
+   ],
+   "to": [
+    -0.4882,
+    38.3436
+   ]
+  },
+  {
+   "id": "regional-001",
+   "name": "Farrera → Cubelles",
+   "from": [
+    1.2726,
+    42.4969
+   ],
+   "to": [
+    1.6731,
+    41.2083
+   ]
+  },
+  {
+   "id": "regional-002",
+   "name": "O Calvario → Padrón",
+   "from": [
+    -8.8372,
+    41.9375
+   ],
+   "to": [
+    -8.6603,
+    42.739
+   ]
+  },
+  {
+   "id": "regional-004",
+   "name": "Castilléjar → Gérgal",
+   "from": [
+    -2.6425,
+    37.7172
+   ],
+   "to": [
+    -2.5396,
+    37.1186
+   ]
+  },
+  {
+   "id": "regional-008",
+   "name": "Pòrtol → Cala Rajada",
+   "from": [
+    2.7716,
+    39.6173
+   ],
+   "to": [
+    3.4602,
+    39.7106
+   ]
+  },
+  {
+   "id": "regional-011",
+   "name": "Valdeltormo → La Iglesuela del Cid",
+   "from": [
+    0.0839,
+    40.987
+   ],
+   "to": [
+    -0.3192,
+    40.4818
+   ]
+  },
+  {
+   "id": "regional-012",
+   "name": "Gavà → Corçà",
+   "from": [
+    2.0063,
+    41.3051
+   ],
+   "to": [
+    3.0171,
+    41.9894
+   ]
+  },
+  {
+   "id": "regional-013",
+   "name": "Bellcaire d'Empordà → Caldes d'Estrac",
+   "from": [
+    3.0944,
+    42.0811
+   ],
+   "to": [
+    2.5278,
+    41.572
+   ]
+  },
+  {
+   "id": "regional-019",
+   "name": "els Poblets → Sellent",
+   "from": [
+    0.0178,
+    38.8493
+   ],
+   "to": [
+    -0.5875,
+    39.0318
+   ]
+  },
+  {
+   "id": "regional-022",
+   "name": "Valencia del Mombuey → Espartinas",
+   "from": [
+    -7.1188,
+    38.2423
+   ],
+   "to": [
+    -6.1257,
+    37.3815
+   ]
+  },
+  {
+   "id": "regional-024",
+   "name": "Bagà → Albons",
+   "from": [
+    1.8626,
+    42.2528
+   ],
+   "to": [
+    3.085,
+    42.1058
+   ]
+  },
+  {
+   "id": "regional-025",
+   "name": "Huécija → Barrio San Antonio",
+   "from": [
+    -2.6091,
+    36.9677
+   ],
+   "to": [
+    -4.1353,
+    37.1631
+   ]
+  },
+  {
+   "id": "regional-028",
+   "name": "Coto de Bornos → Cerros del Águila",
+   "from": [
+    -5.6939,
+    36.851
+   ],
+   "to": [
+    -4.6608,
+    36.5322
+   ]
+  },
+  {
+   "id": "regional-030",
+   "name": "Navata → l'Ametlla del Vallès",
+   "from": [
+    2.8585,
+    42.2248
+   ],
+   "to": [
+    2.2615,
+    41.6693
+   ]
+  },
+  {
+   "id": "regional-033",
+   "name": "Rota → Rosalejo",
+   "from": [
+    -6.36,
+    36.6229
+   ],
+   "to": [
+    -5.1645,
+    36.72
+   ]
+  },
+  {
+   "id": "regional-035",
+   "name": "Pinilla del Campo → Torralbilla",
+   "from": [
+    -2.0837,
+    41.7166
+   ],
+   "to": [
+    -1.3381,
+    41.21
+   ]
+  }
+ ],
+ "roads": [
+  {
+   "id": "vidra-sant-privat",
+   "name": "Carretera de Vidrà a Sant Privat d'en Bas",
+   "region": "Osona and Garrotxa",
+   "from": [
+    2.317,
+    42.1355
+   ],
+   "to": [
+    2.4249,
+    42.15
+   ],
+   "why": "22 km narrow through road from Vidrà over to Sant Privat d'en Bas. Graph cuts it at Vidrà: the 100 m link to BV-5227 is highway=residential (w737018081) and dropped, so it plans as an out-and-back (cost 95-154 min). Unclassified: fun 23%.",
+   "trip": {
+    "from": [
+     2.1932,
+     42.1982
+    ],
+    "fromName": "Ripoll",
+    "to": [
+     2.489,
+     42.1822
+    ],
+    "toName": "Olot"
+   },
+   "addedBy": "routing (ROADMAP Next up 1)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "jv-7032-segura",
+   "ref": "JV-7032",
+   "region": "Sierra de Segura",
+   "from": [
+    -2.5824,
+    38.3104
+   ],
+   "to": [
+    -2.6518,
+    38.2999
+   ],
+   "why": "ROADMAP Next up 1: from Segura de la Sierra to the Los Colladicos junction with the JF-7016 and JF-7012.",
+   "trip": {
+    "from": [
+     -3.0039,
+     37.9129
+    ],
+    "fromName": "Cazorla",
+    "to": [
+     -2.319,
+     38.3669
+    ],
+    "toName": "Yeste"
+   },
+   "addedBy": "routing (ROADMAP Next up 1)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-35-tuejar-titaguas",
+   "ref": "CV-35",
+   "region": "Valencia interior",
+   "from": [
+    -1.043,
+    39.7742
+   ],
+   "to": [
+    -1.0835,
+    39.8631
+   ],
+   "why": "CV-35 climbing from Tuéjar to Titaguas; flowing (fun 29%, no overlay twisty). Weakest Valencian entry, kept for the rider's classic.",
+   "trip": {
+    "from": [
+     -0.3763,
+     39.4699
+    ],
+    "fromName": "València",
+    "to": [
+     -1.28005,
+     40.10779
+    ],
+    "toName": "Los Santos (Ademuz)"
+   },
+   "addedBy": "routing (ROADMAP Next up 2)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-35-titaguas-border",
+   "ref": "CV-35",
+   "region": "Valencia interior",
+   "from": [
+    -1.0835,
+    39.8631
+   ],
+   "to": [
+    -1.2084,
+    39.9439
+   ],
+   "why": "CV-35 from Titaguas past Aras de los Olmos down to the Cuenca border (continues as CM-2203); the curviest CV-35 (56-81% fun past Aras). Split at Titaguas where CV-345 joins.",
+   "trip": {
+    "from": [
+     -0.3763,
+     39.4699
+    ],
+    "fromName": "València",
+    "to": [
+     -1.28005,
+     40.10779
+    ],
+    "toName": "Los Santos (Ademuz)"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-345-villar-alpuente",
+   "ref": "CV-345",
+   "region": "Valencia interior",
+   "from": [
+    -0.8219,
+    39.7373
+   ],
+   "to": [
+    -1.0099,
+    39.8897
+   ],
+   "why": "Villar del Arzobispo - Higueruelas - La Yesa - Alpuente (Twisty). Starts at Villar, not Casinos: the flat 11 km from Casinos made València ride only 77%. Ends at the Alpuente roundabout, whose unnamed edges split the ref.",
+   "trip": {
+    "from": [
+     -0.3763,
+     39.4699
+    ],
+    "fromName": "València",
+    "to": [
+     -1.28005,
+     40.10779
+    ],
+    "toName": "Los Santos (Ademuz)"
+   },
+   "addedBy": "routing (ROADMAP Next up 2)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-345-alpuente-titaguas",
+   "ref": "CV-345",
+   "region": "Valencia interior",
+   "from": [
+    -1.0101,
+    39.8897
+   ],
+   "to": [
+    -1.0785,
+    39.863
+   ],
+   "why": "Last 8 km of CV-345 from the Alpuente roundabout to the CV-35 at Titaguas; a flowing link of the rider's classic.",
+   "trip": {
+    "from": [
+     -0.3763,
+     39.4699
+    ],
+    "fromName": "València",
+    "to": [
+     -1.28005,
+     40.10779
+    ],
+    "toName": "Los Santos (Ademuz)"
+   },
+   "addedBy": "routing (ROADMAP Next up 2)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-363-losilla-ademuz",
+   "ref": "CV-363",
+   "region": "Valencia interior",
+   "from": [
+    -1.093,
+    39.9653
+   ],
+   "to": [
+    -1.2453,
+    40.0559
+   ],
+   "why": "CV-363 from the CV-355 junction near Losilla de Aras through Puebla de San Miguel and Val de la Sabina towards Ademuz; Epic. Extended 8 km past the old end, which was a spur.",
+   "trip": {
+    "from": [
+     -0.3763,
+     39.4699
+    ],
+    "fromName": "València",
+    "to": [
+     -1.28005,
+     40.10779
+    ],
+    "toName": "Los Santos (Ademuz)"
+   },
+   "addedBy": "routing (ROADMAP Next up 2)",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "giv-5221-oix-beget",
+   "ref": "GIV-5221",
+   "region": "Garrotxa",
+   "from": [
+    2.5527,
+    42.2216
+   ],
+   "to": [
+    2.4792,
+    42.3215
+   ],
+   "why": "Castellfollit de la Roca - Oix - Beget, on to GIV-5223 for Camprodon; 27 km of narrow bends, overlay Very twisty. Graph fun 29%: Oix-Beget is maxspeed=30 and zeroed. Today: missed, cost 63 min.",
+   "trip": {
+    "from": [
+     2.489,
+     42.1822
+    ],
+    "fromName": "Olot",
+    "to": [
+     2.3649,
+     42.3128
+    ],
+    "toName": "Camprodon"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "c-462-coll-de-port",
+   "ref": "C-462",
+   "region": "Solsonès",
+   "from": [
+    1.5921,
+    42.136
+   ],
+   "to": [
+    1.568,
+    42.2303
+   ],
+   "why": "Sant Llorenç de Morunys over Coll de Port (1,668 m) to Tuixent; long mountain climb, fun 73%. Today: missed, cost 69 min.",
+   "trip": {
+    "from": [
+     1.5184,
+     41.9946
+    ],
+    "fromName": "Solsona",
+    "to": [
+     1.456,
+     42.3576
+    ],
+    "toName": "la Seu d'Urgell"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "c-462-tuixent-la-seu",
+   "ref": "C-462",
+   "region": "Alt Urgell",
+   "from": [
+    1.568,
+    42.2303
+   ],
+   "to": [
+    1.4558,
+    42.3529
+   ],
+   "why": "Tuixent to la Seu d'Urgell, 38 km of tight narrow bends; overlay Very twisty but graph fun 9% (maxspeed=40, zeroed). Today: missed, cost 65 min.",
+   "trip": {
+    "from": [
+     1.5184,
+     41.9946
+    ],
+    "fromName": "Solsona",
+    "to": [
+     1.456,
+     42.3576
+    ],
+    "toName": "la Seu d'Urgell"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "bv-5114-santa-fe",
+   "ref": "BV-5114",
+   "region": "Montseny",
+   "from": [
+    2.4654,
+    41.7263
+   ],
+   "to": [
+    2.4183,
+    41.8044
+   ],
+   "why": "Campins up to Santa Fe del Montseny and over to the GIV-5201 for Viladrau; the Montseny classic, Very twisty. Graph fun 20% (maxspeed 40/50 zeroed). Today: missed at a 10 min cost; stop 1 rides only 37%.",
+   "trip": {
+    "from": [
+     2.4915,
+     41.6895
+    ],
+    "fromName": "Sant Celoni",
+    "to": [
+     2.3907,
+     41.8483
+    ],
+    "toName": "Viladrau"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "bv-5301-montseny",
+   "ref": "BV-5301",
+   "region": "Montseny",
+   "from": [
+    2.4311,
+    41.7075
+   ],
+   "to": [
+    2.3052,
+    41.8168
+   ],
+   "why": "Sant Esteve de Palautordera - Montseny - Coll Formic - El Brull; Very twisty, fun 78%. Today: missed on Granollers-Vic at a 52 min cost, though found on Sant Celoni-Viladrau.",
+   "trip": {
+    "from": [
+     2.2876,
+     41.608
+    ],
+    "fromName": "Granollers",
+    "to": [
+     2.2546,
+     41.9302
+    ],
+    "toName": "Vic"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "n-621-hermida",
+   "ref": "N-621",
+   "region": "Picos de Europa (Cantabria)",
+   "from": [
+    -4.584,
+    43.3234
+   ],
+   "to": [
+    -4.6234,
+    43.1537
+   ],
+   "why": "Panes through the Desfiladero de La Hermida to Potes; limestone gorge. Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -4.4003,
+     43.3832
+    ],
+    "fromName": "San Vicente de la Barquera",
+    "to": [
+     -5.0057,
+     42.9756
+    ],
+    "toName": "Riaño"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "n-625-beyos-ponton",
+   "ref": "N-625",
+   "region": "Picos de Europa (Asturias and León)",
+   "from": [
+    -5.1305,
+    43.3066
+   ],
+   "to": [
+    -5.0189,
+    43.0999
+   ],
+   "why": "Cangas de Onís through the Desfiladero de los Beyos and Oseja de Sajambre up to the Puerto del Pontón; Very twisty. León half has 0% graph fun (probably the same posted-limit zeroing, not verified). Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -4.7531,
+     43.4211
+    ],
+    "fromName": "Llanes",
+    "to": [
+     -5.0057,
+     42.9756
+    ],
+    "toName": "Riaño"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "as-227-somiedo",
+   "ref": "AS-227",
+   "region": "Asturias (Somiedo)",
+   "from": [
+    -6.28,
+    43.188
+   ],
+   "to": [
+    -6.227,
+    43.023
+   ],
+   "why": "AS-227 from La Riera (Aguasmestas) up the Pigüeña gorge, through Pola de Somiedo, to the Puerto de Somiedo (1,486 m); Twisty. Narrowed on 2026-10-14 from the whole road to the gorge and the pass (road-scout; the first point moved 735 m to the nearest junction of the graph, the locator wants a node within 500 m): the lower valley road and the stretch into León are not what makes it great.",
+   "trip": {
+    "from": [
+     -5.8448,
+     43.3603
+    ],
+    "fromName": "Oviedo",
+    "to": [
+     -6.3183,
+     42.9389
+    ],
+    "toName": "Villablino"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "ca-643-lunada",
+   "ref": "CA-643",
+   "region": "Cantabria (Valles Pasiegos)",
+   "from": [
+    -3.7062,
+    43.2254
+   ],
+   "to": [
+    -3.6552,
+    43.1713
+   ],
+   "why": "San Roque de Riomiera up to the Puerto de Lunada and on into Burgos; hairpins over open pasture. Graph fun 10% (zeroed). Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -3.81,
+     43.4619
+    ],
+    "fromName": "Santander",
+    "to": [
+     -3.552,
+     43.0766
+    ],
+    "toName": "Espinosa de los Monteros"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "n-502-puerto-del-pico",
+   "ref": "N-502",
+   "region": "Sierra de Gredos",
+   "from": [
+    -5.0072,
+    40.296
+   ],
+   "to": [
+    -5.0142,
+    40.3228
+   ],
+   "why": "Cuevas del Valle up the hairpins beside the Roman road to the Puerto del Pico (1,352 m). Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -4.8312,
+     39.9604
+    ],
+    "fromName": "Talavera de la Reina",
+    "to": [
+     -4.7002,
+     40.6565
+    ],
+    "toName": "Ávila"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "a-4132-alpujarra",
+   "ref": "A-4132",
+   "region": "Alpujarras",
+   "from": [
+    -3.4284,
+    36.9013
+   ],
+   "to": [
+    -3.2669,
+    36.998
+   ],
+   "why": "Órgiva - Pampaneira - Pitres - Trevélez along the south face of Sierra Nevada; Very twisty, fun 69%. Today: missed at a 42 min cost; only 3 stops up to +22 min.",
+   "trip": {
+    "from": [
+     -3.4802,
+     36.9181
+    ],
+    "fromName": "Lanjarón",
+    "to": [
+     -3.1803,
+     36.9462
+    ],
+    "toName": "Cádiar"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "a-337-la-ragua",
+   "ref": "A-337",
+   "region": "Sierra Nevada",
+   "from": [
+    -3.0588,
+    37.1815
+   ],
+   "to": [
+    -3.0123,
+    36.9661
+   ],
+   "why": "La Calahorra over the Puerto de la Ragua (2,041 m) down to Cherín near Ugíjar; Very twisty. Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -3.1373,
+     37.2991
+    ],
+    "fromName": "Guadix",
+    "to": [
+     -2.9469,
+     36.8467
+    ],
+    "toName": "Berja"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "a-397-ronda-san-pedro",
+   "ref": "A-397",
+   "region": "Serranía de Ronda",
+   "from": [
+    -5.1478,
+    36.7533
+   ],
+   "to": [
+    -5.0064,
+    36.5106
+   ],
+   "why": "Ronda down to San Pedro de Alcántara; 44 km of fast, well-surfaced sweepers, Twisty. Today: found on stops 0-5.",
+   "trip": {
+    "from": [
+     -5.9953,
+     37.3886
+    ],
+    "fromName": "Sevilla",
+    "to": [
+     -4.8856,
+     36.509
+    ],
+    "toName": "Marbella"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "ca-9104-palomas",
+   "ref": "CA-9104",
+   "region": "Sierra de Grazalema",
+   "from": [
+    -5.3885,
+    36.8338
+   ],
+   "to": [
+    -5.3822,
+    36.7614
+   ],
+   "why": "Zahara de la Sierra over the Puerto de las Palomas (1,357 m) to Grazalema; steep and tight, fun 91%, Very twisty. Today: missed at a 40 min cost; the planner prefers the A-372 over Boyar.",
+   "trip": {
+    "from": [
+     -5.8063,
+     36.7505
+    ],
+    "fromName": "Arcos de la Frontera",
+    "to": [
+     -5.1666,
+     36.7421
+    ],
+    "toName": "Ronda"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "a-1702-maestrazgo",
+   "ref": "A-1702",
+   "region": "Maestrazgo (Teruel)",
+   "from": [
+    -0.4842,
+    40.5393
+   ],
+   "to": [
+    -0.5515,
+    40.8433
+   ],
+   "why": "From the A-226 near Fortanete through Villarluengo and the Órganos de Montoro to Ejulve and Gargallo; 55 km, fun 61%, Very twisty. Today: missed at a 39 min cost.",
+   "trip": {
+    "from": [
+     -0.13,
+     41.0507
+    ],
+    "fromName": "Alcañiz",
+    "to": [
+     -0.4062,
+     40.5253
+    ],
+    "toName": "Cantavieja"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  },
+  {
+   "id": "cv-70-confrides",
+   "ref": "CV-70",
+   "region": "Alicante interior (Marina Baixa)",
+   "from": [
+    -0.3922,
+    38.6998
+   ],
+   "to": [
+    -0.2122,
+    38.6762
+   ],
+   "why": "Benilloba - Benasau - Port de Confrides - Guadalest; 23 km, fun 78%, Very twisty. Today: on the fastest route, found at stop 0.",
+   "trip": {
+    "from": [
+     -0.4401,
+     38.7442
+    ],
+    "fromName": "Cocentaina",
+    "to": [
+     -0.0472,
+     38.6028
+    ],
+    "toName": "Altea"
+   },
+   "addedBy": "road-scout",
+   "addedOn": "2026-10-13"
+  }
+ ],
+ "misses": [
+  {
+   "trip": "cross-003",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "cross-006",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "cross-007",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "cross-007",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "cross-009",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "cross-011",
+   "road": "ca-643-lunada"
+  },
+  {
+   "trip": "cross-011",
+   "road": "n-621-hermida"
+  },
+  {
+   "trip": "cross-014",
+   "road": "as-227-somiedo"
+  },
+  {
+   "trip": "cross-020",
+   "road": "ca-643-lunada"
+  },
+  {
+   "trip": "cross-020",
+   "road": "n-621-hermida"
+  },
+  {
+   "trip": "cross-021",
+   "road": "ca-643-lunada"
+  },
+  {
+   "trip": "cross-021",
+   "road": "n-625-beyos-ponton"
+  },
+  {
+   "trip": "cross-029",
+   "road": "cv-70-confrides"
+  },
+  {
+   "trip": "cross-030",
+   "road": "ca-643-lunada"
+  },
+  {
+   "trip": "cross-030",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "cross-037",
+   "road": "a-337-la-ragua"
+  },
+  {
+   "trip": "cross-039",
+   "road": "ca-643-lunada"
+  },
+  {
+   "trip": "cross-039",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "great-a-1702-maestrazgo",
+   "road": "a-1702-maestrazgo"
+  },
+  {
+   "trip": "great-a-397-ronda-san-pedro",
+   "road": "ca-9104-palomas"
+  },
+  {
+   "trip": "great-a-4132-alpujarra",
+   "road": "a-4132-alpujarra"
+  },
+  {
+   "trip": "great-bv-5301-montseny-ends",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "great-bv-5301-montseny",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "great-c-462-coll-de-port-ends",
+   "road": "c-462-tuixent-la-seu"
+  },
+  {
+   "trip": "great-c-462-tuixent-la-seu-ends",
+   "road": "c-462-tuixent-la-seu"
+  },
+  {
+   "trip": "great-cv-345-alpuente-titaguas-ends",
+   "road": "cv-345-alpuente-titaguas"
+  },
+  {
+   "trip": "great-cv-345-alpuente-titaguas-ends",
+   "road": "cv-345-villar-alpuente"
+  },
+  {
+   "trip": "great-cv-345-alpuente-titaguas-ends",
+   "road": "cv-35-titaguas-border"
+  },
+  {
+   "trip": "great-cv-345-alpuente-titaguas-ends",
+   "road": "cv-35-tuejar-titaguas"
+  },
+  {
+   "trip": "great-cv-345-alpuente-titaguas-ends",
+   "road": "cv-363-losilla-ademuz"
+  },
+  {
+   "trip": "great-cv-345-villar-alpuente-ends",
+   "road": "cv-345-alpuente-titaguas"
+  },
+  {
+   "trip": "great-cv-35-titaguas-border-ends",
+   "road": "cv-345-alpuente-titaguas"
+  },
+  {
+   "trip": "great-cv-35-titaguas-border-ends",
+   "road": "cv-345-villar-alpuente"
+  },
+  {
+   "trip": "great-cv-363-losilla-ademuz-ends",
+   "road": "cv-345-alpuente-titaguas"
+  },
+  {
+   "trip": "great-cv-363-losilla-ademuz-ends",
+   "road": "cv-345-villar-alpuente"
+  },
+  {
+   "trip": "great-cv-70-confrides-ends",
+   "road": "cv-70-confrides"
+  },
+  {
+   "trip": "great-giv-5221-oix-beget-ends",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "great-giv-5221-oix-beget-ends",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "great-giv-5221-oix-beget-ends",
+   "road": "giv-5221-oix-beget"
+  },
+  {
+   "trip": "great-giv-5221-oix-beget-ends",
+   "road": "vidra-sant-privat"
+  },
+  {
+   "trip": "great-giv-5221-oix-beget",
+   "road": "vidra-sant-privat"
+  },
+  {
+   "trip": "great-jv-7032-segura-ends",
+   "road": "jv-7032-segura"
+  },
+  {
+   "trip": "great-jv-7032-segura",
+   "road": "jv-7032-segura"
+  },
+  {
+   "trip": "great-n-260-port-del-canto-ends",
+   "road": "c-462-tuixent-la-seu"
+  },
+  {
+   "trip": "great-n-502-puerto-del-pico-ends",
+   "road": "n-502-puerto-del-pico"
+  },
+  {
+   "trip": "great-n-621-hermida-ends",
+   "road": "n-625-beyos-ponton"
+  },
+  {
+   "trip": "great-n-621-hermida",
+   "road": "n-625-beyos-ponton"
+  },
+  {
+   "trip": "great-n-625-beyos-ponton-ends",
+   "road": "n-621-hermida"
+  },
+  {
+   "trip": "great-vidra-sant-privat-ends",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "great-vidra-sant-privat-ends",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "great-vidra-sant-privat",
+   "road": "giv-5221-oix-beget"
+  },
+  {
+   "trip": "regional-011",
+   "road": "a-1702-maestrazgo"
+  },
+  {
+   "trip": "regional-012",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "regional-019",
+   "road": "cv-70-confrides"
+  },
+  {
+   "trip": "regional-024",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "regional-024",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "regional-024",
+   "road": "giv-5221-oix-beget"
+  },
+  {
+   "trip": "regional-025",
+   "road": "a-337-la-ragua"
+  },
+  {
+   "trip": "regional-028",
+   "road": "ca-9104-palomas"
+  },
+  {
+   "trip": "regional-030",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "regional-030",
+   "road": "bv-5301-montseny"
+  },
+  {
+   "trip": "regional-033",
+   "road": "a-397-ronda-san-pedro"
+  }
+ ],
+ "controls": [
+  {
+   "trip": "cross-002",
+   "road": "as-227-somiedo"
+  },
+  {
+   "trip": "fixed-valencia-los-santos",
+   "road": "cv-345-villar-alpuente"
+  },
+  {
+   "trip": "fixed-valencia-los-santos",
+   "road": "cv-363-losilla-ademuz"
+  },
+  {
+   "trip": "great-a-1702-maestrazgo-ends",
+   "road": "a-1702-maestrazgo"
+  },
+  {
+   "trip": "great-a-337-la-ragua-ends",
+   "road": "a-337-la-ragua"
+  },
+  {
+   "trip": "great-as-227-somiedo-ends",
+   "road": "as-227-somiedo"
+  },
+  {
+   "trip": "great-c-462-coll-de-port",
+   "road": "c-462-coll-de-port"
+  },
+  {
+   "trip": "great-c-462-tuixent-la-seu-ends",
+   "road": "c-462-coll-de-port"
+  },
+  {
+   "trip": "great-ca-9104-palomas-ends",
+   "road": "ca-9104-palomas"
+  },
+  {
+   "trip": "great-ca-9104-palomas",
+   "road": "ca-9104-palomas"
+  },
+  {
+   "trip": "great-cv-345-villar-alpuente-ends",
+   "road": "cv-363-losilla-ademuz"
+  },
+  {
+   "trip": "great-cv-35-titaguas-border-ends",
+   "road": "cv-35-titaguas-border"
+  },
+  {
+   "trip": "great-cv-35-titaguas-border-ends",
+   "road": "cv-35-tuejar-titaguas"
+  },
+  {
+   "trip": "great-cv-363-losilla-ademuz-ends",
+   "road": "cv-35-tuejar-titaguas"
+  },
+  {
+   "trip": "great-cv-363-losilla-ademuz-ends",
+   "road": "cv-363-losilla-ademuz"
+  },
+  {
+   "trip": "great-n-260-port-del-canto-ends",
+   "road": "c-462-coll-de-port"
+  },
+  {
+   "trip": "great-n-625-beyos-ponton",
+   "road": "n-621-hermida"
+  },
+  {
+   "trip": "regional-013",
+   "road": "bv-5114-santa-fe"
+  },
+  {
+   "trip": "regional-024",
+   "road": "vidra-sant-privat"
+  },
+  {
+   "trip": "regional-030",
+   "road": "vidra-sant-privat"
+  }
+ ],
+ "sample": [
+  "cross-001",
+  "cross-006",
+  "cross-013",
+  "cross-020",
+  "cross-023",
+  "great-a-1702-maestrazgo-ends",
+  "great-a-337-la-ragua-ends",
+  "great-as-227-somiedo-ends",
+  "great-c-28-bonaigua",
+  "great-cv-363-losilla-ademuz-ends",
+  "great-n-502-puerto-del-pico",
+  "h2h-t1",
+  "h2h-t2",
+  "h2h-t3",
+  "h2h-t4",
+  "h2h-t5",
+  "h2h-t6",
+  "regional-001",
+  "regional-002",
+  "regional-004",
+  "regional-008",
+  "regional-011",
+  "regional-022",
+  "regional-033",
+  "regional-035"
+ ]
+}

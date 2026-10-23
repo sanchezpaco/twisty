@@ -1,0 +1,33 @@
+# Data
+/data/
+app/public/data/
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.svelte-kit/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Signing keys and the Play service account: never in the repository
+*.jks
+*.keystore
+*service-account*.json
+
+# Agent handoffs and machine-specific agent notes (local only)
+.claude/handoffs/
+CLAUDE.local.md
+
+# Bench build and results
+app/bench/.build/
+app/scripts/.build/
+app/bench/out/

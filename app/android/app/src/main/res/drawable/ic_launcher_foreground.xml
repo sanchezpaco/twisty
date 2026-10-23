@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The wave of the app's logo (app/public/favicon.svg), unchanged, at 2 dp per logo unit: a little more room around it
+     than in the logo, so it sits clear inside the 66 dp safe zone under every launcher's mask. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="2"
+        android:scaleY="2"
+        android:translateX="22"
+        android:translateY="22">
+        <path
+            android:pathData="M5,22C9,22 9,10 13,10S17,22 21,22 25,10 27,10"
+            android:strokeWidth="3.2"
+            android:strokeLineCap="round">
+            <aapt:attr name="android:strokeColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="5"
+                    android:startY="10"
+                    android:endX="27"
+                    android:endY="22">
+                    <item android:offset="0" android:color="#FFFFB547" />
+                    <item android:offset="0.5" android:color="#FFFF6B57" />
+                    <item android:offset="1" android:color="#FFFF2E6E" />
+                </gradient>
+            </aapt:attr>
+        </path>
+    </group>
+</vector>

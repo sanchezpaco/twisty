@@ -1,0 +1,15 @@
+Twisty plans motorcycle routes on twisty roads in Spain, the Balearic and Canary Islands included. You put in where you start and where you are going, and it looks for the twisty roads on the way. If the motorway gets you to the start of a pass sooner, it uses the motorway up to there.
+
+The fastest route and the ones with more bends sit on a slider. Each one says how much time it adds and how many km of bends it has.
+
+Before you go there is the list of stretches, with their length and how twisty each one is, from "Gentle" to "Epic". It is measured bend by bend on each road's real shape.
+
+The route goes to your navigation app or, to follow the exact line, as a GPX file to a GPX app.
+
+It also does loops with stops, to leave home and come back another way. Rides are saved in folders and can be shared. The map can be dark, light or satellite, with the IGN's aerial photos, and has 3D relief. Over 5,000 twisty roads are marked on it.
+
+It is free and has no ads. No account needed. The route is worked out on the phone, and routing and town search work with no signal; the map needs a connection. Trips are kept on the phone, and your location only leaves it in what you send: a street search, or a ride you open in another app or share.
+
+Twisty plans the route; your navigation app guides you. Routes come from OpenStreetMap data and may include closed, private, unpaved or one-way roads: always follow road signs, and set the route before you ride.
+
+Map data © OpenStreetMap contributors (ODbL) · Map tiles OpenFreeMap © OpenMapTiles · Elevation: Terrain Tiles (EU-DEM Copernicus, USGS SRTM/GMTED, NOAA ETOPO1) · Satellite: PNOA CC-BY 4.0 scne.es, MosaicoSentinel2 CC-BY 4.0 ign.es · Address search: Nominatim

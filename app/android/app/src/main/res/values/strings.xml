@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Twisty</string>
+    <string name="title_activity_main">Twisty</string>
+    <string name="package_name">com.sanchezpaco.twisty</string>
+    <string name="custom_url_scheme">com.sanchezpaco.twisty</string>
+</resources>

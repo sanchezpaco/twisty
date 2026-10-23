@@ -1,0 +1,16 @@
+[project]
+name = "twisty-pipeline"
+version = "0.1.0"
+description = "Builds twisty road segments and a compact routing graph from OpenStreetMap data"
+requires-python = ">=3.12"
+dependencies = ["osmium>=4.0", "numpy>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools]
+# calibration/ holds data, not code: without this a fresh install finds two top-level packages and fails.
+packages = ["twisty_pipeline"]

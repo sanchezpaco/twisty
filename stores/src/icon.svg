@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="18 18 72 72">
+  <!-- The launcher icon as Android draws it (app/android/app/src/main/res/drawable/ic_launcher_*.xml): its 108 dp layers
+       seen through the 72 dp the launcher shows. Square and flat: Google Play adds the rounded mask and the shadow. -->
+  <defs>
+    <radialGradient id="bg" gradientUnits="userSpaceOnUse" cx="54" cy="54" r="54">
+      <stop offset="0" stop-color="#0b0e14" />
+      <stop offset="1" stop-color="#1a2030" />
+    </radialGradient>
+    <linearGradient id="wave" gradientUnits="userSpaceOnUse" x1="5" y1="10" x2="27" y2="22">
+      <stop offset="0" stop-color="#ffb547" />
+      <stop offset=".5" stop-color="#ff6b57" />
+      <stop offset="1" stop-color="#ff2e6e" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="108" height="108" fill="url(#bg)" />
+  <g transform="translate(22 22) scale(2)">
+    <path d="M5 22C9 22 9 10 13 10S17 22 21 22 25 10 27 10" fill="none" stroke="url(#wave)" stroke-width="3.2" stroke-linecap="round" />
+  </g>
+</svg>

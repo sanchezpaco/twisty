@@ -1,0 +1,3282 @@
+[
+ {
+  "id": "gal-ezaro",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "DP-2308",
+  "name": "Subida ao Miradoiro do Ézaro",
+  "start": [
+   -9.12358,
+   42.91276
+  ],
+  "end": [
+   -9.11624,
+   42.91715
+  ],
+  "lengthKm": 1.71,
+  "character": 5,
+  "class": "hairpin-stack",
+  "confidence": "high",
+  "note": "very steep stacked hairpins above the Xallas falls. Graph labels: DP-2308 · Subida ao Miradoiro do Ézaro. Ends at graph junction/junction; nearest bench road 231.3 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-curota",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "DP-6705",
+  "name": "Estrada da Curota (Barbanza)",
+  "start": [
+   -8.98104,
+   42.61076
+  ],
+  "end": [
+   -8.97035,
+   42.62078
+  ],
+  "lengthKm": 1.99,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb to the Curota viewpoint, narrow bends. Graph labels: DP-6705 · Estrada da Curota. Ends at graph junction/vertex; nearest bench road 227.1 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-pindo",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "AC-550",
+  "name": "AC-550 O Pindo coast",
+  "start": [
+   -9.13501,
+   42.89429
+  ],
+  "end": [
+   -9.12939,
+   42.90995
+  ],
+  "lengthKm": 2.18,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "coastal primary under Monte Pindo, flowing bends. Graph labels: AC-550 · Estrada Cee-Ribeira; AC-550 · Ponte do Ézaro. Ends at graph vertex/vertex; nearest bench road 232.3 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-cebreiro",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "LU-633",
+  "name": "LU-633 Alto do Poio descent to Triacastela",
+  "start": [
+   -7.19109,
+   42.73688
+  ],
+  "end": [
+   -7.20235,
+   42.73793
+  ],
+  "lengthKm": 2.13,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain road down from O Poio, steady bends. Graph labels: LU-633 · Estrada Pedrafita - O Alto do Hospital. Ends at graph vertex/vertex; nearest bench road 83.8 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-parada-sil",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "OU-0605",
+  "name": "OU-0605 Parada de Sil (Cañón do Sil)",
+  "start": [
+   -7.4979,
+   42.37473
+  ],
+  "end": [
+   -7.50873,
+   42.37979
+  ],
+  "lengthKm": 2.0,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow canyon-rim road, tight bends. Graph labels: OU-0605 · Estrada A Pedra do Sol - Parada de Sil; OU-0605 · Ponte da Freita. Ends at graph vertex/junction; nearest bench road 125.8 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-peares",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "N-120",
+  "name": "N-120 Os Peares",
+  "start": [
+   -7.72866,
+   42.45767
+  ],
+  "end": [
+   -7.71329,
+   42.47268
+  ],
+  "lengthKm": 2.4,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national road in the Miño-Sil valley, fast curves. Graph labels: N-120 · Estrada Ourense - Monforte de Lemos. Ends at graph vertex/junction; nearest bench road 135.4 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-lugo-muralla",
+  "region": "Galicia",
+  "half": "test",
+  "ref": null,
+  "name": "Ronda da Muralla, Lugo",
+  "start": [
+   -7.55651,
+   43.0073
+  ],
+  "end": [
+   -7.55307,
+   43.01025
+  ],
+  "lengthKm": 2.0,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "ring road around the Roman walls, traffic lights. Graph labels: Ronda da Muralla; Rúa Vilalba. Ends at graph junction/junction; nearest bench road 103.6 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-vigo-granvia",
+  "region": "Galicia",
+  "half": "test",
+  "ref": null,
+  "name": "Gran Vía, Vigo",
+  "start": [
+   -8.72565,
+   42.22241
+  ],
+  "end": [
+   -8.71646,
+   42.23444
+  ],
+  "lengthKm": 1.58,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city avenue. Graph labels: Avenida da Gran Vía; Praza de España. Ends at graph junction/junction; nearest bench road 221.9 km (as-227-somiedo)."
+ },
+ {
+  "id": "gal-rabade-vilalba",
+  "region": "Galicia",
+  "half": "test",
+  "ref": "LU-541",
+  "name": "LU-541 Rábade - Vilalba",
+  "start": [
+   -7.62414,
+   43.12969
+  ],
+  "end": [
+   -7.63058,
+   43.14631
+  ],
+  "lengthKm": 1.92,
+  "character": 2,
+  "class": "straight",
+  "confidence": "medium",
+  "note": "gentle road across the Terra Chá plateau. Graph labels: LU-541; LU-541 · Estrada Rábade-Vilalba. Ends at graph junction/junction; nearest bench road 107.6 km (as-227-somiedo)."
+ },
+ {
+  "id": "ast-pajares",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "N-630",
+  "name": "N-630 Puerto de Pajares, Asturian side",
+  "start": [
+   -5.76251,
+   42.99501
+  ],
+  "end": [
+   -5.76593,
+   43.01035
+  ],
+  "lengthKm": 2.4,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "the lacets below the pass towards Pajares village. Graph labels: N-630 · Carretera Gijón a Puerto de Sevilla. Ends at graph vertex/junction; nearest bench road 37.6 km (as-227-somiedo)."
+ },
+ {
+  "id": "ast-covadonga",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "CO-4",
+  "name": "CO-4 Covadonga - Lagos",
+  "start": [
+   -5.00498,
+   43.28985
+  ],
+  "end": [
+   -5.01745,
+   43.29586
+  ],
+  "lengthKm": 2.26,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "narrow mountain climb to the lakes, many bends. Graph labels: CO-4 · Carretera Covadonga - Los Lagos. Ends at graph vertex/junction; nearest bench road 8.5 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-fitu",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-260",
+  "name": "AS-260 Mirador del Fitu",
+  "start": [
+   -5.20824,
+   43.42429
+  ],
+  "end": [
+   -5.19597,
+   43.43774
+  ],
+  "lengthKm": 2.38,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "curvy climb over the Sueve. Graph labels: AS-260 · Carretera Arriondas - Colunga. Ends at graph junction/vertex; nearest bench road 14.4 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-tarna",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-117",
+  "name": "AS-117 Puerto de Tarna, Asturian side",
+  "start": [
+   -5.21656,
+   43.10286
+  ],
+  "end": [
+   -5.21793,
+   43.08483
+  ],
+  "lengthKm": 2.5,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain pass road, sweepers and bends. Graph labels: AS-117 · Carretera Riaño - Puerto de Tarna. Ends at graph vertex/junction; nearest bench road 12.8 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-leitariegos",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-213",
+  "name": "AS-213 Puerto de Leitariegos",
+  "start": [
+   -6.44278,
+   43.00906
+  ],
+  "end": [
+   -6.41899,
+   42.99919
+  ],
+  "lengthKm": 2.33,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "wide pass road with long curves. Graph labels: AS-213 · Carretera Cangas del Narcea - Puerto de Leitariegos. Ends at graph vertex/junction; nearest bench road 14.4 km (as-227-somiedo)."
+ },
+ {
+  "id": "ast-san-isidro",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-112",
+  "name": "AS-112 Puerto de San Isidro",
+  "start": [
+   -5.41739,
+   43.06675
+  ],
+  "end": [
+   -5.38623,
+   43.0654
+  ],
+  "lengthKm": 2.77,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road, bends near the top. Graph labels: AS-112 · Carretera de Ujo al Puerto de San Isidro. Ends at graph junction/junction; nearest bench road 27.1 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-gijon-constitucion",
+  "region": "Asturias",
+  "half": "test",
+  "ref": null,
+  "name": "Avenida de la Constitución, Gijón",
+  "start": [
+   -5.67828,
+   43.52992
+  ],
+  "end": [
+   -5.66411,
+   43.54205
+  ],
+  "lengthKm": 2.23,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city avenue. Graph labels: Avenida de la Constitución; Calle Palacio Valdés; Calle Álvarez Garaya; Glorieta de Pumarín; N-632 · Avenida de la Costa; Plaza de El Carmen. Ends at graph junction/junction; nearest bench road 50.1 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-oviedo-bulevar",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "O-14",
+  "name": "Bulevar de San Julián de los Prados, Oviedo",
+  "start": [
+   -5.8209,
+   43.37315
+  ],
+  "end": [
+   -5.84258,
+   43.366
+  ],
+  "lengthKm": 1.98,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "urban boulevard. Graph labels: Calle del General Elorza; O-14 · Acceso norte a Oviedo; O-14 · Bulevar de San Julián de los Prados; Plaza de la Cruz Roja. Ends at graph junction/junction; nearest bench road 40.5 km (as-227-somiedo)."
+ },
+ {
+  "id": "ast-a66-serin",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "A-66",
+  "name": "A-66 Oviedo - Gijón",
+  "start": [
+   -5.79621,
+   43.44361
+  ],
+  "end": [
+   -5.79569,
+   43.46108
+  ],
+  "lengthKm": 1.99,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: A-66 · Autovía Ruta de la Plata. Ends at graph junction/vertex; nearest bench road 48.2 km (as-227-somiedo)."
+ },
+ {
+  "id": "can-palombera",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "CA-280",
+  "name": "CA-280 Puerto de Palombera",
+  "start": [
+   -4.2326,
+   43.06438
+  ],
+  "end": [
+   -4.23232,
+   43.08283
+  ],
+  "lengthKm": 2.42,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road through Saja forest. Graph labels: CA-280 · Valle de Cabuérniga-Espinilla-Salcedillo. Ends at graph junction/vertex; nearest bench road 31.5 km (n-621-hermida)."
+ },
+ {
+  "id": "can-piedrasluengas",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "CA-184",
+  "name": "CA-184 Potes - Piedrasluengas",
+  "start": [
+   -4.4785,
+   43.06812
+  ],
+  "end": [
+   -4.46511,
+   43.05751
+  ],
+  "lengthKm": 2.43,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road from Liébana, sweepers and bends. Graph labels: CA-184 · Potes-Piedrasluengas. Ends at graph vertex/junction; nearest bench road 14.8 km (n-621-hermida)."
+ },
+ {
+  "id": "can-nansa",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "CA-281",
+  "name": "CA-281 Nansa valley",
+  "start": [
+   -4.38907,
+   43.13835
+  ],
+  "end": [
+   -4.39533,
+   43.13207
+  ],
+  "lengthKm": 2.1,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "valley and pass road along the Nansa. Graph labels: CA-281 · Puentenansa-Piedrasluengas. Ends at graph vertex/vertex; nearest bench road 17.3 km (n-621-hermida)."
+ },
+ {
+  "id": "can-escudo",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "N-623",
+  "name": "N-623 Puerto del Escudo, Cantabrian side",
+  "start": [
+   -3.8784,
+   43.04394
+  ],
+  "end": [
+   -3.88755,
+   43.05992
+  ],
+  "lengthKm": 2.13,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national pass road, long curves. Graph labels: N-623; N-623 · Carretera Burgos a Santander. Ends at graph junction/junction; nearest bench road 20.4 km (ca-643-lunada)."
+ },
+ {
+  "id": "can-tornos",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "N-629",
+  "name": "N-629 Puerto de Los Tornos from Lanestosa",
+  "start": [
+   -3.46117,
+   43.1636
+  ],
+  "end": [
+   -3.43977,
+   43.15228
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "hairpin climb from Lanestosa to the pass. Graph labels: N-629; N-629 · Carretera Burgos a Santoña. Ends at graph junction/junction; nearest bench road 15.8 km (ca-643-lunada)."
+ },
+ {
+  "id": "can-santander-castros",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida de los Castros, Santander",
+  "start": [
+   -3.78819,
+   43.47327
+  ],
+  "end": [
+   -3.81043,
+   43.46949
+  ],
+  "lengthKm": 1.88,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Avenida de los Castros; Glorieta de la Universidad; Plaza de José Francisco Alonso. Ends at graph junction/junction; nearest bench road 28.2 km (ca-643-lunada)."
+ },
+ {
+  "id": "can-a67-reinosa",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "A-67",
+  "name": "A-67 south of Reinosa",
+  "start": [
+   -4.13987,
+   42.94965
+  ],
+  "end": [
+   -4.123,
+   42.93486
+  ],
+  "lengthKm": 2.27,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway on the Campoo plateau. Graph labels: A-67 · Autovía Cantabria - Meseta. Ends at graph junction/vertex; nearest bench road 43.8 km (ca-643-lunada)."
+ },
+ {
+  "id": "can-n611-campoo",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "N-611",
+  "name": "N-611 Campoo",
+  "start": [
+   -4.13301,
+   42.8885
+  ],
+  "end": [
+   -4.12015,
+   42.90611
+  ],
+  "lengthKm": 2.26,
+  "character": 2,
+  "class": "straight",
+  "confidence": "medium",
+  "note": "gentle national road on the plateau. Graph labels: N-611. Ends at graph vertex/junction; nearest bench road 45.8 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-urkiola",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "BI-623",
+  "name": "BI-623 Puerto de Urkiola, Durango side",
+  "start": [
+   -2.65305,
+   43.12323
+  ],
+  "end": [
+   -2.64562,
+   43.10841
+  ],
+  "lengthKm": 2.18,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass climb with sweepers and some tight bends. Graph labels: BI-623 · Otxandio - Durango errepidea. Ends at graph junction/junction; nearest bench road 81.6 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-jaizkibel",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "GI-3440",
+  "name": "GI-3440 Jaizkibel",
+  "start": [
+   -1.84873,
+   43.34985
+  ],
+  "end": [
+   -1.83447,
+   43.36224
+  ],
+  "lengthKm": 1.95,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "ridge road above the sea. Graph labels: GI-3440 · Jaizkibel hiribidea. Ends at graph vertex/junction; nearest bench road 147.5 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-orduna",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "A-2625",
+  "name": "A-2625 Puerto de Orduña",
+  "start": [
+   -3.02599,
+   42.96797
+  ],
+  "end": [
+   -3.02153,
+   42.95713
+  ],
+  "lengthKm": 2.48,
+  "character": 5,
+  "class": "hairpin-stack",
+  "confidence": "high",
+  "note": "stacked hairpins under the Txarlazo cliff. Graph labels: A-2625 · Puerto de Orduña. Ends at graph vertex/junction; nearest bench road 55.8 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-lekeitio",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "BI-3218",
+  "name": "BI-3218 Gernika - Lekeitio",
+  "start": [
+   -2.54716,
+   43.35131
+  ],
+  "end": [
+   -2.5654,
+   43.35327
+  ],
+  "lengthKm": 2.08,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "rolling Bizkaia road, constant bends. Graph labels: BI-3218 · Gernika - Lekeitio errepidea. Ends at graph junction/junction; nearest bench road 90.5 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-azazeta",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "A-132",
+  "name": "A-132 Puerto de Azazeta",
+  "start": [
+   -2.52218,
+   42.78939
+  ],
+  "end": [
+   -2.50014,
+   42.77991
+  ],
+  "lengthKm": 2.44,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "pass with fast curves. Graph labels: A-132. Ends at graph vertex/junction; nearest bench road 101.7 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-bilbao-agirre",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": null,
+  "name": "Avenida Lehendakari Aguirre, Bilbao",
+  "start": [
+   -2.96328,
+   43.2823
+  ],
+  "end": [
+   -2.94167,
+   43.27116
+  ],
+  "lengthKm": 2.42,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Agirre lehendakariaren etorbidea; Don Bosco biribilgunea; San Pio X.a plaza; San Pio X.aren plaza. Ends at graph junction/junction; nearest bench road 57.4 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-donostia-loiola",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": null,
+  "name": "Paseo Ribera de Loiola, Donostia",
+  "start": [
+   -1.96986,
+   43.3117
+  ],
+  "end": [
+   -1.97955,
+   43.30751
+  ],
+  "lengthKm": 1.79,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "riverside city avenue. Graph labels: Bizkaia pasealekua; Kortazar Arkitektoak kalea; Loiolako Erribera pasealekua. Ends at graph junction/junction; nearest bench road 136.6 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-a1-llanada",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "A-1",
+  "name": "A-1 Llanada Alavesa",
+  "start": [
+   -2.49938,
+   42.87742
+  ],
+  "end": [
+   -2.47714,
+   42.86539
+  ],
+  "lengthKm": 2.29,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway across the plain. Graph labels: A-1. Ends at graph vertex/junction; nearest bench road 99.7 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-ibaneta",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "N-135",
+  "name": "N-135 Ibañeta descent to Valcarlos",
+  "start": [
+   -1.32604,
+   43.02162
+  ],
+  "end": [
+   -1.33726,
+   43.02956
+  ],
+  "lengthKm": 2.24,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "continuous bends down from Roncesvalles. Graph labels: N-135 · Iruñea - Frantzia Luzaidetik errepidea. Ends at graph junction/vertex; nearest bench road 187.3 km (c-28-bonaigua)."
+ },
+ {
+  "id": "nav-belagua",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "NA-137",
+  "name": "NA-137 Belagua towards La Piedra de San Martín",
+  "start": [
+   -0.80737,
+   42.95398
+  ],
+  "end": [
+   -0.78563,
+   42.96297
+  ],
+  "lengthKm": 2.17,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "upper pass road with bends and hairpins. Graph labels: NA-137 · Burgi-Izaba-Frantzia errepidea. Ends at graph vertex/vertex; nearest bench road 143.0 km (c-28-bonaigua)."
+ },
+ {
+  "id": "nav-belate",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "NA-1210",
+  "name": "NA-1210 old Velate pass",
+  "start": [
+   -1.61218,
+   43.05011
+  ],
+  "end": [
+   -1.60962,
+   43.06363
+  ],
+  "lengthKm": 2.38,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "old pass road, bends and hairpins. Graph labels: NA-1210 · Arraizko Bentak - Endarlatsa errepidea. Ends at graph vertex/vertex; nearest bench road 166.4 km (ca-643-lunada)."
+ },
+ {
+  "id": "rio-piqueras",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "N-111A",
+  "name": "N-111A old Puerto de Piqueras",
+  "start": [
+   -2.53777,
+   42.05552
+  ],
+  "end": [
+   -2.53225,
+   42.04981
+  ],
+  "lengthKm": 2.36,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "old pass road, long curves. Graph labels: N-111A · Carretera del puerto de Piqueras. Ends at graph junction/vertex; nearest bench road 154.1 km (ca-643-lunada)."
+ },
+ {
+  "id": "rio-najerilla",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "LR-113",
+  "name": "LR-113 Najerilla valley",
+  "start": [
+   -2.85944,
+   42.18378
+  ],
+  "end": [
+   -2.84755,
+   42.19492
+  ],
+  "lengthKm": 2.24,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "valley road following the river. Graph labels: LR-113 · Carretera del Najerilla. Ends at graph vertex/vertex; nearest bench road 126.6 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-pamplona-pioxii",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida de Pío XII, Pamplona",
+  "start": [
+   -1.6688,
+   42.80132
+  ],
+  "end": [
+   -1.64867,
+   42.81567
+  ],
+  "lengthKm": 2.36,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Navas de Tolosa kalea; Pio XII.a etorbidea. Ends at graph junction/junction; nearest bench road 167.3 km (ca-643-lunada)."
+ },
+ {
+  "id": "rio-logrono-paz",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida de la Paz, Logroño",
+  "start": [
+   -2.44501,
+   42.4629
+  ],
+  "end": [
+   -2.42882,
+   42.46223
+  ],
+  "lengthKm": 1.82,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Avenida de La Paz; Calle General Vara de Rey; Calle Muro de Cervantes; Calle Muro del Carmen; Glorieta de la estatua del Labrador; Rotonda del IX Centenario. Ends at graph junction/junction; nearest bench road 126.4 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-bardenas",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "NA-125",
+  "name": "NA-125 Tudela - Ejea",
+  "start": [
+   -1.50901,
+   42.08761
+  ],
+  "end": [
+   -1.48399,
+   42.08723
+  ],
+  "lengthKm": 2.18,
+  "character": 1,
+  "class": "straight",
+  "confidence": "medium",
+  "note": "straight road across the Ebro plain. Graph labels: NA-125 · Carretera Tudela - Ejea. Ends at graph junction/vertex; nearest bench road 157.6 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "ara-portalet",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-136",
+  "name": "A-136 Portalet",
+  "start": [
+   -0.41524,
+   42.80178
+  ],
+  "end": [
+   -0.3971,
+   42.7893
+  ],
+  "lengthKm": 2.29,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road above Formigal. Graph labels: A-136 · Carretera de Biescas a Francia A-136. Ends at graph junction/vertex; nearest bench road 109.1 km (c-28-bonaigua)."
+ },
+ {
+  "id": "ara-somport-old",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "N-330a",
+  "name": "N-330a old Somport road (Rioseta)",
+  "start": [
+   -0.51231,
+   42.75872
+  ],
+  "end": [
+   -0.51255,
+   42.77586
+  ],
+  "lengthKm": 2.24,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "old pass road above Canfranc. Graph labels: N-330a; N-330a · Carretera Alicante a Francia por Zaragoza. Ends at graph junction/vertex; nearest bench road 118.1 km (c-28-bonaigua)."
+ },
+ {
+  "id": "ara-anisclo",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "HU-631",
+  "name": "HU-631 Cañón de Añisclo",
+  "start": [
+   0.06291,
+   42.55435
+  ],
+  "end": [
+   0.08045,
+   42.54403
+  ],
+  "lengthKm": 2.15,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow gorge road, tight bends. Graph labels: HU-631 · Carretera del Cañón de Añisclo. Ends at graph vertex/vertex; nearest bench road 72.0 km (c-28-bonaigua)."
+ },
+ {
+  "id": "ara-devotas",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-138",
+  "name": "A-138 Desfiladero de las Devotas",
+  "start": [
+   0.18219,
+   42.54496
+  ],
+  "end": [
+   0.15963,
+   42.54612
+  ],
+  "lengthKm": 2.14,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "gorge section of the Cinca road. Graph labels: A-138 · Eje del Cinca. Ends at graph vertex/vertex; nearest bench road 63.9 km (c-28-bonaigua)."
+ },
+ {
+  "id": "ara-oroel",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-1205",
+  "name": "A-1205 Puerto de Oroel",
+  "start": [
+   -0.55825,
+   42.53111
+  ],
+  "end": [
+   -0.56169,
+   42.51618
+  ],
+  "lengthKm": 2.24,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass south of Jaca. Graph labels: A-1205 · Carretera de Jaca a Santa María. Ends at graph junction/junction; nearest bench road 122.1 km (santa-engracia)."
+ },
+ {
+  "id": "ara-rodellar",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "HU-341",
+  "name": "HU-341 Bierge - Rodellar",
+  "start": [
+   -0.06955,
+   42.26344
+  ],
+  "end": [
+   -0.07381,
+   42.27563
+  ],
+  "lengthKm": 2.01,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow road into the Sierra de Guara. Graph labels: HU-341 · Carretera de Bierge a Rodellar. Ends at graph junction/junction; nearest bench road 77.8 km (santa-engracia)."
+ },
+ {
+  "id": "ara-albarracin",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-1512",
+  "name": "A-1512 Guadalaviar gorge west of Albarracín",
+  "start": [
+   -1.44986,
+   40.4023
+  ],
+  "end": [
+   -1.46776,
+   40.39539
+  ],
+  "lengthKm": 2.13,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "river gorge road. Graph labels: A-1512. Ends at graph vertex/junction; nearest bench road 41.4 km (cv-363-losilla-ademuz)."
+ },
+ {
+  "id": "ara-canfranc-valley",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "N-330",
+  "name": "N-330 Villanúa - Canfranc",
+  "start": [
+   -0.54293,
+   42.67357
+  ],
+  "end": [
+   -0.55526,
+   42.65798
+  ],
+  "lengthKm": 2.09,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "valley national road, gentle curves. Graph labels: N-330 · Carretera de Alicante a Francia por Zaragoza. Ends at graph junction/junction; nearest bench road 120.9 km (c-28-bonaigua)."
+ },
+ {
+  "id": "ara-zaragoza-alierta",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-68",
+  "name": "Avenida de Cesáreo Alierta, Zaragoza",
+  "start": [
+   -0.86204,
+   41.63415
+  ],
+  "end": [
+   -0.87957,
+   41.64723
+  ],
+  "lengthKm": 2.11,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: A-68 · Carretera Castellón; Avenida de Cesáreo Alierta; Paseo de la Constitución. Ends at graph junction/junction; nearest bench road 91.1 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "ara-monegros-n2",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "N-2",
+  "name": "N-2 Monegros near Bujaraloz",
+  "start": [
+   -0.18019,
+   41.49601
+  ],
+  "end": [
+   -0.21156,
+   41.49626
+  ],
+  "lengthKm": 2.66,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "dead straight across the steppe. Graph labels: N-2 · Carretera Nacional 2. Ends at graph vertex/junction; nearest bench road 77.4 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "ara-a23-celadas",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-23",
+  "name": "A-23 north of Teruel",
+  "start": [
+   -1.19598,
+   40.4201
+  ],
+  "end": [
+   -1.17476,
+   40.40629
+  ],
+  "lengthKm": 2.37,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: A-23 · Autovía Mudéjar. Ends at graph vertex/junction; nearest bench road 37.8 km (cv-363-losilla-ademuz)."
+ },
+ {
+  "id": "cat-comiols",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "C-1412b",
+  "name": "C-1412b Port de Comiols",
+  "start": [
+   1.0985,
+   42.04702
+  ],
+  "end": [
+   1.09443,
+   42.06359
+  ],
+  "lengthKm": 2.38,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road between Artesa and Isona. Graph labels: C-1412b; C-1412b · C-74 Carretera de Ponts a Tremp C-1412b. Ends at graph junction/junction; nearest bench road 20.9 km (santa-engracia)."
+ },
+ {
+  "id": "cat-boixols",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "L-511",
+  "name": "L-511 Coll de Bòixols",
+  "start": [
+   1.18531,
+   42.17078
+  ],
+  "end": [
+   1.19962,
+   42.16058
+  ],
+  "lengthKm": 2.5,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "gorge and pass road. Graph labels: L-511. Ends at graph junction/junction; nearest bench road 18.9 km (tost)."
+ },
+ {
+  "id": "cat-creueta",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "BV-4031",
+  "name": "BV-4031 Coll de la Creueta",
+  "start": [
+   2.01567,
+   42.29788
+  ],
+  "end": [
+   1.99847,
+   42.30069
+  ],
+  "lengthKm": 2.03,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb from Castellar de n'Hug. Graph labels: BV-4031. Ends at graph vertex/vertex; nearest bench road 30.5 km (vidra-sant-privat)."
+ },
+ {
+  "id": "cat-montserrat",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "BP-1121",
+  "name": "BP-1121 Montserrat",
+  "start": [
+   1.82328,
+   41.61307
+  ],
+  "end": [
+   1.83356,
+   41.60123
+  ],
+  "lengthKm": 2.5,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb to the monastery. Graph labels: BP-1121 · Carretera de Montserrat. Ends at graph junction/junction; nearest bench road 45.9 km (bv-5301-montseny)."
+ },
+ {
+  "id": "cat-teixeta",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "N-420",
+  "name": "N-420 Coll de la Teixeta",
+  "start": [
+   0.92423,
+   41.17297
+  ],
+  "end": [
+   0.94783,
+   41.17189
+  ],
+  "lengthKm": 2.06,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national road pass, sweepers. Graph labels: N-420. Ends at graph vertex/junction; nearest bench road 112.3 km (santa-engracia)."
+ },
+ {
+  "id": "cat-garraf",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "C-31",
+  "name": "C-31 Costes del Garraf",
+  "start": [
+   1.8889,
+   41.25183
+  ],
+  "end": [
+   1.87095,
+   41.24401
+  ],
+  "lengthKm": 2.17,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "cliff road along the coast. Graph labels: C-31 · Costes del Garraf. Ends at graph vertex/vertex; nearest bench road 67.8 km (bv-5301-montseny)."
+ },
+ {
+  "id": "cat-tossa",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "GI-682",
+  "name": "GI-682 Tossa - Sant Feliu de Guíxols",
+  "start": [
+   2.9564,
+   41.74164
+  ],
+  "end": [
+   2.95916,
+   41.74952
+  ],
+  "lengthKm": 2.04,
+  "character": 5,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "constant tight bends along the cliffs. Graph labels: GI-682. Ends at graph junction/vertex; nearest bench road 39.9 km (bv-5114-santa-fe)."
+ },
+ {
+  "id": "cat-perafita",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "GI-614",
+  "name": "GI-614 Roses - Cadaqués",
+  "start": [
+   3.23598,
+   42.29678
+  ],
+  "end": [
+   3.2221,
+   42.28706
+  ],
+  "lengthKm": 2.44,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "Cap de Creus pass road. Graph labels: GI-614; GI-614 · Carretera de Roses al Coll de Perafita. Ends at graph junction/vertex; nearest bench road 37.5 km (mare-de-deu-del-mont)."
+ },
+ {
+  "id": "cat-boi",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "L-500",
+  "name": "L-500 Vall de Boí",
+  "start": [
+   0.77798,
+   42.47131
+  ],
+  "end": [
+   0.7806,
+   42.49061
+  ],
+  "lengthKm": 2.22,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "valley road. Graph labels: L-500. Ends at graph junction/vertex; nearest bench road 25.0 km (c-28-bonaigua)."
+ },
+ {
+  "id": "cat-bcn-diagonal",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": null,
+  "name": "Avinguda Diagonal, Barcelona",
+  "start": [
+   2.15988,
+   41.39681
+  ],
+  "end": [
+   2.13681,
+   41.39111
+  ],
+  "lengthKm": 2.04,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Avinguda Diagonal (lateral muntanya); Plaça de Francesc Macià. Ends at graph junction/junction; nearest bench road 41.1 km (bv-5301-montseny)."
+ },
+ {
+  "id": "cat-a2-lleida",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "A-2",
+  "name": "A-2 near Bell-lloc",
+  "start": [
+   0.78861,
+   41.63537
+  ],
+  "end": [
+   0.81345,
+   41.63551
+  ],
+  "lengthKm": 2.12,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway on the Lleida plain. Graph labels: A-2; A-2 · Autovia del Nord-est; LV-3311. Ends at graph junction/vertex; nearest bench road 61.6 km (santa-engracia)."
+ },
+ {
+  "id": "val-rates",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-715",
+  "name": "CV-715 Coll de Rates",
+  "start": [
+   -0.05948,
+   38.72361
+  ],
+  "end": [
+   -0.07779,
+   38.73137
+  ],
+  "lengthKm": 2.6,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "high",
+  "note": "hairpins up from Parcent. Graph labels: CV-715. Ends at graph junction/junction; nearest bench road 13.2 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-ebo",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-712",
+  "name": "CV-712 Pego - Vall d'Ebo",
+  "start": [
+   -0.13034,
+   38.81547
+  ],
+  "end": [
+   -0.12193,
+   38.81838
+  ],
+  "lengthKm": 2.58,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow climb with bends. Graph labels: CV-712. Ends at graph junction/junction; nearest bench road 17.0 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-carrasqueta",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-800",
+  "name": "CV-800 Puerto de la Carrasqueta",
+  "start": [
+   -0.49906,
+   38.58647
+  ],
+  "end": [
+   -0.4878,
+   38.60238
+  ],
+  "lengthKm": 2.17,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road, sweepers and bends. Graph labels: CV-800 · Carretera Sant Joan d'Alacant - Alcoi. Ends at graph vertex/vertex; nearest bench road 13.6 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-espada",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-219",
+  "name": "CV-219 Chóvar - Eslida (Serra d'Espadà)",
+  "start": [
+   -0.32116,
+   39.86197
+  ],
+  "end": [
+   -0.31685,
+   39.86142
+  ],
+  "lengthKm": 2.18,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain road, constant bends. Graph labels: CV-219 · Carretera de Chóvar-Eslida. Ends at graph vertex/vertex; nearest bench road 44.8 km (cv-345-villar-alpuente)."
+ },
+ {
+  "id": "val-oronet",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-310",
+  "name": "CV-310 Puerto del Oronet",
+  "start": [
+   -0.42186,
+   39.69093
+  ],
+  "end": [
+   -0.41897,
+   39.70344
+  ],
+  "lengthKm": 2.15,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb through the Calderona. Graph labels: CV-310. Ends at graph junction/junction; nearest bench road 34.3 km (cv-345-villar-alpuente)."
+ },
+ {
+  "id": "val-querol",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "N-232",
+  "name": "N-232 Morella - Port de Querol",
+  "start": [
+   -0.02179,
+   40.56816
+  ],
+  "end": [
+   -0.04096,
+   40.57887
+  ],
+  "lengthKm": 2.4,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national road across the Ports. Graph labels: N-232 · Carretera Santander - Vinaròs. Ends at graph vertex/vertex; nearest bench road 37.7 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "val-blasco",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": null,
+  "name": "Avenida de Blasco Ibáñez, Valencia",
+  "start": [
+   -0.35271,
+   39.47524
+  ],
+  "end": [
+   -0.3558,
+   39.47662
+  ],
+  "lengthKm": 2.27,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city avenue. Graph labels: Avinguda de Blasco Ibáñez; Plaça del Cardenal Vicent Enrique i Tarancón. Ends at graph junction/junction; nearest bench road 48.4 km (cv-345-villar-alpuente)."
+ },
+ {
+  "id": "val-alicante-elx",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": null,
+  "name": "Avenida de Elche, Alicante",
+  "start": [
+   -0.49271,
+   38.3365
+  ],
+  "end": [
+   -0.49295,
+   38.33645
+  ],
+  "lengthKm": 1.77,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "seafront city avenue. Graph labels: Avinguda d'Elx; Bulevard Far de l'Illa de Tabarca; Plaça de l'Arquitecte Miguel López. Ends at graph junction/junction; nearest bench road 40.8 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-saler",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-500",
+  "name": "CV-500 El Saler",
+  "start": [
+   -0.32381,
+   39.35044
+  ],
+  "end": [
+   -0.33112,
+   39.375
+  ],
+  "lengthKm": 2.82,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "straight road through the Devesa. Graph labels: CV-500; CV-500 · Carretera València - Sueca (pel Saler). Ends at graph junction/junction; nearest bench road 58.2 km (cv-345-villar-alpuente)."
+ },
+ {
+  "id": "mur-garruchal",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "RM-F13",
+  "name": "RM-F13 Puerto del Garruchal",
+  "start": [
+   -1.05228,
+   37.90564
+  ],
+  "end": [
+   -1.05058,
+   37.92016
+  ],
+  "lengthKm": 2.13,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain pass south of Murcia. Graph labels: RM-F13 · Carretera Puerto del Garruchal. Ends at graph junction/vertex; nearest bench road 103.8 km (cv-70-confrides)."
+ },
+ {
+  "id": "mur-murcia-levante",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": null,
+  "name": "Ronda de Levante, Murcia",
+  "start": [
+   -1.12569,
+   37.99203
+  ],
+  "end": [
+   -1.11576,
+   37.98686
+  ],
+  "lengthKm": 2.29,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city ring avenue. Graph labels: Avenida Primero de Mayo; Plaza Circular; Plaza Juan XXIII; Ronda de Levante. Ends at graph junction/junction; nearest bench road 101.0 km (cv-70-confrides)."
+ },
+ {
+  "id": "mur-a7-lorca",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "A-7",
+  "name": "A-7 at Lorca",
+  "start": [
+   -1.71046,
+   37.68872
+  ],
+  "end": [
+   -1.70951,
+   37.66762
+  ],
+  "lengthKm": 2.45,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: A-7 · Autovía del Mediterráneo. Ends at graph vertex/vertex; nearest bench road 103.1 km (jv-7032-segura)."
+ },
+ {
+  "id": "ae-sierra-nevada",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-395",
+  "name": "A-395 Granada - Sierra Nevada",
+  "start": [
+   -3.44129,
+   37.12652
+  ],
+  "end": [
+   -3.44989,
+   37.11384
+  ],
+  "lengthKm": 2.19,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "high",
+  "note": "wide road with long sweepers. Graph labels: A-395 · Carretera de Granada a Sierra Nevada. Ends at graph vertex/vertex; nearest bench road 20.4 km (a-4132-alpujarra)."
+ },
+ {
+  "id": "ae-cazorla-palomas",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-319",
+  "name": "A-319 Puerto de las Palomas (Cazorla)",
+  "start": [
+   -2.94453,
+   37.94849
+  ],
+  "end": [
+   -2.94111,
+   37.94432
+  ],
+  "lengthKm": 2.2,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass with bends above Burunchel. Graph labels: A-319 · Carretera de Peal de Becerro a Hornos por Cazorla. Ends at graph junction/vertex; nearest bench road 46.1 km (jv-7032-segura)."
+ },
+ {
+  "id": "ae-calar-alto",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "AL-4404",
+  "name": "AL-4404 Calar Alto",
+  "start": [
+   -2.53851,
+   37.22127
+  ],
+  "end": [
+   -2.56105,
+   37.22197
+  ],
+  "lengthKm": 2.21,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "observatory climb. Graph labels: AL-4404. Ends at graph junction/junction; nearest bench road 43.1 km (a-337-la-ragua)."
+ },
+ {
+  "id": "ae-filabres",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-1178",
+  "name": "A-1178 Serón - Gérgal (Filabres)",
+  "start": [
+   -2.5125,
+   37.24997
+  ],
+  "end": [
+   -2.50465,
+   37.26721
+  ],
+  "lengthKm": 2.24,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain crossing. Graph labels: A-1178 · Carretera de Serón a Gérgal. Ends at graph vertex/vertex; nearest bench road 48.1 km (a-337-la-ragua)."
+ },
+ {
+  "id": "ae-cabra",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-4050",
+  "name": "A-4050 Carretera de la Cabra (Otívar)",
+  "start": [
+   -3.72061,
+   36.85744
+  ],
+  "end": [
+   -3.72107,
+   36.84206
+  ],
+  "lengthKm": 2.49,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "winding mountain road above Almuñécar. Graph labels: A-4050 · Carretera de la Cabra. Ends at graph vertex/junction; nearest bench road 26.0 km (a-4132-alpujarra)."
+ },
+ {
+  "id": "ae-granada-ronda",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": null,
+  "name": "Camino de Ronda, Granada",
+  "start": [
+   -3.59972,
+   37.16489
+  ],
+  "end": [
+   -3.61074,
+   37.17827
+  ],
+  "lengthKm": 2.11,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city avenue. Graph labels: Camino de Ronda; Glorieta de la Aviación Española; Paseo del Violón. Ends at graph junction/junction; nearest bench road 30.9 km (a-4132-alpujarra)."
+ },
+ {
+  "id": "ae-almeria-med",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida del Mediterráneo, Almería",
+  "start": [
+   -2.44697,
+   36.83963
+  ],
+  "end": [
+   -2.4465,
+   36.85177
+  ],
+  "lengthKm": 2.29,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Avenida Mediterráneo; Avenida del Mediterráneo. Ends at graph junction/junction; nearest bench road 51.9 km (a-337-la-ragua)."
+ },
+ {
+  "id": "ae-a92-guadix",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-92",
+  "name": "A-92 Guadix plateau",
+  "start": [
+   -3.08142,
+   37.25461
+  ],
+  "end": [
+   -3.09338,
+   37.26689
+  ],
+  "lengthKm": 1.84,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: A-92 · Autovía de Sevilla a Almería por Granada. Ends at graph vertex/vertex; nearest bench road 8.3 km (a-337-la-ragua)."
+ },
+ {
+  "id": "aw-puerto-viento",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-366",
+  "name": "A-366 Puerto del Viento (Ronda - El Burgo)",
+  "start": [
+   -5.02601,
+   36.79871
+  ],
+  "end": [
+   -5.04859,
+   36.78865
+  ],
+  "lengthKm": 2.53,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass with bends down to El Burgo. Graph labels: A-366 · Carretera de Ronda a Coín. Ends at graph vertex/junction; nearest bench road 9.7 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-genal",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-369",
+  "name": "A-369 Ronda - Gaucín",
+  "start": [
+   -5.27274,
+   36.59563
+  ],
+  "end": [
+   -5.27089,
+   36.61005
+  ],
+  "lengthKm": 2.24,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "ridge road above the Genal. Graph labels: A-369 · Carretera de Ronda a Gaucín. Ends at graph junction/vertex; nearest bench road 15.1 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-montes-malaga",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-7000",
+  "name": "A-7000 Montes de Málaga",
+  "start": [
+   -4.36271,
+   36.81647
+  ],
+  "end": [
+   -4.37911,
+   36.80593
+  ],
+  "lengthKm": 2.32,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "winding road through the Montes. Graph labels: A-7000. Ends at graph junction/junction; nearest bench road 63.2 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-boca-asno",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-7075",
+  "name": "A-7075 Boca del Asno (Villanueva de la Concepción)",
+  "start": [
+   -4.52851,
+   36.95239
+  ],
+  "end": [
+   -4.53292,
+   36.93997
+  ],
+  "lengthKm": 2.15,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb past El Torcal. Graph labels: A-7075 · Carretera de Málaga a Antequera por Villanueva de la Concepción. Ends at graph vertex/vertex; nearest bench road 58.3 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-aracena",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "N-433",
+  "name": "N-433 Sierra de Aracena",
+  "start": [
+   -6.52863,
+   37.8815
+  ],
+  "end": [
+   -6.50875,
+   37.87143
+  ],
+  "lengthKm": 2.13,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national road through the sierra. Graph labels: N-433 · Carretera de Sevilla a Lisboa. Ends at graph junction/vertex; nearest bench road 151.2 km (ca-9104-palomas)."
+ },
+ {
+  "id": "aw-cordoba-sierra",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "N-432A",
+  "name": "N-432A Sierra Morena north of Córdoba",
+  "start": [
+   -4.77708,
+   38.01237
+  ],
+  "end": [
+   -4.79117,
+   38.02764
+  ],
+  "lengthKm": 2.16,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "old national road climbing the sierra. Graph labels: N-432A. Ends at graph junction/junction; nearest bench road 140.9 km (ca-9104-palomas)."
+ },
+ {
+  "id": "aw-sevilla-palmera",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida de la Palmera, Sevilla",
+  "start": [
+   -5.98812,
+   37.36977
+  ],
+  "end": [
+   -5.97969,
+   37.35587
+  ],
+  "lengthKm": 1.72,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city avenue. Graph labels: Avenida de la Palmera; Glorieta Plus Ultra; Paseo de las Delicias. Ends at graph junction/junction; nearest bench road 77.9 km (ca-9104-palomas)."
+ },
+ {
+  "id": "aw-malaga-machado",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": null,
+  "name": "Paseo Antonio Machado, Málaga",
+  "start": [
+   -4.43321,
+   36.70292
+  ],
+  "end": [
+   -4.42538,
+   36.71192
+  ],
+  "lengthKm": 2.04,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "seafront avenue. Graph labels: Avenida Manuel Agustín Heredia; Glorieta de Antonio Molina; Paseo Antonio Machado; Puente de Antonio Machado. Ends at graph junction/junction; nearest bench road 53.9 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-ap4",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "AP-4",
+  "name": "AP-4 Sevilla - Cádiz",
+  "start": [
+   -5.93326,
+   37.10781
+  ],
+  "end": [
+   -5.93611,
+   37.08935
+  ],
+  "lengthKm": 2.07,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway on the marsh plain. Graph labels: AP-4 · Autopista del Sur. Ends at graph vertex/vertex; nearest bench road 56.2 km (ca-9104-palomas)."
+ },
+ {
+  "id": "ext-honduras",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "CC-224",
+  "name": "CC-224 Puerto de Honduras",
+  "start": [
+   -5.86916,
+   40.22192
+  ],
+  "end": [
+   -5.84618,
+   40.22218
+  ],
+  "lengthKm": 2.26,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "hairpins up from the Jerte valley. Graph labels: CC-224 · De Hervás (EX-205) a N-110 (a Cabezuela del Valle) (ctra. del puerto de Honduras). Ends at graph vertex/vertex; nearest bench road 70.9 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-tornavacas",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "N-110",
+  "name": "N-110 Puerto de Tornavacas",
+  "start": [
+   -5.66253,
+   40.27278
+  ],
+  "end": [
+   -5.6688,
+   40.26902
+  ],
+  "lengthKm": 2.36,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "national pass road. Graph labels: N-110 · Carretera de Soria a Plasencia. Ends at graph junction/junction; nearest bench road 54.8 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-monfrague",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "EX-208",
+  "name": "EX-208 Monfragüe",
+  "start": [
+   -6.02897,
+   39.84545
+  ],
+  "end": [
+   -6.03532,
+   39.8297
+  ],
+  "lengthKm": 2.44,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "road through the park. Graph labels: EX-208 · Carretera de Plasencia a Zorita. Ends at graph junction/junction; nearest bench road 100.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-hurdes",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "CC-135",
+  "name": "CC-135 Las Hurdes",
+  "start": [
+   -6.24003,
+   40.40867
+  ],
+  "end": [
+   -6.25537,
+   40.40935
+  ],
+  "lengthKm": 2.17,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "valley road. Graph labels: CC-125 · Carretera de Vegas de Coria (EX-204) a límite con Salamanca (a Serradilla del Llano) por Nuñomoral y Casares de las Hurdes; CC-135 · Carretera de Vegas de Coria (EX-204) a límite con Salamanca (a Serradilla del Llano) por Nuñomoral y Casares de las Hurdes. Ends at graph junction/junction; nearest bench road 104.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-perales",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "EX-109",
+  "name": "EX-109 Puerto de Perales",
+  "start": [
+   -6.68053,
+   40.23008
+  ],
+  "end": [
+   -6.68786,
+   40.24688
+  ],
+  "lengthKm": 2.41,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "pass road. Graph labels: EX-109 · Carretera del Puerto de Perales. Ends at graph vertex/junction; nearest bench road 141.4 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-badajoz-suarez",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "N-523",
+  "name": "Avenida Adolfo Suárez, Badajoz",
+  "start": [
+   -6.985,
+   38.88405
+  ],
+  "end": [
+   -6.96992,
+   38.89537
+  ],
+  "lengthKm": 2.2,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: N-523; N-523 · Avenida Adolfo Díaz Ambrona; N-523 · Avenida Adolfo Suárez. Ends at graph junction/junction; nearest bench road 229.8 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-caceres-hispanidad",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": null,
+  "name": "Avenida de la Hispanidad, Cáceres",
+  "start": [
+   -6.37777,
+   39.46085
+  ],
+  "end": [
+   -6.36696,
+   39.46301
+  ],
+  "lengthKm": 2.26,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Avenida de la Hispanidad; Calle La Bula; N-630. Ends at graph junction/junction; nearest bench road 148.5 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-n630-barros",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "N-630",
+  "name": "N-630 Tierra de Barros",
+  "start": [
+   -6.35738,
+   38.58741
+  ],
+  "end": [
+   -6.36255,
+   38.61036
+  ],
+  "lengthKm": 2.62,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "straight national road. Graph labels: N-630 · Carretera Gijón a Puerto de Sevilla. Ends at graph vertex/junction; nearest bench road 323.9 km (jv-7032-segura)."
+ },
+ {
+  "id": "cyl-batuecas",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "SA-201",
+  "name": "SA-201 Portillo de las Batuecas",
+  "start": [
+   -6.11971,
+   40.47242
+  ],
+  "end": [
+   -6.1171,
+   40.46406
+  ],
+  "lengthKm": 2.42,
+  "character": 5,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "hairpins down from the Portillo. Graph labels: SA-201. Ends at graph junction/vertex; nearest bench road 94.3 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "cyl-mijares",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "AV-901",
+  "name": "AV-901 Puerto de Mijares",
+  "start": [
+   -4.8164,
+   40.33073
+  ],
+  "end": [
+   -4.81827,
+   40.32746
+  ],
+  "lengthKm": 2.16,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road. Graph labels: AV-901. Ends at graph vertex/vertex; nearest bench road 15.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "cyl-n601",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "N-601",
+  "name": "N-601 Tierra de Campos",
+  "start": [
+   -5.27041,
+   42.16961
+  ],
+  "end": [
+   -5.26953,
+   42.1924
+  ],
+  "lengthKm": 2.54,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "dead straight across the plain. Graph labels: N-601 · Carretera Madrid a León por Valladolid. Ends at graph junction/junction; nearest bench road 102.5 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "cyl-valladolid-zorrilla",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": null,
+  "name": "Paseo de Zorrilla, Valladolid",
+  "start": [
+   -4.74034,
+   41.63158
+  ],
+  "end": [
+   -4.72926,
+   41.64823
+  ],
+  "lengthKm": 2.16,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city avenue. Graph labels: Paseo de Zorrilla; Plaza de Zorrilla. Ends at graph junction/junction; nearest bench road 146.5 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-navacerrada-m601",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-601",
+  "name": "M-601 Navacerrada, Madrid side",
+  "start": [
+   -4.00987,
+   40.76793
+  ],
+  "end": [
+   -4.00302,
+   40.78804
+  ],
+  "lengthKm": 2.6,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "high",
+  "note": "wide pass road with long curves. Graph labels: M-601 · Carretera de Collado Villalba a Navacerrada. Ends at graph vertex/junction; nearest bench road 97.8 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-navacerrada-cl601",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "CL-601",
+  "name": "CL-601 Navacerrada, Segovia side",
+  "start": [
+   -4.00502,
+   40.79004
+  ],
+  "end": [
+   -4.00595,
+   40.80572
+  ],
+  "lengthKm": 2.01,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "pass road with tighter bends. Graph labels: CL-601 · Carretera de Madrid. Ends at graph junction/junction; nearest bench road 99.3 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-cotos",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-604",
+  "name": "M-604 Cotos - Rascafría",
+  "start": [
+   -3.94057,
+   40.82706
+  ],
+  "end": [
+   -3.9593,
+   40.82334
+  ],
+  "lengthKm": 2.31,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "descent from Cotos. Graph labels: M-604 · Carretera de Navacerrada. Ends at graph vertex/vertex; nearest bench road 104.6 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-canencia",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-629",
+  "name": "M-629 Puerto de Canencia",
+  "start": [
+   -3.77955,
+   40.87996
+  ],
+  "end": [
+   -3.76467,
+   40.86942
+  ],
+  "lengthKm": 2.51,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "narrow pass road. Graph labels: M-629; M-629 · Carretera de Canencia; M-629 · Puente de la Pasada. Ends at graph junction/junction; nearest bench road 120.4 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-morcuera",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-611",
+  "name": "M-611 Puerto de la Morcuera",
+  "start": [
+   -3.83276,
+   40.8285
+  ],
+  "end": [
+   -3.80909,
+   40.83582
+  ],
+  "lengthKm": 2.45,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road. Graph labels: M-611 · Carretera de Rascafría. Ends at graph junction/vertex; nearest bench road 114.0 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-leones",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "N-6",
+  "name": "N-6 Alto del León",
+  "start": [
+   -4.14882,
+   40.70615
+  ],
+  "end": [
+   -4.13237,
+   40.70987
+  ],
+  "lengthKm": 2.43,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "old national pass road. Graph labels: N-6; N-6 · Carretera Madrid - La Coruña; N-6 · Carretera Madrid a A Coruña. Ends at graph vertex/junction; nearest bench road 84.3 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-quesera",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "SG-112",
+  "name": "SG-112 Puerto de la Quesera",
+  "start": [
+   -3.41881,
+   41.21749
+  ],
+  "end": [
+   -3.41255,
+   41.22612
+  ],
+  "lengthKm": 2.19,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road east of Riaza. Graph labels: SG-112 · Carretera de Majaelrayo. Ends at graph vertex/vertex; nearest bench road 166.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-castellana",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": null,
+  "name": "Paseo de la Castellana, Madrid",
+  "start": [
+   -3.69486,
+   40.44186
+  ],
+  "end": [
+   -3.69044,
+   40.42469
+  ],
+  "lengthKm": 2.2,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "straight city boulevard. Graph labels: Calle de Agustín de Betancourt; Glorieta de Emilio Castelar; Paseo de Recoletos; Paseo de la Castellana; Plaza de San Juan de la Cruz; Plaza del Doctor Marañón. Ends at graph junction/junction; nearest bench road 111.9 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-esquerdo",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": null,
+  "name": "Calle del Doctor Esquerdo, Madrid",
+  "start": [
+   -3.66853,
+   40.42764
+  ],
+  "end": [
+   -3.6703,
+   40.40687
+  ],
+  "lengthKm": 2.31,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "city street. Graph labels: Calle del Doctor Esquerdo. Ends at graph junction/junction; nearest bench road 113.6 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-a2",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "A-2",
+  "name": "A-2 Barajas - Alcalá",
+  "start": [
+   -3.44205,
+   40.46746
+  ],
+  "end": [
+   -3.46579,
+   40.46699
+  ],
+  "lengthKm": 2.01,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: A-2 · Autovía del Nordeste. Ends at graph junction/vertex; nearest bench road 131.4 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "clm-ciudad-encantada",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": "CM-2104",
+  "name": "CM-2104 Ciudad Encantada road",
+  "start": [
+   -2.03521,
+   40.1636
+  ],
+  "end": [
+   -2.05586,
+   40.15331
+  ],
+  "lengthKm": 2.3,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "road through pine forest and rock. Graph labels: CM-2104. Ends at graph vertex/vertex; nearest bench road 68.2 km (cv-363-losilla-ademuz)."
+ },
+ {
+  "id": "clm-hoz-jucar",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": "CM-2105",
+  "name": "CM-2105 Villalba de la Sierra - Uña",
+  "start": [
+   -1.99256,
+   40.22508
+  ],
+  "end": [
+   -2.00744,
+   40.23673
+  ],
+  "lengthKm": 2.03,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "gorge road along the Júcar. Graph labels: CM-2105. Ends at graph vertex/vertex; nearest bench road 66.1 km (cv-363-losilla-ademuz)."
+ },
+ {
+  "id": "clm-riopar",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": "CM-412",
+  "name": "CM-412 Puerto de las Crucetas (Alcaraz - Riópar)",
+  "start": [
+   -2.50635,
+   38.51388
+  ],
+  "end": [
+   -2.51143,
+   38.52197
+  ],
+  "lengthKm": 2.22,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "sierra road. Graph labels: CM-412. Ends at graph vertex/junction; nearest bench road 23.2 km (jv-7032-segura)."
+ },
+ {
+  "id": "clm-n430",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": "N-430",
+  "name": "N-430 Manzanares",
+  "start": [
+   -3.45003,
+   39.04456
+  ],
+  "end": [
+   -3.43249,
+   39.03369
+  ],
+  "lengthKm": 1.94,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "straight national road. Graph labels: N-430. Ends at graph vertex/junction; nearest bench road 105.5 km (jv-7032-segura)."
+ },
+ {
+  "id": "clm-albacete-circunvalacion",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": null,
+  "name": "Paseo de la Circunvalación, Albacete",
+  "start": [
+   -1.86308,
+   38.98531
+  ],
+  "end": [
+   -1.86664,
+   38.98728
+  ],
+  "lengthKm": 2.33,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "town ring avenue. Graph labels: Calle Lepanto; Calle del Rosario; Paseo Circunvalación. Ends at graph junction/junction; nearest bench road 97.1 km (jv-7032-segura)."
+ },
+ {
+  "id": "bal-calobra",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-2141",
+  "name": "Ma-2141 Sa Calobra",
+  "start": [
+   2.81722,
+   39.82864
+  ],
+  "end": [
+   2.8124,
+   39.83199
+  ],
+  "lengthKm": 2.37,
+  "character": 5,
+  "class": "hairpin-stack",
+  "confidence": "high",
+  "note": "stacked hairpins down to Sa Calobra. Graph labels: Ma-2141. Ends at graph vertex/vertex; nearest bench road 288.4 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-coll-soller",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-11A",
+  "name": "Ma-11A old Coll de Sóller road",
+  "start": [
+   2.69109,
+   39.73697
+  ],
+  "end": [
+   2.68619,
+   39.73173
+  ],
+  "lengthKm": 2.21,
+  "character": 5,
+  "class": "hairpin-stack",
+  "confidence": "high",
+  "note": "dozens of hairpins over the pass. Graph labels: Ma-11A · carretera del Coll de Sóller. Ends at graph vertex/junction; nearest bench road 274.2 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-formentor",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-2210",
+  "name": "Ma-2210 Cap de Formentor",
+  "start": [
+   3.13041,
+   39.92989
+  ],
+  "end": [
+   3.14932,
+   39.94146
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "cliff road to the cape. Graph labels: Ma-2210. Ends at graph vertex/junction; nearest bench road 315.8 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "bal-lluc-pollenca",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-10",
+  "name": "Ma-10 Lluc - Pollença",
+  "start": [
+   2.96667,
+   39.86882
+  ],
+  "end": [
+   2.9421,
+   39.86665
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain road. Graph labels: Ma-10. Ends at graph junction/vertex; nearest bench road 299.9 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-deia",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-10",
+  "name": "Ma-10 Valldemossa - Deià",
+  "start": [
+   2.65854,
+   39.76644
+  ],
+  "end": [
+   2.64727,
+   39.75109
+  ],
+  "lengthKm": 2.49,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "coastal cliff road. Graph labels: Ma-10. Ends at graph junction/junction; nearest bench road 272.0 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-fornalutx",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-10",
+  "name": "Ma-10 Sóller - Puig Major climb",
+  "start": [
+   2.75792,
+   39.79675
+  ],
+  "end": [
+   2.73467,
+   39.79191
+  ],
+  "lengthKm": 2.29,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "high",
+  "note": "climb with hairpins above Fornalutx. Graph labels: Ma-10. Ends at graph junction/junction; nearest bench road 280.6 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-caimari",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-2130",
+  "name": "Ma-2130 Caimari - Lluc",
+  "start": [
+   2.89673,
+   39.78155
+  ],
+  "end": [
+   2.89367,
+   39.78875
+  ],
+  "lengthKm": 1.79,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain climb. Graph labels: Ma-2130. Ends at graph junction/junction; nearest bench road 292.5 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-palma-roca",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-1",
+  "name": "Passeig Marítim (Gabriel Roca), Palma",
+  "start": [
+   2.62413,
+   39.55449
+  ],
+  "end": [
+   2.63939,
+   39.56933
+  ],
+  "lengthKm": 2.38,
+  "character": 1,
+  "class": "urban",
+  "confidence": "high",
+  "note": "seafront avenue. Graph labels: Ma-1 · Avinguda de Gabriel Roca. Ends at graph junction/junction; nearest bench road 262.1 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-ma13",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-13",
+  "name": "Ma-13 Palma - Inca",
+  "start": [
+   2.81023,
+   39.66133
+  ],
+  "end": [
+   2.79645,
+   39.65034
+  ],
+  "lengthKm": 1.7,
+  "character": 1,
+  "class": "straight",
+  "confidence": "high",
+  "note": "motorway. Graph labels: Ma-13 · Autopista Palma - Inca. Ends at graph vertex/vertex; nearest bench road 279.4 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-menorca-me1",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Me-1",
+  "name": "Me-1 Menorca",
+  "start": [
+   3.93837,
+   40.00677
+  ],
+  "end": [
+   3.95927,
+   40.00957
+  ],
+  "lengthKm": 1.88,
+  "character": 2,
+  "class": "straight",
+  "confidence": "medium",
+  "note": "gentle main road across the island. Graph labels: Me-1. Ends at graph junction/junction; nearest bench road 381.7 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "cat-lilla",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "N-240",
+  "name": "N-240 Coll de Lilla (old road)",
+  "start": [
+   1.21394,
+   41.34856
+  ],
+  "end": [
+   1.22783,
+   41.34148
+  ],
+  "lengthKm": 2.71,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "old pass road above the A-27 tunnel. Graph labels: N-240 · Carretera Bilbao - Tarragona. Ends at graph junction/junction; nearest bench road 92.6 km (c-462-coll-de-port)."
+ },
+ {
+  "id": "ast-fitu-north",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-260",
+  "name": "AS-260 Altu del Fitu, Colunga side",
+  "start": [
+   -5.19517,
+   43.44073
+  ],
+  "end": [
+   -5.19596,
+   43.44738
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "curvy descent from the Fitu towards Colunga. Graph labels: AS-260 · Carretera Arriondas - Colunga. Ends at graph vertex/junction; nearest bench road 15.7 km (n-625-beyos-ponton)."
+ },
+ {
+  "id": "ast-ventana",
+  "region": "Asturias",
+  "half": "test",
+  "ref": "AS-228",
+  "name": "AS-228 Puerto de Ventana, Asturian side",
+  "start": [
+   -6.00436,
+   43.05843
+  ],
+  "end": [
+   -6.02028,
+   43.06327
+  ],
+  "lengthKm": 2.42,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road down towards Torrestío. Graph labels: AS-228 · Trubia-Puerto de Ventana. Ends at graph junction/vertex; nearest bench road 17.2 km (as-227-somiedo)."
+ },
+ {
+  "id": "can-ason",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "CA-265",
+  "name": "CA-265 Collado del Asón",
+  "start": [
+   -3.58386,
+   43.19196
+  ],
+  "end": [
+   -3.58363,
+   43.20515
+  ],
+  "lengthKm": 2.22,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road above the Asón source. Graph labels: CA-265 · Arredondo-Portillo de la Sía; CA-265 · Carretera de Arredondo al Portillo de la Sía. Ends at graph junction/vertex; nearest bench road 6.2 km (ca-643-lunada)."
+ },
+ {
+  "id": "can-estacas",
+  "region": "Cantabria",
+  "half": "dev",
+  "ref": "CA-631",
+  "name": "CA-631 Estacas de Trueba, Vega de Pas side",
+  "start": [
+   -3.71097,
+   43.12319
+  ],
+  "end": [
+   -3.70555,
+   43.11704
+  ],
+  "lengthKm": 2.0,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "hairpins down towards Vega de Pas. Graph labels: CA-631 · Vega de Pas-Puerto de las Estacas de Trueba. Ends at graph junction/junction; nearest bench road 5.5 km (ca-643-lunada)."
+ },
+ {
+  "id": "pv-herrera",
+  "region": "Basque Country",
+  "half": "test",
+  "ref": "A-2124",
+  "name": "A-2124 Puerto de Herrera, Rioja Alavesa side",
+  "start": [
+   -2.6816,
+   42.59381
+  ],
+  "end": [
+   -2.66703,
+   42.58472
+  ],
+  "lengthKm": 2.51,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "bends down the Sierra de Cantabria escarpment. Graph labels: A-2124. Ends at graph junction/junction; nearest bench road 102.2 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-erro",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "N-135",
+  "name": "N-135 Alto de Erro",
+  "start": [
+   -1.47378,
+   42.94703
+  ],
+  "end": [
+   -1.46318,
+   42.94118
+  ],
+  "lengthKm": 2.19,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "national road over the Erro pass. Graph labels: N-135 · Iruñea - Frantzia Luzaidetik errepidea. Ends at graph vertex/vertex; nearest bench road 179.5 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-izpegi",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "NA-2600",
+  "name": "NA-2600 Izpegi from Erratzu",
+  "start": [
+   -1.40968,
+   43.18235
+  ],
+  "end": [
+   -1.40269,
+   43.17574
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow climb to the border pass. Graph labels: NA-2600 · Erratzu - Frantzia errepidea. Ends at graph junction/junction; nearest bench road 182.3 km (ca-643-lunada)."
+ },
+ {
+  "id": "nav-lizarraga",
+  "region": "Navarra and La Rioja",
+  "half": "dev",
+  "ref": "NA-120",
+  "name": "NA-120 Puerto de Lizarraga, north side",
+  "start": [
+   -2.00261,
+   42.86285
+  ],
+  "end": [
+   -2.02076,
+   42.8637
+  ],
+  "lengthKm": 2.43,
+  "character": 4,
+  "class": "hairpin-stack",
+  "confidence": "medium",
+  "note": "hairpins down to the Sakana valley, below the tunnel. Graph labels: NA-120 · Estella-Lizarra - Beasain. Ends at graph vertex/vertex; nearest bench road 137.6 km (ca-643-lunada)."
+ },
+ {
+  "id": "ara-biescas",
+  "region": "Aragón",
+  "half": "test",
+  "ref": "A-136",
+  "name": "A-136 Tena valley (Búbal - Escarrilla)",
+  "start": [
+   -0.31425,
+   42.70701
+  ],
+  "end": [
+   -0.3157,
+   42.69145
+  ],
+  "lengthKm": 2.08,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "valley road with gentle curves. Graph labels: A-136 · Carretera de Biescas a Francia. Ends at graph junction/junction; nearest bench road 102.1 km (c-28-bonaigua)."
+ },
+ {
+  "id": "cat-portilhon",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "N-141",
+  "name": "N-141 Bossòst - Portilhon",
+  "start": [
+   0.6839,
+   42.77518
+  ],
+  "end": [
+   0.68093,
+   42.77312
+  ],
+  "lengthKm": 2.2,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow climb to the French border. Graph labels: N-141 · Rota deth Portilhon N-141. Ends at graph vertex/vertex; nearest bench road 21.9 km (c-28-bonaigua)."
+ },
+ {
+  "id": "cat-n230-aran",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "N-230",
+  "name": "N-230 Val d'Aran (Vielha - Bossòst)",
+  "start": [
+   0.68805,
+   42.76466
+  ],
+  "end": [
+   0.70325,
+   42.74696
+  ],
+  "lengthKm": 2.37,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "valley national road, gentle curves. Graph labels: N-230 · Carretera N-230 Lleida - Francia. Ends at graph junction/junction; nearest bench road 19.5 km (c-28-bonaigua)."
+ },
+ {
+  "id": "cat-n145",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "N-145",
+  "name": "N-145 la Seu d'Urgell - Andorra",
+  "start": [
+   1.46882,
+   42.40967
+  ],
+  "end": [
+   1.46243,
+   42.42673
+  ],
+  "lengthKm": 2.12,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "valley national road, gentle curves. Graph labels: N-145; N-145 · Carretera La Seu d'Urgell a Andorra. Ends at graph junction/junction; nearest bench road 6.2 km (c-462-tuixent-la-seu)."
+ },
+ {
+  "id": "cat-gi682-lloret",
+  "region": "Catalonia",
+  "half": "dev",
+  "ref": "GI-682",
+  "name": "GI-682 Lloret - Tossa",
+  "start": [
+   2.89084,
+   41.71175
+  ],
+  "end": [
+   2.8761,
+   41.71124
+  ],
+  "lengthKm": 2.3,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "coastal road with constant bends. Graph labels: GI-682; GI-682 · Avinguda de la Vila de Tossa. Ends at graph junction/junction; nearest bench road 33.5 km (bv-5114-santa-fe)."
+ },
+ {
+  "id": "val-bernia",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-749",
+  "name": "CV-749 Port de Bèrnia",
+  "start": [
+   -0.04603,
+   38.68079
+  ],
+  "end": [
+   -0.05474,
+   38.6847
+  ],
+  "lengthKm": 2.01,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow mountain road. Graph labels: CV-749 · Carretera de Bérnia. Ends at graph vertex/junction; nearest bench road 13.6 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-rates-tarbena",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-715",
+  "name": "CV-715 Coll de Rates, Tàrbena side",
+  "start": [
+   -0.0795,
+   38.71514
+  ],
+  "end": [
+   -0.05971,
+   38.72357
+  ],
+  "lengthKm": 2.18,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "bends down towards Tàrbena. Graph labels: CV-715 · carretera d’Oliva a Polop. Ends at graph junction/junction; nearest bench road 12.3 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-cv752",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-752",
+  "name": "CV-752 Tàrbena - Castell de Castells",
+  "start": [
+   -0.1608,
+   38.71558
+  ],
+  "end": [
+   -0.13849,
+   38.71727
+  ],
+  "lengthKm": 2.1,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "narrow inland road. Graph labels: CV-752 · Carretera de Tàrbena a Castell de Castells. Ends at graph junction/vertex; nearest bench road 6.2 km (cv-70-confrides)."
+ },
+ {
+  "id": "val-ares",
+  "region": "Valencia region and Murcia",
+  "half": "test",
+  "ref": "CV-15",
+  "name": "CV-15 Ares del Maestrat",
+  "start": [
+   -0.14704,
+   40.45747
+  ],
+  "end": [
+   -0.14282,
+   40.44931
+  ],
+  "lengthKm": 2.1,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "modern road across the Maestrat. Graph labels: CV-15 · Carretera la Pobla Tornesa - Vilafranca. Ends at graph junction/vertex; nearest bench road 30.0 km (a-1702-maestrazgo)."
+ },
+ {
+  "id": "ae-a7-tropical",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-7",
+  "name": "A-7 Costa Tropical",
+  "start": [
+   -3.64633,
+   36.76215
+  ],
+  "end": [
+   -3.66945,
+   36.75745
+  ],
+  "lengthKm": 2.16,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "motorway with long curves and viaducts. Graph labels: A-7 · Autovía del Mediterráneo. Ends at graph vertex/vertex; nearest bench road 24.8 km (a-4132-alpujarra)."
+ },
+ {
+  "id": "ae-despenaperros",
+  "region": "Andalusia east",
+  "half": "dev",
+  "ref": "A-4",
+  "name": "A-4 Despeñaperros",
+  "start": [
+   -3.50781,
+   38.37971
+  ],
+  "end": [
+   -3.49955,
+   38.39953
+  ],
+  "lengthKm": 2.34,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "motorway through the gorge, long curves. Graph labels: A-4 · Autovía del Sur. Ends at graph vertex/vertex; nearest bench road 74.8 km (jv-7032-segura)."
+ },
+ {
+  "id": "aw-ojen",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-355",
+  "name": "A-355 Puerto de Ojén",
+  "start": [
+   -4.85724,
+   36.57523
+  ],
+  "end": [
+   -4.85277,
+   36.59229
+  ],
+  "lengthKm": 2.15,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "wide road with long curves. Graph labels: A-355 · Carretera de Casapalma a Marbella. Ends at graph vertex/junction; nearest bench road 13.9 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "aw-yunquera",
+  "region": "Andalusia west",
+  "half": "dev",
+  "ref": "A-366",
+  "name": "A-366 El Burgo - Yunquera",
+  "start": [
+   -4.88303,
+   36.73368
+  ],
+  "end": [
+   -4.90474,
+   36.73388
+  ],
+  "lengthKm": 2.54,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "mountain road. Graph labels: A-366 · Carretera de Ronda a Coín. Ends at graph junction/junction; nearest bench road 18.7 km (a-397-ronda-san-pedro)."
+ },
+ {
+  "id": "ext-honduras-hervas",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "CC-224",
+  "name": "CC-224 Puerto de Honduras, Hervás side",
+  "start": [
+   -5.87877,
+   40.22842
+  ],
+  "end": [
+   -5.87197,
+   40.22195
+  ],
+  "lengthKm": 2.48,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "descent through chestnut forest. Graph labels: CC-224 · De Hervás (EX-205) a N-110 (a Cabezuela del Valle) (ctra. del puerto de Honduras). Ends at graph vertex/junction; nearest bench road 73.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "ext-jerte-valley",
+  "region": "Extremadura",
+  "half": "dev",
+  "ref": "N-110",
+  "name": "N-110 Jerte valley (Navaconcejo - El Torno)",
+  "start": [
+   -5.87348,
+   40.14678
+  ],
+  "end": [
+   -5.85409,
+   40.16109
+  ],
+  "lengthKm": 2.38,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "valley national road. Graph labels: N-110 · Carretera de Soria a Plasencia. Ends at graph junction/junction; nearest bench road 72.8 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "cyl-pena-negra",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "AV-932",
+  "name": "AV-932 Puerto de Peña Negra, Piedrahíta side",
+  "start": [
+   -5.30026,
+   40.42927
+  ],
+  "end": [
+   -5.30193,
+   40.42173
+  ],
+  "lengthKm": 2.19,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "climb with tight bends. Graph labels: AV-932. Ends at graph vertex/vertex; nearest bench road 26.7 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "cyl-sanabria",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "ZA-103",
+  "name": "ZA-103 climb to San Martín de Castañeda",
+  "start": [
+   -6.69619,
+   42.13078
+  ],
+  "end": [
+   -6.70564,
+   42.13332
+  ],
+  "lengthKm": 2.15,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "bends above the Sanabria lake. Graph labels: ZA-103 · Carretera Puebla de Sanabria a San Martín de Castañeda. Ends at graph junction/vertex; nearest bench road 105.7 km (as-227-somiedo)."
+ },
+ {
+  "id": "cyl-santa-ines",
+  "region": "Castilla y León",
+  "half": "dev",
+  "ref": "SO-830",
+  "name": "SO-830 Puerto de Santa Inés",
+  "start": [
+   -2.78228,
+   42.03186
+  ],
+  "end": [
+   -2.78807,
+   42.04673
+  ],
+  "lengthKm": 2.09,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road through pine forest. Graph labels: SO-830 · Carretera de Vinuesa a Montenegro. Ends at graph vertex/vertex; nearest bench road 143.5 km (ca-643-lunada)."
+ },
+ {
+  "id": "mad-m601-lower",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-601",
+  "name": "M-601 Collado Villalba - Navacerrada",
+  "start": [
+   -4.01565,
+   40.71741
+  ],
+  "end": [
+   -4.02215,
+   40.7349
+  ],
+  "lengthKm": 2.49,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "wide road with gentle curves. Graph labels: M-601; M-601 · Carretera de Collado Villalba a Navacerrada. Ends at graph junction/junction; nearest bench road 94.4 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-canencia-south",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "M-629",
+  "name": "M-629 Puerto de Canencia, Miraflores side",
+  "start": [
+   -3.75974,
+   40.86629
+  ],
+  "end": [
+   -3.76562,
+   40.85002
+  ],
+  "lengthKm": 2.19,
+  "character": 4,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "pass road. Graph labels: M-629 · Carretera de Canencia. Ends at graph junction/vertex; nearest bench road 120.1 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-sg615",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "SG-615",
+  "name": "SG-615 Navacerrada - Cotos",
+  "start": [
+   -3.98361,
+   40.80202
+  ],
+  "end": [
+   -3.97353,
+   40.81349
+  ],
+  "lengthKm": 2.11,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "high road between the passes. Graph labels: SG-615 · Carretera del Puerto de Cotos. Ends at graph vertex/vertex; nearest bench road 101.6 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "mad-somosierra",
+  "region": "Madrid and Guadarrama",
+  "half": "test",
+  "ref": "A-1",
+  "name": "A-1 Puerto de Somosierra",
+  "start": [
+   -3.58859,
+   41.10838
+  ],
+  "end": [
+   -3.58385,
+   41.12989
+  ],
+  "lengthKm": 2.47,
+  "character": 2,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "motorway pass, long curves. Graph labels: A-1 · Autovía del Norte. Ends at graph vertex/vertex; nearest bench road 147.7 km (n-502-puerto-del-pico)."
+ },
+ {
+  "id": "bal-cuber",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-10",
+  "name": "Ma-10 Cúber - Gorg Blau",
+  "start": [
+   2.79718,
+   39.78838
+  ],
+  "end": [
+   2.78375,
+   39.79075
+  ],
+  "lengthKm": 2.22,
+  "character": 3,
+  "class": "fast-sweepers",
+  "confidence": "medium",
+  "note": "high flowing road past the reservoirs. Graph labels: Ma-10. Ends at graph vertex/vertex; nearest bench road 284.4 km (cv-70-confrides)."
+ },
+ {
+  "id": "bal-valldemossa",
+  "region": "Balearic Islands",
+  "half": "test",
+  "ref": "Ma-1110",
+  "name": "Ma-1110 climb to Valldemossa",
+  "start": [
+   2.63772,
+   39.68796
+  ],
+  "end": [
+   2.62807,
+   39.70355
+  ],
+  "lengthKm": 2.09,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "bends up to the village. Graph labels: Ma-1110; Ma-1110 · Carretera de Valldemossa. Ends at graph vertex/junction; nearest bench road 268.3 km (cv-70-confrides)."
+ },
+ {
+  "id": "clm-crucetas-riopar",
+  "region": "Castilla-La Mancha",
+  "half": "dev",
+  "ref": "CM-412",
+  "name": "CM-412 Crucetas towards Riópar",
+  "start": [
+   -2.48145,
+   38.50708
+  ],
+  "end": [
+   -2.50277,
+   38.51165
+  ],
+  "lengthKm": 2.42,
+  "character": 3,
+  "class": "mixed",
+  "confidence": "medium",
+  "note": "sierra descent. Graph labels: CM-412. Ends at graph junction/vertex; nearest bench road 23.0 km (jv-7032-segura)."
+ }
+]

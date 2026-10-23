@@ -1,0 +1,35 @@
+{
+  "note": "Trips through the rider's stops (plans/2026-10-18-via-points-planner.md, section 6), report only: `make bench-via`.",
+  "trips": [
+    {
+      "id": "via-valencia-loop",
+      "names": ["València", "Teruel", "Segorbe", "València"],
+      "points": [[-0.3763, 39.4699], [-1.1065, 40.3457], [-0.4886, 39.8516], [-0.3763, 39.4699]],
+      "note": "The maintainer's loop; on the Huawei trips too"
+    },
+    {
+      "id": "via-jaca-panticosa-benasque",
+      "names": ["Jaca", "Panticosa", "Benasque"],
+      "points": [[-0.5494, 42.5693], [-0.2817, 42.7231], [0.5237, 42.6053]],
+      "note": "A stop 22 km off the fastest route, at the end of a valley"
+    },
+    {
+      "id": "via-valencia-fastest-los-santos",
+      "names": ["València", "halfway on the fastest", "Los Santos"],
+      "points": [[-0.3763, 39.4699], [-1.23288, 39.59864], [-1.28005, 40.10779]],
+      "note": "The stop is a node of the fastest route, halfway by time: the fastest ride must not change"
+    },
+    {
+      "id": "via-valencia-titaguas-teruel",
+      "names": ["València", "Titaguas", "Teruel"],
+      "points": [[-0.3763, 39.4699], [-1.0835, 39.8631], [-1.1065, 40.3457]],
+      "note": "The stop is the far end of CV-35 Tuéjar - Titaguas"
+    },
+    {
+      "id": "via-alcaniz-maestrazgo-cantavieja",
+      "names": ["Alcañiz", "A-1702 north end", "Cantavieja"],
+      "points": [[-0.13, 41.0507], [-0.5515, 40.8433], [-0.4062, 40.5253]],
+      "note": "The stop is the far end of A-1702 Maestrazgo"
+    }
+  ]
+}

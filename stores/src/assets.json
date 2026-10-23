@@ -1,0 +1,117 @@
+{
+  "screenshots": [
+    {
+      "id": "01-ride",
+      "capture": "ride-{lang}",
+      "crop": {
+        "to": "headline"
+      },
+      "caption": {
+        "es": "Te busca las carreteras con *curvas* que pillan de camino",
+        "en": "It finds the *twisty roads* on your way"
+      }
+    },
+    {
+      "id": "02-slider",
+      "capture": "slider-{lang}",
+      "crop": {
+        "to": "ends"
+      },
+      "caption": {
+        "es": "Elige *cuántas curvas* quieres",
+        "en": "Choose *how many bends* you want"
+      }
+    },
+    {
+      "id": "03-loop",
+      "capture": "loop-{lang}",
+      "crop": {
+        "to": "headline"
+      },
+      "caption": {
+        "es": "Sales de casa y vuelves por *otras carreteras*",
+        "en": "You leave home and come back on *other roads*"
+      }
+    },
+    {
+      "id": "04-summary",
+      "capture": "summary-{lang}",
+      "crop": {
+        "to": "twisty2",
+        "pad": 8
+      },
+      "caption": {
+        "es": "Por dónde vas, *antes de arrancar*",
+        "en": "The roads, *before you fire it up*"
+      }
+    },
+    {
+      "id": "05-open-in",
+      "capture": "openin-{lang}",
+      "crop": {
+        "to": "screen"
+      },
+      "caption": {
+        "es": "La pasas a tu *app de navegación* o como GPX",
+        "en": "Send it to your *navigation app* or as a GPX"
+      }
+    },
+    {
+      "id": "06-satellite",
+      "capture": "satellite-{lang}",
+      "crop": {
+        "to": "headline"
+      },
+      "caption": {
+        "es": "Mira la carretera *desde arriba* antes de ir",
+        "en": "See the road *from above* before you go"
+      }
+    },
+    {
+      "id": "07-spain",
+      "capture": "spain-{lang}",
+      "crop": {
+        "below": "controls"
+      },
+      "caption": {
+        "es": "Más de *5.000* carreteras de curvas en el mapa",
+        "en": "Over *5,000* twisty roads on one map"
+      }
+    },
+    {
+      "id": "08-saved",
+      "capture": "saved-{lang}",
+      "crop": {
+        "from": "saved",
+        "until": "savedList"
+      },
+      "caption": {
+        "es": "Guarda las rutas que *más te gusten*",
+        "en": "Save the rides *you like most*"
+      }
+    }
+  ],
+  "feature": {
+    "wordmark": "twisty",
+    "line": {
+      "es": "La ruta con más curvas",
+      "en": "The curviest route"
+    },
+    "credit": "© OpenStreetMap",
+    "variants": {
+      "a-route": {
+        "capture": "fg-route-hermida",
+        "height": 0.6,
+        "centreX": 0.68,
+        "bloom": true
+      },
+      "b-spain": {
+        "capture": "fg-spain",
+        "frame": "map-area",
+        "height": 1.08,
+        "centreX": 0.73,
+        "bloom": true
+      }
+    }
+  }
+}

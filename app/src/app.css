@@ -1,0 +1,94 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/space-grotesk';
+
+:root {
+  --bg: #07090d;
+  --surface: rgba(12, 15, 22, 0.82);
+  --surface-sheet: rgba(12, 15, 22, 0.96);
+  --surface-sheet-solid: rgb(12, 15, 22);
+  --surface-raised: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #eef1f7;
+  --text-muted: #8f98ab;
+  --text-faint: #5c657a;
+  /* The faintest grey still legible at 12px on the sheet (4.6:1): for notes that must be read. */
+  --text-quiet: #737c90;
+  --amber: #ffb547;
+  --coral: #ff6b57;
+  --pink: #ff2e6e;
+  --cyan: #1fc8d8;
+  --earth: #d2a86e;
+  --gradient: linear-gradient(120deg, var(--amber) 0%, var(--coral) 45%, var(--pink) 100%);
+  --font-ui: 'Inter Variable', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk Variable', var(--font-ui);
+  --touch-target: 44px;
+  --app-height: 100dvh;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--border);
+  /* The one chrome token that follows the map style: the same shadow turns into a grey smear on a pale map. */
+  --map-shadow: var(--shadow);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: dark;
+}
+
+:root[data-map-theme='light'],
+:root[data-map-theme='satellite'] {
+  /* The chrome stays dark on a pale map or a photo: at 0.82 the map shows through and the pills, panel and card turn three greys. */
+  --surface: rgba(12, 15, 22, 0.94);
+}
+
+:root[data-map-theme='light'] {
+  --map-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--border);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  height: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    /* Without this an endless animation would restart every hundredth of a millisecond. */
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

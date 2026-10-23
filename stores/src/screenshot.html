@@ -1,0 +1,116 @@
+<!doctype html>
+<!-- A phone screenshot for Google Play, 1080x1920: the caption over the dark, then the app's screen rising under it
+     and running off the bottom edge. Opened by render.mjs as screenshot.html?id=01-ride&lang=es. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/fonts/space-grotesk/index.css">
+<link rel="stylesheet" href="/fonts/inter/index.css">
+<link rel="stylesheet" href="store.css">
+<style>
+  :root {
+    /* The card's width and top come from crop.mjs; the caption shares its margins. */
+    --margin: calc((1080px - var(--screen-w)) / 2);
+  }
+
+  body {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+  }
+
+  /* A low warm light behind the screen, the colour of the route, so the black reads as night and not as empty. */
+  .glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(70% 34% at 50% 34%, rgba(255, 107, 87, 0.13), transparent 70%),
+      radial-gradient(60% 30% at 50% 100%, rgba(31, 200, 216, 0.05), transparent 70%);
+  }
+
+  /* The mark and the caption's first line stand at the same height on every shot; the gap above the card takes up a
+     caption's second or third line. */
+  .caption {
+    position: absolute;
+    left: var(--margin);
+    right: var(--margin);
+    top: 140px;
+  }
+
+  .ramp {
+    margin-bottom: 38px;
+  }
+
+  h1 {
+    margin: 0;
+    font: 600 92px/1.02 var(--font-display);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  h1 .lead {
+    display: block;
+  }
+
+  .screen {
+    position: absolute;
+    left: var(--margin);
+    top: var(--screen-top);
+    width: var(--screen-w);
+    bottom: -60px;
+    border-radius: 54px;
+    overflow: hidden;
+    background: var(--bg);
+    box-shadow: 0 0 0 2px var(--border-strong), 0 40px 120px -20px rgba(0, 0, 0, 0.9);
+  }
+
+  /* A card that ends with its content, above the canvas's foot. */
+  .screen.screen--ends {
+    bottom: auto;
+  }
+
+  .screen img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="caption">
+  <div class="ramp"><i></i><i></i><i></i><i></i><i></i></div>
+  <h1></h1>
+</div>
+<div class="screen"><img alt=""></div>
+<script type="module">
+  import { captionHtml } from './caption.mjs'
+  import { CARD, cropWindow } from './crop.mjs'
+  document.documentElement.style.setProperty('--screen-w', `${CARD.width}px`)
+  document.documentElement.style.setProperty('--screen-top', `${CARD.top}px`)
+  const params = new URLSearchParams(location.search)
+  const lang = params.get('lang')
+  const assets = await (await fetch('assets.json')).json()
+  const spec = assets.screenshots.find((s) => s.id === params.get('id'))
+  const name = spec.capture.replace('{lang}', lang)
+  const boxes = await (await fetch(`/captures/${name}.json`)).json()
+  document.querySelector('h1').innerHTML = captionHtml(spec.caption[lang])
+
+  const screen = document.querySelector('.screen')
+  const img = document.querySelector('.screen img')
+  img.src = `/captures/${name}.png`
+  await img.decode()
+  const { top, bottom, scale, ends } = cropWindow(boxes, spec.crop)
+  img.style.top = `${-top * scale}px`
+  if (ends) {
+    screen.classList.add('screen--ends')
+    screen.style.height = `${(bottom - top) * scale}px`
+  }
+  // What the crop should keep and leave out: both ends of the ride inside, the map's buttons above it.
+  const outside = ['from', 'to'].filter((k) => boxes[k] && (boxes[k].y < top + 10 || boxes[k].y + boxes[k].h > bottom))
+  const buttonsShow = boxes.controls ? boxes.controls.y + boxes.controls.h > top : false
+  window.renderInfo = { name, cropCss: [Math.round(top), Math.round(bottom)], scale, outside, buttonsShow }
+  document.body.dataset.ready = '1'
+</script>
+</body>
+</html>

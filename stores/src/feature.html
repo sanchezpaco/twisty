@@ -1,0 +1,150 @@
+<!doctype html>
+<!-- The Google Play feature graphic, 1024x500: a real capture of the dark map as the backdrop, the logo, the wordmark and
+     one line in the safe centre-left. Opened by render.mjs as feature.html?variant=route&lang=es. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/fonts/space-grotesk/index.css">
+<link rel="stylesheet" href="/fonts/inter/index.css">
+<link rel="stylesheet" href="store.css">
+<style>
+  body {
+    width: 1024px;
+    height: 500px;
+    position: relative;
+  }
+
+  .map {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .map img {
+    position: absolute;
+    transform-origin: 0 0;
+  }
+
+  /* The overlay's lines are a pixel wide at this size: a soft copy on top lets them glow the way they do on a phone. */
+  .map img.bloom {
+    filter: blur(5px) saturate(1.4) brightness(1.6);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+  }
+
+  /* Night on the text's side and at the edges, so the line reads and the map fades instead of stopping. */
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(7, 9, 13, 0.97) 0%, rgba(7, 9, 13, 0.93) 34%, rgba(7, 9, 13, 0.55) 50%, rgba(7, 9, 13, 0) 68%),
+      radial-gradient(120% 120% at 70% 50%, transparent 55%, rgba(7, 9, 13, 0.7) 100%);
+  }
+
+  .brand {
+    position: absolute;
+    left: 118px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 78px;
+  }
+
+  .line {
+    margin: 26px 0 0;
+    font: 500 33px/1.15 var(--font-display);
+    letter-spacing: -0.015em;
+    color: var(--text);
+  }
+
+  .ramp {
+    margin-top: 28px;
+  }
+
+  .ramp i {
+    width: 20px;
+    height: 7px;
+  }
+
+  .credit {
+    position: absolute;
+    right: 18px;
+    bottom: 12px;
+    font: 500 11px var(--font-ui);
+    color: rgba(238, 241, 247, 0.45);
+    text-shadow: 0 0 6px #07090d, 0 0 3px #07090d;
+  }
+</style>
+</head>
+<body>
+<div class="map"><img class="base" alt=""><img class="bloom" alt=""></div>
+<div class="scrim"></div>
+<div class="brand">
+  <div class="lockup">
+    <svg class="logo" width="76" height="76" viewBox="0 0 32 32" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffb547" />
+          <stop offset=".5" stop-color="#ff6b57" />
+          <stop offset="1" stop-color="#ff2e6e" />
+        </linearGradient>
+      </defs>
+      <rect x=".5" y=".5" width="31" height="31" rx="9" fill="#0b0e14" stroke="rgba(255,255,255,0.14)" />
+      <path d="M5 22C9 22 9 10 13 10S17 22 21 22 25 10 27 10" fill="none" stroke="url(#g)" stroke-width="3.2" stroke-linecap="round" />
+    </svg>
+    <span class="wordmark"></span>
+  </div>
+  <p class="line"></p>
+  <div class="ramp"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+<div class="credit"></div>
+<script type="module">
+  const params = new URLSearchParams(location.search)
+  const variant = params.get('variant')
+  const lang = params.get('lang')
+  const assets = await (await fetch('assets.json')).json()
+  const spec = assets.feature.variants[variant]
+  document.querySelector('.line').textContent = assets.feature.line[lang]
+  document.querySelector('.wordmark').textContent = assets.feature.wordmark
+  document.querySelector('.credit').textContent = assets.feature.credit
+  const boxes = await (await fetch(`/captures/${spec.capture}.json`)).json()
+
+  // What the art is about, in the capture's CSS pixels: the ride's two ends, or the map beside the side panel, where the
+  // app framed Spain.
+  let focus
+  if (spec.frame === 'map-area') {
+    const edge = boxes.panel.x + boxes.panel.w
+    focus = [edge, 0, boxes.viewport.w - edge, boxes.viewport.h]
+  } else {
+    const ends = [boxes.from, boxes.to]
+    const x0 = Math.min(...ends.map((b) => b.x)), x1 = Math.max(...ends.map((b) => b.x + b.w))
+    const y0 = Math.min(...ends.map((b) => b.y)), y1 = Math.max(...ends.map((b) => b.y + b.h))
+    focus = [x0, y0, x1 - x0, y1 - y0]
+  }
+  const [fx, fy, fw, fh] = focus
+  // The focus fills `height` of the canvas and is centred on `centreX`.
+  // The capture covers the canvas; only on the left may it stop short, where the scrim is night anyway.
+  const LEFT_GAP_MAX = 110
+  const { w: vw, h: vh } = boxes.viewport
+  const scale = Math.max((spec.height * 500) / fh, 1024 / vw, 500 / vh)
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v))
+  const left = clamp(spec.centreX * 1024 - (fx + fw / 2) * scale, 1024 - vw * scale, LEFT_GAP_MAX)
+  const top = clamp(250 - (fy + fh / 2) * scale, 500 - vh * scale, 0)
+  for (const img of document.querySelectorAll('.map img')) {
+    img.src = `/captures/${spec.capture}.png`
+    await img.decode()
+    img.style.width = `${boxes.viewport.w * scale}px`
+    img.style.left = `${left}px`
+    img.style.top = `${top}px`
+  }
+  if (!spec.bloom) document.querySelector('.map img.bloom').remove()
+  window.renderInfo = { capture: spec.capture, scale, left, top }
+  document.body.dataset.ready = '1'
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- The whole set on one sheet, laid out by render.mjs: rows of images at the sizes it asks for (mode=full near real
+     size, mode=thumb at about the size the store shows them, to judge what still reads). -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/fonts/inter/index.css">
+<link rel="stylesheet" href="store.css">
+<style>
+  body { background: #1a1e26; padding: var(--pad); }
+  h2 { margin: 0 0 calc(var(--gap) / 2); font: 600 var(--title) var(--font-ui); color: var(--text); }
+  .row { display: flex; gap: var(--gap); align-items: flex-end; margin-bottom: var(--gap); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font: 500 var(--label) var(--font-ui); color: var(--text-muted); }
+  img { display: block; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12); }
+  body.full { --pad: 80px; --gap: 40px; --label: 22px; --title: 34px; }
+  body.thumb { --pad: 30px; --gap: 20px; --label: 12px; --title: 18px; }
+  /* Roughly the rounded square Google Play cuts the icon to. */
+  .masked { border-radius: 20%; }
+</style>
+</head>
+<body>
+<script type="module">
+  const params = new URLSearchParams(location.search)
+  document.body.className = params.get('mode')
+  const { rows } = JSON.parse(params.get('layout'))
+  for (const row of rows) {
+    if (row.title) document.body.insertAdjacentHTML('beforeend', `<h2>${row.title}</h2>`)
+    const div = document.createElement('div')
+    div.className = 'row'
+    for (const item of row.items) {
+      div.insertAdjacentHTML('beforeend', `<figure><img class="${item.masked ? 'masked' : ''}" src="${item.src}?v=${Date.now()}" width="${Math.round(item.w)}" height="${Math.round(item.h)}"><figcaption>${item.label}</figcaption></figure>`)
+    }
+    document.body.append(div)
+  }
+  await Promise.all([...document.images].map((i) => i.decode()))
+  document.body.dataset.ready = '1'
+</script>
+</body>
+</html>

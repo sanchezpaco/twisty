@@ -1,0 +1,357 @@
+{
+ "seed": 20261017,
+ "drawnBy": ".claude/handoffs/routing-scripts/value_fresh_trips.py",
+ "note": "Out-of-sample trips for the road-value bar (plans/2026-10-16-road-value.md), drawn before any fit.",
+ "trips": [
+  {
+   "id": "fresh-regional-01",
+   "kind": "regional",
+   "name": "Mora → El Escorial",
+   "from": [
+    -3.7728,
+    39.6832
+   ],
+   "to": [
+    -4.1281,
+    40.5836
+   ],
+   "straightKm": 104
+  },
+  {
+   "id": "fresh-regional-02",
+   "kind": "regional",
+   "name": "Beteta → Ribota",
+   "from": [
+    -2.076,
+    40.5727
+   ],
+   "to": [
+    -3.429,
+    41.3651
+   ],
+   "straightKm": 144
+  },
+  {
+   "id": "fresh-regional-03",
+   "kind": "regional",
+   "name": "Manjabálago → Aguilafuente",
+   "from": [
+    -5.0771,
+    40.664
+   ],
+   "to": [
+    -4.1131,
+    41.2264
+   ],
+   "straightKm": 102
+  },
+  {
+   "id": "fresh-regional-04",
+   "kind": "regional",
+   "name": "Pozos de Hinojo → Justel",
+   "from": [
+    -6.4111,
+    40.9138
+   ],
+   "to": [
+    -6.2943,
+    42.1501
+   ],
+   "straightKm": 137
+  },
+  {
+   "id": "fresh-regional-05",
+   "kind": "regional",
+   "name": "Bustillo de Chaves → Laguna de Duero",
+   "from": [
+    -5.091,
+    42.1305
+   ],
+   "to": [
+    -4.7214,
+    41.5828
+   ],
+   "straightKm": 68
+  },
+  {
+   "id": "fresh-regional-06",
+   "kind": "regional",
+   "name": "Sediles → Campillo de Dueñas",
+   "from": [
+    -1.5304,
+    41.3464
+   ],
+   "to": [
+    -1.6848,
+    40.8837
+   ],
+   "straightKm": 53
+  },
+  {
+   "id": "fresh-regional-07",
+   "kind": "regional",
+   "name": "Esparreguera → la Torre de Cabdella",
+   "from": [
+    1.8706,
+    41.5389
+   ],
+   "to": [
+    0.9822,
+    42.4223
+   ],
+   "straightKm": 122
+  },
+  {
+   "id": "fresh-regional-08",
+   "kind": "regional",
+   "name": "Robladillo de Ucieza → Villanueva de San Mancio",
+   "from": [
+    -4.575,
+    42.3986
+   ],
+   "to": [
+    -5.0117,
+    41.9283
+   ],
+   "straightKm": 63
+  },
+  {
+   "id": "fresh-regional-09",
+   "kind": "regional",
+   "name": "Almonacid de la Sierra → Villoslada de Cameros",
+   "from": [
+    -1.3236,
+    41.3971
+   ],
+   "to": [
+    -2.6733,
+    42.1138
+   ],
+   "straightKm": 137
+  },
+  {
+   "id": "fresh-regional-10",
+   "kind": "regional",
+   "name": "Barcience → Aldeanueva de la Vera",
+   "from": [
+    -4.2363,
+    39.9834
+   ],
+   "to": [
+    -5.7,
+    40.129
+   ],
+   "straightKm": 126
+  },
+  {
+   "id": "fresh-regional-11",
+   "kind": "regional",
+   "name": "Contreras → Escobar de Campos",
+   "from": [
+    -3.4104,
+    42.0198
+   ],
+   "to": [
+    -4.9657,
+    42.3136
+   ],
+   "straightKm": 132
+  },
+  {
+   "id": "fresh-regional-12",
+   "kind": "regional",
+   "name": "Valdevacas de Montejo → Argecilla",
+   "from": [
+    -3.635,
+    41.5209
+   ],
+   "to": [
+    -2.8178,
+    40.8831
+   ],
+   "straightKm": 98
+  },
+  {
+   "id": "fresh-regional-13",
+   "kind": "regional",
+   "name": "Sena → Mas de Barberans",
+   "from": [
+    -0.0444,
+    41.715
+   ],
+   "to": [
+    0.3742,
+    40.7346
+   ],
+   "straightKm": 114
+  },
+  {
+   "id": "fresh-cross-01",
+   "kind": "cross",
+   "name": "Lopera → Carboneras de Guadazaón",
+   "from": [
+    -4.2142,
+    37.9456
+   ],
+   "to": [
+    -1.8115,
+    39.8996
+   ],
+   "straightKm": 300
+  },
+  {
+   "id": "fresh-cross-02",
+   "kind": "cross",
+   "name": "Archena → San Clemente",
+   "from": [
+    -1.3025,
+    38.1178
+   ],
+   "to": [
+    -2.4281,
+    39.4035
+   ],
+   "straightKm": 172
+  },
+  {
+   "id": "fresh-cross-03",
+   "kind": "cross",
+   "name": "Bolea → Llagostera",
+   "from": [
+    -0.5532,
+    42.2594
+   ],
+   "to": [
+    2.892,
+    41.8289
+   ],
+   "straightKm": 289
+  },
+  {
+   "id": "fresh-cross-04",
+   "kind": "cross",
+   "name": "Noblejas → Cieza",
+   "from": [
+    -3.4404,
+    39.9803
+   ],
+   "to": [
+    -1.4189,
+    38.2392
+   ],
+   "straightKm": 260
+  },
+  {
+   "id": "fresh-cross-05",
+   "kind": "cross",
+   "name": "Bargota → Robles de la Valcueva",
+   "from": [
+    -2.3106,
+    42.5606
+   ],
+   "to": [
+    -5.5073,
+    42.8383
+   ],
+   "straightKm": 263
+  },
+  {
+   "id": "fresh-cross-06",
+   "kind": "cross",
+   "name": "Villodre → el Palau d'Anglesola",
+   "from": [
+    -4.2459,
+    42.2116
+   ],
+   "to": [
+    0.8806,
+    41.6519
+   ],
+   "straightKm": 429
+  },
+  {
+   "id": "fresh-cross-07",
+   "kind": "cross",
+   "name": "Trabada → Villasrubias",
+   "from": [
+    -7.1943,
+    43.4472
+   ],
+   "to": [
+    -6.6383,
+    40.339
+   ],
+   "straightKm": 347
+  },
+  {
+   "id": "fresh-cross-08",
+   "kind": "cross",
+   "name": "Talamantes → Camporrobles",
+   "from": [
+    -1.6789,
+    41.7307
+   ],
+   "to": [
+    -1.4009,
+    39.6472
+   ],
+   "straightKm": 232
+  },
+  {
+   "id": "fresh-cross-09",
+   "kind": "cross",
+   "name": "Cañizo → Serrejón",
+   "from": [
+    -5.5011,
+    41.7702
+   ],
+   "to": [
+    -5.8023,
+    39.817
+   ],
+   "straightKm": 217
+  },
+  {
+   "id": "fresh-cross-10",
+   "kind": "cross",
+   "name": "Estación de Cártama → Pozo Cañada",
+   "from": [
+    -4.6127,
+    36.7365
+   ],
+   "to": [
+    -1.7347,
+    38.8029
+   ],
+   "straightKm": 341
+  },
+  {
+   "id": "fresh-cross-11",
+   "kind": "cross",
+   "name": "Peranzanes → Cebrecos",
+   "from": [
+    -6.6328,
+    42.8769
+   ],
+   "to": [
+    -3.5963,
+    41.9844
+   ],
+   "straightKm": 268
+  },
+  {
+   "id": "fresh-cross-12",
+   "kind": "cross",
+   "name": "l'Alcora → Albatana",
+   "from": [
+    -0.2142,
+    40.0747
+   ],
+   "to": [
+    -1.5226,
+    38.571
+   ],
+   "straightKm": 201
+  }
+ ]
+}

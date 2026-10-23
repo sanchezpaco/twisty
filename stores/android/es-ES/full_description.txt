@@ -1,0 +1,15 @@
+Twisty planifica rutas en moto por carreteras de curvas en España, Baleares y Canarias incluidas. Pones de dónde sales y adónde vas, y busca las carreteras con curvas que quedan de camino. Si por autovía llegas antes al principio de un puerto, usa la autovía hasta allí.
+
+La ruta más rápida y las que van por más curvas salen en una barra. Cada una dice cuánto tiempo añade y cuántos km de curvas lleva.
+
+Antes de salir se ve la lista de tramos, con sus km y lo revirado que es cada uno, de «Suave» a «Épica». Se mide curva a curva sobre el trazado de cada carretera.
+
+La ruta se pasa a tu app de navegación o, para seguir la línea exacta, como archivo GPX a una app de GPX.
+
+También hace rutas circulares con paradas, para salir de casa y volver por otro sitio. Las rutas se guardan en carpetas y se pueden compartir. El mapa puede ser oscuro, claro o de satélite, con las fotos aéreas del IGN, y tiene relieve en 3D. Hay más de 5.000 carreteras de curvas marcadas en el mapa.
+
+Es gratis y no lleva anuncios. No hace falta cuenta. La ruta se calcula en el móvil, y la ruta y la búsqueda de pueblos funcionan sin cobertura; el mapa necesita conexión. Los viajes se guardan en el móvil, y la ubicación solo sale en lo que tú envías: una búsqueda de calle, o una ruta que abres en otra app o compartes.
+
+Twisty planifica la ruta; te guía tu app de navegación. Las rutas salen de datos de OpenStreetMap y pueden incluir carreteras cortadas, privadas, sin asfaltar o de sentido único: respeta siempre las señales y prepara la ruta antes de salir.
+
+Map data © OpenStreetMap contributors (ODbL) · Map tiles OpenFreeMap © OpenMapTiles · Elevation: Terrain Tiles (EU-DEM Copernicus, USGS SRTM/GMTED, NOAA ETOPO1) · Satellite: PNOA CC-BY 4.0 scne.es, MosaicoSentinel2 CC-BY 4.0 ign.es · Address search: Nominatim

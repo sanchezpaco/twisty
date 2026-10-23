@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#07090d">
+<title>Twisty: la ruta con más curvas</title>
+<meta name="description" content="Rutas en moto por carreteras de curvas en España. Pones de dónde sales y adónde vas, y te busca las curvas de camino.">
+<link rel="canonical" href="https://sanchezpaco.github.io/twisty/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sanchezpaco.github.io/twisty/">
+<meta property="og:title" content="Twisty: la ruta con más curvas">
+<meta property="og:description" content="Rutas en moto por carreteras de curvas en España. Pones de dónde sales y adónde vas, y te busca las curvas de camino.">
+<meta property="og:image" content="https://sanchezpaco.github.io/twisty/assets/og-image.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+  (function () {
+    var KEY = 'twisty.landing.lang';
+    var TITLES = { es: 'Twisty: la ruta con más curvas', en: 'Twisty: the curviest route' };
+    var NAV_LABELS = { es: 'Idioma', en: 'Language' };
+    var SPANISH = ['es', 'ca', 'eu', 'gl'];
+
+    function saved() {
+      try {
+        var lang = localStorage.getItem(KEY);
+        return lang === 'es' || lang === 'en' ? lang : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function device() {
+      var tag = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+      return SPANISH.indexOf(tag.toLowerCase().split('-')[0]) >= 0 ? 'es' : 'en';
+    }
+
+    function apply(lang) {
+      var root = document.documentElement;
+      root.lang = lang;
+      root.setAttribute('data-lang', lang);
+      document.title = TITLES[lang];
+      var nav = document.querySelector('.switch');
+      if (nav) nav.setAttribute('aria-label', NAV_LABELS[lang]);
+      var links = document.querySelectorAll('[data-set-lang]');
+      for (var i = 0; i < links.length; i++) {
+        var current = links[i].getAttribute('data-set-lang') === lang;
+        if (current) links[i].setAttribute('aria-current', 'true');
+        else links[i].removeAttribute('aria-current');
+      }
+    }
+
+    var lang = saved() || device();
+    var hero = document.createElement('link');
+    hero.rel = 'preload';
+    hero.as = 'image';
+    hero.href = 'assets/img/ride-' + lang + '.jpg';
+    hero.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(hero);
+    apply(lang);
+    document.addEventListener('DOMContentLoaded', function () { apply(lang); });
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest && event.target.closest('[data-set-lang]');
+      if (!link) return;
+      event.preventDefault();
+      lang = link.getAttribute('data-set-lang');
+      try { localStorage.setItem(KEY, lang); } catch (e) {}
+      apply(lang);
+    });
+  })();
+</script>
+<style>
+  @font-face {
+    font-family: 'Inter Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url(assets/fonts/inter-latin-wght-normal.woff2) format('woff2-variations');
+  }
+  @font-face {
+    font-family: 'Space Grotesk Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300 700;
+    src: url(assets/fonts/space-grotesk-latin-wght-normal.woff2) format('woff2-variations');
+  }
+
+  :root {
+    --bg: #07090d;
+    --surface: rgb(12, 15, 22);
+    --surface-raised: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text: #eef1f7;
+    --text-muted: #8f98ab;
+    --text-quiet: #737c90;
+    --amber: #ffb547;
+    --coral: #ff6b57;
+    --pink: #ff2e6e;
+    --gradient: linear-gradient(120deg, var(--amber) 0%, var(--coral) 45%, var(--pink) 100%);
+    --font-ui: 'Inter Variable', system-ui, -apple-system, sans-serif;
+    --font-display: 'Space Grotesk Variable', var(--font-ui);
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --shot-radius: 26px;
+    --shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--border);
+    --gutter: clamp(20px, 5vw, 56px);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-underline-offset: 3px; text-decoration-color: rgba(238, 241, 247, 0.35); }
+  a:hover { text-decoration-color: var(--coral); }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; }
+  p { margin: 0; }
+
+  html[data-lang='es'] #en, html[data-lang='en'] #es { display: none; }
+  html:not([data-lang]) #en { border-top: 1px solid var(--border); }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Top bar */
+  .top { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 600 1.2rem/1 var(--font-display); letter-spacing: -0.01em; }
+  .brand img { width: 30px; height: 30px; }
+  .switch { display: flex; align-items: center; gap: 2px; font: 600 0.9rem/1 var(--font-display); letter-spacing: 0.06em; }
+  .switch a { display: inline-grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 10px; color: var(--text-muted); text-decoration: none; border-radius: 12px; }
+  .switch a:hover { color: var(--text); }
+  .switch a[aria-current] { color: var(--text); background: var(--surface-raised); box-shadow: 0 0 0 1px var(--border); }
+  .switch span { color: var(--text-quiet); }
+
+  /* Hero */
+  .hero { position: relative; isolation: isolate; padding-top: clamp(28px, 6vw, 72px); padding-bottom: clamp(56px, 9vw, 112px); }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -80px 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 32% at 72% 46%, rgba(255, 46, 110, 0.13), transparent 70%),
+      radial-gradient(36% 28% at 60% 62%, rgba(255, 181, 71, 0.09), transparent 70%);
+  }
+  .hero-grid { display: grid; gap: 48px; align-items: center; }
+  h1 { font-size: clamp(2.6rem, 11vw, 5rem); line-height: 1.02; letter-spacing: -0.035em; max-width: 11ch; }
+  .hl { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lede { margin-top: 22px; font-size: clamp(1.06rem, 2.6vw, 1.25rem); line-height: 1.55; color: #c9d0de; max-width: 34em; }
+  .cta { margin-top: 28px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .closing { padding-bottom: clamp(40px, 6vw, 72px); text-align: center; }
+  .status { display: inline-flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.92rem; font-weight: 500; }
+  .status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px rgba(255, 181, 71, 0.55); }
+  .small { margin-top: 6px; font-size: 0.92rem; color: var(--text-muted); }
+
+  .shot img {
+    border-radius: var(--shot-radius);
+    box-shadow: 0 40px 90px -24px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--border-strong);
+    background: var(--surface);
+  }
+  .credit { margin-top: 12px; font-size: 0.72rem; line-height: 1.4; color: var(--text-quiet); }
+  .phone { width: min(300px, 82%); margin: 0 auto; }
+  .phone .credit { text-align: center; }
+  .hero .phone img { box-shadow: 0 40px 100px -20px rgba(255, 46, 110, 0.22), 0 40px 90px -24px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--border-strong); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-copy, .hero .phone { animation: rise 0.5s var(--ease-out) both; }
+    .hero .phone { animation-delay: 0.08s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  }
+
+  /* Why */
+  .why { padding-bottom: clamp(64px, 10vw, 128px); }
+  .why-copy { display: grid; gap: 18px; margin-bottom: 36px; }
+  h2 { font-size: clamp(1.9rem, 6.5vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; max-width: 16ch; }
+  .why-copy p { color: #c9d0de; font-size: clamp(1.02rem, 2.4vw, 1.15rem); max-width: 36em; }
+  .wide img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 64% 40%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  /* Steps */
+  .steps { list-style: none; margin: 0; padding: 0 0 clamp(64px, 10vw, 128px); display: grid; gap: 40px; }
+  .step { display: grid; gap: 28px; }
+  .step-text { display: grid; gap: 8px; align-content: start; }
+  .num {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 8px;
+    border-radius: 50%;
+    border: 2.5px solid transparent;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box, var(--gradient) border-box;
+    font: 700 1rem/1 var(--font-display);
+  }
+  h3 { font-size: 1.3rem; line-height: 1.25; letter-spacing: -0.015em; }
+  .step-text p, .card p { color: var(--text-muted); }
+
+  /* Features */
+  .features { display: grid; gap: 48px; padding-bottom: clamp(64px, 10vw, 120px); }
+  .card, .card-text { display: grid; gap: 10px; align-content: start; }
+  /* Every card keeps a credit line under its shot, empty or not, so the titles line up across a row. */
+  .card .shot { margin: 0 0 6px; }
+  .card .shot .credit { min-height: 1.4em; margin-top: 10px; }
+  .card .shot:not(:has(figcaption)) { padding-bottom: calc(10px + 0.72rem * 1.4); }
+  .card .shot img { border-radius: var(--radius-lg); }
+  .card.plain { max-width: 34em; }
+
+  /* Privacy and safety */
+  .notes { display: grid; gap: 16px; padding-bottom: clamp(56px, 8vw, 96px); }
+  .notes p {
+    padding: 24px 26px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-raised);
+    box-shadow: 0 0 0 1px var(--border);
+    color: #c9d0de;
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  footer { padding-bottom: 40px; display: grid; gap: 14px; }
+  .links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 0.95rem; }
+  .links a { display: inline-block; padding: 10px 0; color: var(--text); }
+  .credits { font-size: 0.78rem; line-height: 1.6; color: var(--text-quiet); }
+  .credits a { color: var(--text-muted); }
+
+  figure { margin: 0; }
+
+  @media (min-width: 640px) {
+    .features { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 32px; row-gap: 56px; }
+    .card { grid-column: span 2; }
+    .card:nth-of-type(5) { grid-column: 2 / span 2; }
+    .card.plain { grid-column: 1 / -1; }
+    /* The shots share a row track, so a shorter one sits on the titles' line instead of pushing them down. */
+    .card:not(.plain) { grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
+    .card .shot { align-self: end; }
+    .wide img { aspect-ratio: auto; }
+  }
+
+  @media (min-width: 820px) {
+    h1 { font-size: clamp(2.8rem, 5.1vw, 4.2rem); }
+    .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 64px; }
+    .phone { width: min(330px, 100%); }
+    .hero .phone { margin-right: 0; }
+    .why-copy { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+
+    .steps {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.62fr) minmax(0, 0.62fr);
+      grid-template-rows: 1fr auto auto auto 1fr;
+      column-gap: 32px;
+      row-gap: 44px;
+    }
+    .step.s2, .step.s3 { display: contents; }
+    .s1 { grid-column: 1; grid-row: 2; }
+    .s2 .step-text { grid-column: 1; grid-row: 3; }
+    .s3 .step-text { grid-column: 1; grid-row: 4; }
+    .s2 .phone, .s3 .phone { width: 100%; grid-row: 1 / 6; }
+    .s2 .phone { grid-column: 2; }
+    .s3 .phone { grid-column: 3; align-self: center; }
+
+    .notes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  }
+
+  @media (min-width: 1024px) {
+    .steps { column-gap: 48px; }
+  }
+
+  @media (min-width: 1200px) {
+    h1 { font-size: 5rem; }
+  }
+
+  @media (min-width: 1080px) {
+    .features { grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 36px; row-gap: 64px; }
+    .card:nth-of-type(4) { grid-column: 2 / span 2; }
+    .card:nth-of-type(5) { grid-column: 4 / span 2; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <div class="brand"><img src="assets/favicon.svg" width="30" height="30" alt="">Twisty</div>
+  <nav class="switch" aria-label="Idioma">
+    <a href="#es" hreflang="es" lang="es" data-set-lang="es">ES</a><span aria-hidden="true">|</span><a href="#en" hreflang="en" lang="en" data-set-lang="en">EN</a>
+  </nav>
+</header>
+
+<main>
+
+<div id="es" lang="es">
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>La ruta con <span class="hl">más curvas</span></h1>
+        <p class="lede">Pones de dónde sales y adónde vas, y Twisty te busca las carreteras con curvas que quedan de camino. Si por autovía llegas antes al puerto, va por autovía hasta allí.</p>
+        <p class="cta"><span class="status">Próximamente en Google Play</span></p>
+        <p class="small">Android · gratis · sin anuncios · carreteras de España</p>
+      </div>
+      <figure class="shot phone">
+        <img src="assets/img/ride-es.jpg" width="720" height="1560" loading="lazy" fetchpriority="high" alt="Twisty en el móvil: ruta de Granada a Ugíjar en el mapa oscuro, con dos tramos de curvas resaltados; 2 h 24, 122 km, +33 min y +26 km de curvas.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap why">
+    <div class="why-copy">
+      <h2>Autovía hasta la sierra, y de ahí, curvas</h2>
+      <p>En las apps de navegación, «evitar autovías» es todo o nada: o vas por autovía todo el camino, o sales de la ciudad despacio y cruzas cada pueblo. Twisty usa la autovía solo para llegar antes a las carreteras buenas.</p>
+    </div>
+    <figure class="wide">
+      <img src="assets/img/ride-wide.jpg" width="1600" height="709" loading="lazy" decoding="async" alt="De Llanes a Riaño por el desfiladero de La Hermida en el mapa oscuro de Twisty, con sus tramos de curvas numerados y resaltados entre las carreteras de curvas de la zona.">
+      <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap">
+    <h2 class="sr-only">Cómo funciona</h2>
+    <ol class="steps">
+      <li class="step s1">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Dónde sales y adónde vas.</h3>
+          <p>Pueblos mientras escribes, calles cuando las buscas, o mantén pulsado en el mapa.</p>
+        </div>
+      </li>
+      <li class="step s2">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Elige cuántas curvas quieres.</h3>
+          <p>De la ruta más rápida a la que va por más curvas. Cada una dice cuánto tiempo añade y cuántos km de curvas lleva.</p>
+        </div>
+        <figure class="shot phone">
+          <img src="assets/img/slider-es.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="Ruta de Llanes a Riaño con el control de curvas: una barra por alternativa, de «Más rápida» a «Más curvas»; la elegida, 2 h 32, +27 min y +36 km de curvas.">
+          <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+        </figure>
+      </li>
+      <li class="step s3">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>A tu app de navegación.</h3>
+          <p>La pasas a tu app de navegación con los tramos marcados, o como GPX.</p>
+        </div>
+        <figure class="shot phone">
+          <img src="assets/img/openin-es.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Panel «Abrir esta ruta en», con las apps a las que pasar la ruta y la opción de otra app con GPX, sobre la ruta en el mapa.">
+          <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap features">
+    <h2 class="sr-only">Qué hace</h2>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/summary-es.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Resumen de una ruta de Oviedo a Villablino: 85 km de curvas, y sus tramos, la AS-322 «Revirada» y la AS-360 «Fluida».">
+      </figure>
+      <div class="card-text">
+        <h3>Por dónde vas, antes de arrancar.</h3>
+        <p>Cada tramo con su carretera, sus km y lo revirado que es, de «Suave» a «Épica». Avisa de tramos estrechos, vados y carreteras que cierran parte del año.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/loop-es.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Ruta circular de València a València por Morella, con cinco tramos de curvas en el mapa oscuro.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>Sales de casa y vuelves por otras carreteras.</h3>
+        <p>Rutas circulares y hasta 3 paradas.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/spain-es.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Mapa de España con sus carreteras de curvas coloreadas según lo reviradas que son, Baleares incluidas, y Canarias en un recuadro.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>Las carreteras de curvas de España.</h3>
+        <p>Más de 5.000 marcadas en el mapa, Baleares y Canarias incluidas.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/satellite-es.jpg" width="720" height="900" loading="lazy" decoding="async" alt="La ruta de Llanes a Riaño sobre la vista de satélite, entre monte y prados.">
+        <figcaption class="credit">PNOA 2022-2025 CC-BY 4.0 scne.es</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>Oscuro, claro o satélite.</h3>
+        <p>Con las fotos aéreas del IGN y relieve en 3D.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/saved-es.jpg" width="720" height="630" loading="lazy" decoding="async" alt="Carpeta de rutas guardadas «Pendientes», cada ruta con su dibujo, su tiempo y sus km de curvas.">
+      </figure>
+      <div class="card-text">
+        <h3>Tus rutas, en carpetas.</h3>
+        <p>Guárdalas y compártelas.</p>
+      </div>
+    </article>
+    <article class="card plain">
+      <h3>Sin cobertura.</h3>
+      <p>La ruta y la búsqueda de pueblos funcionan sin cobertura; el mapa necesita conexión.</p>
+    </article>
+  </section>
+
+  <section class="wrap notes">
+    <p>No hace falta cuenta, y no lleva anuncios ni estadísticas de uso. Tus viajes se guardan en el móvil, y tu ubicación solo sale en lo que tú envías: una búsqueda de calle, o una ruta que abres en otra app o compartes. Qué ve cada servicio de mapas y de búsqueda: <a href="privacy/#es">política de privacidad</a>.</p>
+    <p>Twisty planifica la ruta; te guía tu app de navegación. Las rutas salen de OpenStreetMap y pueden fallar: mandan las señales, y el móvil no se toca en marcha.</p>
+  </section>
+
+  <section class="wrap closing">
+    <p class="cta"><span class="status">Próximamente en Google Play</span></p>
+  </section>
+
+  <footer class="wrap">
+    <p class="links">
+      <a href="https://github.com/sanchezpaco/twisty">Código en GitHub (PolyForm Noncommercial)</a>
+      <a href="https://github.com/sanchezpaco/twisty/releases/latest">Datos de carreteras (ODbL)</a>
+      <a href="privacy/#es">Privacidad</a>
+      <span>Contacto: <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a></span>
+    </p>
+    <p class="credits">Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors (ODbL) · Map tiles <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://openmaptiles.org">OpenMapTiles</a> · Elevation: <a href="https://registry.opendata.aws/terrain-tiles/">Terrain Tiles</a> (Mapzen, AWS Open Data). Europe terrain data produced using Copernicus data and information funded by the European Union - EU-DEM layers. SRTM and GMTED2010 terrain data courtesy of the U.S. Geological Survey. ETOPO1: NOAA National Centers for Environmental Information · Satellite: <a href="https://pnoa.ign.es/">PNOA</a> 2022-2025 CC-BY 4.0 <a href="https://www.scne.es/">scne.es</a>, MosaicoSentinel2 2018-2026 CC-BY 4.0 <a href="https://www.ign.es/">ign.es</a>, contains modified Copernicus Sentinel data · Address search: <a href="https://nominatim.org">Nominatim</a></p>
+  </footer>
+</div>
+
+<div id="en" lang="en">
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>The <span class="hl">curviest</span> route</h1>
+        <p class="lede">Put in where you start and where you're going, and Twisty finds the twisty roads on the way. If the motorway gets you to the pass sooner, it takes the motorway up to there.</p>
+        <p class="cta"><span class="status">Coming soon to Google Play</span></p>
+        <p class="small">Android · free · no ads · roads in Spain</p>
+      </div>
+      <figure class="shot phone">
+        <img src="assets/img/ride-en.jpg" width="720" height="1560" loading="lazy" fetchpriority="high" alt="Twisty on a phone: a ride from Granada to Ugíjar on the dark map, with two twisty stretches lit up; 2 h 24, 122 km, +33 min and +26 km of curves.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap why">
+    <div class="why-copy">
+      <h2>Motorway to the hills, then the curves</h2>
+      <p>In navigation apps, "avoid motorways" is all or nothing: either you stay on the motorway the whole way, or you crawl out of the city and through every village. Twisty uses the motorway only to reach the good roads sooner.</p>
+    </div>
+    <figure class="wide">
+      <img src="assets/img/ride-wide.jpg" width="1600" height="709" loading="lazy" decoding="async" alt="Llanes to Riaño through the Hermida gorge on Twisty's dark map, its twisty stretches numbered and lit up among the area's twisty roads.">
+      <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap">
+    <h2 class="sr-only">How it works</h2>
+    <ol class="steps">
+      <li class="step s1">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Where you start and where you're going.</h3>
+          <p>Towns as you type, streets when you search for them, or a long press on the map.</p>
+        </div>
+      </li>
+      <li class="step s2">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Choose how many bends you want.</h3>
+          <p>From the fastest route to the one with the most bends. Each says how much time it adds and how many km of bends it has.</p>
+        </div>
+        <figure class="shot phone">
+          <img src="assets/img/slider-en.jpg" width="720" height="1560" loading="lazy" decoding="async" alt="A ride from Llanes to Riaño with the curves slider: one bar per option, from Fastest to Most curves; the one picked, 2 h 32, +27 min and +36 km of curves.">
+          <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+        </figure>
+      </li>
+      <li class="step s3">
+        <div class="step-text">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Off to your navigation app.</h3>
+          <p>Send it to your navigation app with the stretches pinned, or as a GPX.</p>
+        </div>
+        <figure class="shot phone">
+          <img src="assets/img/openin-en.jpg" width="720" height="900" loading="lazy" decoding="async" alt="The &quot;Open this ride in&quot; panel, with the apps to send the ride to and the option of another app with a GPX, over the ride on the map.">
+          <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap features">
+    <h2 class="sr-only">What it does</h2>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/summary-en.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Summary of a ride from Oviedo to Villablino: 85 km of curves, and its stretches, the AS-322 (Winding) and the AS-360 (Flowing).">
+      </figure>
+      <div class="card-text">
+        <h3>The roads, before you fire it up.</h3>
+        <p>Each stretch with its road, its length and how twisty it is, from "Gentle" to "Epic". It flags narrow stretches, fords and roads that close part of the year.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/loop-en.jpg" width="720" height="900" loading="lazy" decoding="async" alt="A loop from València back to València through Morella, with five twisty stretches on the dark map.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>You leave home and come back on other roads.</h3>
+        <p>Loops, and up to 3 stops.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/spain-en.jpg" width="720" height="900" loading="lazy" decoding="async" alt="Map of Spain with its twisty roads coloured by how twisty they are, the Balearic Islands included, and the Canary Islands in an inset.">
+        <figcaption class="credit">© OpenStreetMap · © OpenMapTiles</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>Spain's twisty roads.</h3>
+        <p>Over 5,000 marked on the map, the Balearic and Canary Islands included.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/satellite-en.jpg" width="720" height="900" loading="lazy" decoding="async" alt="The ride from Llanes to Riaño on the satellite view, through woods and meadows.">
+        <figcaption class="credit">PNOA 2022-2025 CC-BY 4.0 scne.es</figcaption>
+      </figure>
+      <div class="card-text">
+        <h3>Dark, light or satellite.</h3>
+        <p>With the IGN's aerial photos and 3D relief.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="shot">
+        <img src="assets/img/saved-en.jpg" width="720" height="630" loading="lazy" decoding="async" alt="The saved rides folder &quot;To ride&quot;, each ride with its sketch, its time and its km of curves.">
+      </figure>
+      <div class="card-text">
+        <h3>Your rides, in folders.</h3>
+        <p>Save them and share them.</p>
+      </div>
+    </article>
+    <article class="card plain">
+      <h3>No signal needed.</h3>
+      <p>Routing and town search work with no signal; the map needs a connection.</p>
+    </article>
+  </section>
+
+  <section class="wrap notes">
+    <p>No account needed, and no ads or usage tracking. Your trips are kept on the phone, and your location only leaves it in what you send: a street search, or a ride you open in another app or share. What each map and search service sees: <a href="privacy/#en">privacy policy</a>.</p>
+    <p>Twisty plans the route; your navigation app guides you. Routes come from OpenStreetMap and can be wrong: road signs always win, and never handle the phone while riding.</p>
+  </section>
+
+  <section class="wrap closing">
+    <p class="cta"><span class="status">Coming soon to Google Play</span></p>
+  </section>
+
+  <footer class="wrap">
+    <p class="links">
+      <a href="https://github.com/sanchezpaco/twisty">Code on GitHub (PolyForm Noncommercial)</a>
+      <a href="https://github.com/sanchezpaco/twisty/releases/latest">Road data (ODbL)</a>
+      <a href="privacy/#en">Privacy</a>
+      <span>Contact: <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a></span>
+    </p>
+    <p class="credits">Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors (ODbL) · Map tiles <a href="https://openfreemap.org">OpenFreeMap</a> © <a href="https://openmaptiles.org">OpenMapTiles</a> · Elevation: <a href="https://registry.opendata.aws/terrain-tiles/">Terrain Tiles</a> (Mapzen, AWS Open Data). Europe terrain data produced using Copernicus data and information funded by the European Union - EU-DEM layers. SRTM and GMTED2010 terrain data courtesy of the U.S. Geological Survey. ETOPO1: NOAA National Centers for Environmental Information · Satellite: <a href="https://pnoa.ign.es/">PNOA</a> 2022-2025 CC-BY 4.0 <a href="https://www.scne.es/">scne.es</a>, MosaicoSentinel2 2018-2026 CC-BY 4.0 <a href="https://www.ign.es/">ign.es</a>, contains modified Copernicus Sentinel data · Address search: <a href="https://nominatim.org">Nominatim</a></p>
+  </footer>
+</div>
+
+</main>
+</body>
+</html>

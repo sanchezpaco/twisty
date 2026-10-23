@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.bench.tsbuildinfo",
+    "types": ["node", "vite/client"]
+  },
+  "include": ["bench/**/*.ts"],
+  "exclude": ["bench/.build/**", "bench/out/**"]
+}
