@@ -62,18 +62,18 @@
 
   <p>Twisty is a free app for Android and iPhone that plans motorcycle routes in Spain. It is published by sanchezpaco (“we”). Contact: <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a>.</p>
 
-  <p class="short"><strong>In short.</strong> Twisty has no accounts, no ads, no analytics, no tracking and no crash reporting. We run no servers, and the app sends nothing to us. Route planning and town search happen on your phone. Data leaves your phone only to show the map and when you choose to search an address, open a ride in another app or share a ride. Each case is described below.</p>
+  <p class="short"><strong>In short.</strong> Twisty has no accounts, no ads, no analytics, no tracking and no crash reporting. We run no servers, and the app sends nothing to us. Route planning and town search happen on your phone. Data leaves your phone only to show the map and when you choose to search an address, open a ride in another app, share a ride or open a link. Each case is described below.</p>
 
   <h2>1. What Twisty keeps on your phone</h2>
   <ul>
     <li><strong>Recent trips:</strong> up to 5 trips: those you opened in another app or shared, and the ride that was on screen when you left Twisty. For each one Twisty keeps the start, the finish and the stops (their names and positions), the point you chose on the curves slider, whether tracks were included, and when. When a trip starts or ends at <span class="ui">My location</span>, Twisty does not store that position; it asks for your location again when you reuse the trip.</li>
     <li><strong>Saved rides and folders:</strong> the rides you save, with their name, folder, date, line on the map, start, finish and stops. If a saved ride started or ended at <span class="ui">My location</span>, Twisty keeps your exact position at that time, shown under the name of the nearest town. If you plan that ride again, the position is used as an ordinary start or finish, so it goes into the Google Maps link and anything you share (section 3).</li>
     <li><strong>The ride you last handed over:</strong> when you open a ride in another app or share it, Twisty keeps its start, finish, stops and settings for up to 2 hours, so the ride can be restored if your phone closes Twisty while you navigate. Here your position is kept even when the trip starts or ends at <span class="ui">My location</span>. Once the 2 hours have passed, it is deleted the next time you open Twisty.</li>
-    <li><strong>Settings:</strong> language, map style and the app you chose with <span class="ui">Always use this app</span>.</li>
+    <li><strong>Settings:</strong> language, map style, the app you chose with <span class="ui">Always use this app</span> and how smoothly your phone draws the curves slider.</li>
     <li><strong>Cached files:</strong> when you open a ride in another app or choose <span class="ui">Other app (GPX)</span>, a GPX file of the ride is written to the app’s cache so that app can read it. Recently viewed map images may also stay in the app’s cache. Your phone clears the cache when it needs the space.</li>
     <li><strong>Road data and town index:</strong> these are part of the app and contain no personal data.</li>
   </ul>
-  <p>This data never goes to us. You can delete it at any time: <span class="ui">Clear all</span> (or the cross on a single trip) in <span class="ui">Recent trips</span>, <span class="ui">Remove from saved</span> on a saved ride (or <span class="ui">Delete</span> in the saved list), or, on Android, clearing Twisty’s storage in the system settings, which also removes the ride you last handed over before its 2 hours are up. Deleting a folder keeps its rides. Uninstalling Twisty removes all of it.</p>
+  <p>This data never goes to us. You can delete it at any time: <span class="ui">Clear all</span> (or the cross on a single trip) in <span class="ui">Recent trips</span>, <span class="ui">Remove from saved</span> on a saved ride (or <span class="ui">Delete</span> in the saved list), or, on Android, clearing Twisty’s storage in the system settings, which also removes the ride you last handed over before its 2 hours are up. Deleting a folder keeps its rides. Uninstalling Twisty removes all of it (on iPhone, deleting the app does; offloading it does not). Copies already in a backup stay there until that backup is replaced, and Android may restore them if you reinstall Twisty.</p>
   <p>What Twisty keeps stays in its private storage, which other apps cannot read; a GPX file is given only to the app you pick.</p>
   <p><strong>Backups:</strong></p>
   <ul>
@@ -84,9 +84,10 @@
 
   <h2>2. Your location</h2>
   <ul>
-    <li><strong>When Twisty asks:</strong> only when you tap <span class="ui">Start from my location</span> or reuse a recent trip that starts or ends there. Android and iPhone both let you allow approximate or precise location, and Twisty works with either.</li>
-    <li><strong>What it is used for, on your phone:</strong> setting the start of your trip and, once you have allowed it, putting address results near you first. An address search never asks for permission: it uses your location only if you have already allowed it.</li>
+    <li><strong>When Twisty asks:</strong> only when you tap <span class="ui">Start from my location</span>, tap <span class="ui">Show my location</span> on the map, or reuse a recent trip that starts or ends there. Android 12 and later and iPhone let you allow approximate or precise location, and Twisty works with either.</li>
+    <li><strong>What it is used for, on your phone:</strong> setting the start of your trip, showing your position on the map and, once you have allowed it, putting address results near you first. An address search never asks for permission: it uses your location only if you have already allowed it.</li>
     <li><strong>What it is not used for:</strong> Twisty does not use your location in the background and never sends it to us. Section 3 says exactly what part of it can leave the phone, and when.</li>
+    <li><strong>Turning it off:</strong> you can withdraw the permission at any time, on Android in Settings › Apps › Twisty › Permissions and on iPhone in Settings › Privacy &amp; Security › Location Services › Twisty. Twisty keeps working: you type the start instead.</li>
   </ul>
 
   <h2>3. What leaves your phone, to whom, and when</h2>
@@ -96,7 +97,7 @@
     <li>OpenFreeMap provides the map tiles and label fonts, delivered through Cloudflare.</li>
     <li>Terrain Tiles on Amazon Web Services provide the relief shading.</li>
     <li>Only if you choose the <span class="ui">Satellite</span> map style, the Instituto Geográfico Nacional (IGN) provides the imagery, delivered through Amazon CloudFront.</li>
-    <li>Like any website, these services receive your IP address, the app’s browser identification (which names Twisty and its version and, like any phone browser, the Android or iOS version; on Android it usually names the phone model too, on iPhone only that it is an iPhone) and the map tiles requested. The tiles show the area you are looking at, which includes the area around you when a ride starts at <span class="ui">My location</span>. Twisty sends them nothing else.</li>
+    <li>Like any website, these services receive your IP address, the app’s browser identification (which names Twisty and its version and, like any phone browser, the system’s name and a version: on Android the Android version and usually the phone model, on iPhone that it is an iPhone and a system version, which recent iPhones report as an older, fixed one) and the map tiles requested. The tiles show the area you are looking at, which includes the area around you when a ride starts at <span class="ui">My location</span>. Twisty sends them nothing else.</li>
     <li>Their own privacy policies apply: <a href="https://openfreemap.org/privacy">openfreemap.org/privacy</a> (and Cloudflare’s, <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>), <a href="https://aws.amazon.com/privacy/">aws.amazon.com/privacy</a>, and the privacy section of IGN’s legal notice, <a href="https://www.ign.es/web/ign/portal/info-aviso-legal">ign.es/web/ign/portal/info-aviso-legal</a>.</li>
   </ul>
 
@@ -127,22 +128,28 @@
   <h3>e) Links in Credits</h3>
   <p>The links in <span class="ui">Credits</span> open in your browser. This page is hosted on GitHub Pages, which logs visitors’ IP addresses for security: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
 
-  <p>All of these connections use HTTPS.</p>
+  <h3>f) The app stores</h3>
+  <p>The app stores show us download statistics and, if you agreed in your phone’s settings to share diagnostics with developers, crash reports. They do not identify you, and Twisty adds nothing to them.</p>
+
+  <p>All of these connections use HTTPS. Twisty contains no third-party analytics, advertising or tracking code. The services above receive only what each request needs, and each one’s published policy (linked above) limits what it does with it; none of them receives your data from us.</p>
 
   <h2>4. Apps on your phone</h2>
   <p>On Android, to list the navigation apps that can open a GPX file, Twisty asks Android which installed apps open GPX files. Only those apps are checked. The list, and the app you choose to always use, stay on your phone.</p>
   <p>On iPhone, Twisty does not look at your apps: <span class="ui">Other app (GPX)</span> opens the system share sheet, where iOS offers the apps that take the file.</p>
 
-  <h2>5. Children</h2>
+  <h2>5. Legal basis and transfers</h2>
+  <p>What leaves your phone for the features you ask for (address search, opening or sharing a ride) is processed to provide them (GDPR art. 6(1)(b)); the map images are requested on the legitimate interest of showing you the map (art. 6(1)(f)). Some of the services in section 3 are outside the EU: the OpenStreetMap Foundation is in the United Kingdom, covered by an EU adequacy decision, and Cloudflare, Amazon, Google and GitHub are US companies certified under the EU-US Data Privacy Framework.</p>
+
+  <h2>6. Children</h2>
   <p>Twisty is meant for adult riders and is not directed at children.</p>
 
-  <h2>6. Your rights</h2>
-  <p>We hold no personal data about you, so there is nothing for us to give you, correct or delete. The data on your phone is under your control (section 1). For data received by the services in section 3, contact them directly through the policies linked above. In Spain you can also complain to the Agencia Española de Protección de Datos (<a href="https://www.aepd.es/">aepd.es</a>).</p>
+  <h2>7. Your rights</h2>
+  <p>You have the right to access, rectify and erase your personal data, to restrict or object to its processing, and to data portability. We hold no personal data about you, so a request to us will usually find nothing to give you, correct or delete, but you can write to <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a> and we will answer within one month. The data on your phone is under your control (section 1). For data received by the services in section 3, contact them directly through the policies linked above. In Spain you can also complain to the Agencia Española de Protección de Datos (<a href="https://www.aepd.es/">aepd.es</a>).</p>
 
-  <h2>7. Changes</h2>
+  <h2>8. Changes</h2>
   <p>If Twisty’s handling of data changes, we will update this page and its date before the app update that brings the change.</p>
 
-  <h2>8. Contact</h2>
+  <h2>9. Contact</h2>
   <p><a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a></p>
 </article>
 
@@ -153,18 +160,18 @@
 
   <p>Twisty es una app gratuita para Android e iPhone que planifica rutas en moto por España. La publica sanchezpaco («nosotros»). Contacto: <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a>.</p>
 
-  <p class="short"><strong>En resumen.</strong> Twisty no tiene cuentas, ni anuncios, ni analítica, ni rastreo, ni informes de errores. No tenemos servidores y la app no nos envía nada. La planificación de rutas y la búsqueda de pueblos se hacen en tu móvil. Los datos solo salen del móvil para mostrar el mapa y cuando tú decides buscar una dirección, abrir una ruta en otra app o compartirla. Abajo se explica cada caso.</p>
+  <p class="short"><strong>En resumen.</strong> Twisty no tiene cuentas, ni anuncios, ni analítica, ni rastreo, ni informes de errores. No tenemos servidores y la app no nos envía nada. La planificación de rutas y la búsqueda de pueblos se hacen en tu móvil. Los datos solo salen del móvil para mostrar el mapa y cuando tú decides buscar una dirección, abrir una ruta en otra app, compartirla o abrir un enlace. Abajo se explica cada caso.</p>
 
   <h2>1. Qué guarda Twisty en tu móvil</h2>
   <ul>
     <li><strong>Viajes recientes:</strong> hasta 5 viajes: los que has abierto en otra app o compartido, y la ruta que tenías en pantalla al salir de Twisty. De cada uno, Twisty guarda la salida, la llegada y las paradas (sus nombres y posiciones), el punto que elegiste en el control de curvas, si incluía pistas y cuándo. Cuando un viaje sale de <span class="ui">Mi ubicación</span> o llega a ella, Twisty no guarda esa posición: vuelve a pedir tu ubicación cuando repites el viaje.</li>
     <li><strong>Rutas guardadas y carpetas:</strong> las rutas que guardas, con su nombre, carpeta, fecha, línea en el mapa, salida, llegada y paradas. Si una ruta guardada salía de <span class="ui">Mi ubicación</span> o llegaba a ella, Twisty guarda tu posición exacta en ese momento, con el nombre del pueblo más cercano. Si vuelves a planificar esa ruta, esa posición pasa a ser una salida o llegada normal, así que va en el enlace de Google Maps y en lo que compartas (apartado 3).</li>
     <li><strong>La última ruta que has pasado a otra app:</strong> cuando abres una ruta en otra app o la compartes, Twisty guarda su salida, llegada, paradas y ajustes durante 2 horas como máximo, para recuperarla si el móvil cierra Twisty mientras navegas. Aquí se guarda tu posición aunque el viaje salga de <span class="ui">Mi ubicación</span> o llegue a ella. Pasadas las 2 horas, se borra la próxima vez que abres Twisty.</li>
-    <li><strong>Ajustes:</strong> el idioma, el estilo del mapa y la app que elegiste con <span class="ui">Usar siempre esta app</span>.</li>
+    <li><strong>Ajustes:</strong> el idioma, el estilo del mapa, la app que elegiste con <span class="ui">Usar siempre esta app</span> y con qué fluidez dibuja tu móvil el control de curvas.</li>
     <li><strong>Archivos en caché:</strong> cuando abres una ruta en otra app o eliges <span class="ui">Otra app (GPX)</span>, se escribe un archivo GPX de la ruta en la caché de la app para que esa app pueda leerlo. Las imágenes del mapa que has visto hace poco también pueden quedarse en la caché. El móvil vacía la caché cuando necesita espacio.</li>
     <li><strong>Datos de carreteras e índice de pueblos:</strong> forman parte de la app y no contienen datos personales.</li>
   </ul>
-  <p>Estos datos nunca nos llegan. Puedes borrarlos cuando quieras: <span class="ui">Borrar todo</span> (o la cruz de un viaje) en <span class="ui">Viajes recientes</span>, <span class="ui">Quitar de guardadas</span> en una ruta guardada (o <span class="ui">Borrar</span> en la lista de guardadas), o, en Android, borrando el almacenamiento de Twisty en los ajustes del sistema, que también borra la última ruta que has pasado a otra app antes de que pasen sus 2 horas. Al borrar una carpeta se conservan sus rutas. Si desinstalas Twisty, se borra todo.</p>
+  <p>Estos datos nunca nos llegan. Puedes borrarlos cuando quieras: <span class="ui">Borrar todo</span> (o la cruz de un viaje) en <span class="ui">Viajes recientes</span>, <span class="ui">Quitar de guardadas</span> en una ruta guardada (o <span class="ui">Borrar</span> en la lista de guardadas), o, en Android, borrando el almacenamiento de Twisty en los ajustes del sistema, que también borra la última ruta que has pasado a otra app antes de que pasen sus 2 horas. Al borrar una carpeta se conservan sus rutas. Si desinstalas Twisty, se borra todo (en iPhone, al eliminar la app; al descargarla, no). Las copias que ya estén en una copia de seguridad siguen allí hasta que esa copia se sustituya, y Android puede restaurarlas si vuelves a instalar Twisty.</p>
   <p>Lo que guarda Twisty se queda en su almacenamiento privado, que otras apps no pueden leer; un archivo GPX solo se entrega a la app que elijas.</p>
   <p><strong>Copias de seguridad:</strong></p>
   <ul>
@@ -175,9 +182,10 @@
 
   <h2>2. Tu ubicación</h2>
   <ul>
-    <li><strong>Cuándo la pide Twisty:</strong> solo cuando tocas <span class="ui">Salir desde mi ubicación</span> o repites un viaje reciente que sale de allí o llega allí. Android y el iPhone te dejan permitir la ubicación aproximada o la precisa, y Twisty funciona con cualquiera de las dos.</li>
-    <li><strong>Para qué se usa, en tu móvil:</strong> para fijar la salida del viaje y, si ya lo has permitido, para mostrar primero las direcciones cercanas a ti. Buscar una dirección nunca pide permiso: solo usa tu ubicación si ya la habías permitido.</li>
+    <li><strong>Cuándo la pide Twisty:</strong> solo cuando tocas <span class="ui">Salir desde mi ubicación</span>, tocas <span class="ui">Ver dónde estoy</span> en el mapa o repites un viaje reciente que sale de allí o llega allí. Android 12 y posteriores y el iPhone te dejan permitir la ubicación aproximada o la precisa, y Twisty funciona con cualquiera de las dos.</li>
+    <li><strong>Para qué se usa, en tu móvil:</strong> para fijar la salida del viaje, para mostrar tu posición en el mapa y, si ya lo has permitido, para mostrar primero las direcciones cercanas a ti. Buscar una dirección nunca pide permiso: solo usa tu ubicación si ya la habías permitido.</li>
     <li><strong>Para qué no se usa:</strong> Twisty no usa tu ubicación en segundo plano y nunca nos la envía. El apartado 3 explica exactamente qué parte de ella puede salir del móvil y cuándo.</li>
+    <li><strong>Cómo quitarla:</strong> puedes retirar el permiso cuando quieras, en Android en Ajustes › Aplicaciones › Twisty › Permisos y en iPhone en Ajustes › Privacidad y seguridad › Localización › Twisty. Twisty sigue funcionando: escribes la salida tú.</li>
   </ul>
 
   <h2>3. Qué sale de tu móvil, hacia quién y cuándo</h2>
@@ -187,7 +195,7 @@
     <li>OpenFreeMap proporciona las teselas del mapa y las fuentes de las etiquetas, servidas a través de Cloudflare.</li>
     <li>Terrain Tiles en Amazon Web Services proporciona el sombreado del relieve.</li>
     <li>Solo si eliges el estilo de mapa <span class="ui">Satélite</span>, el Instituto Geográfico Nacional (IGN) proporciona las imágenes, servidas a través de Amazon CloudFront.</li>
-    <li>Como cualquier web, estos servicios reciben tu dirección IP, la identificación de navegador de la app (que incluye el nombre de Twisty y su versión y, como cualquier navegador de móvil, la versión de Android o de iOS; en Android suele incluir también el modelo del móvil, en iPhone solo que es un iPhone) y las teselas que se piden. Las teselas muestran la zona que estás viendo, que incluye tu entorno cuando una ruta sale de <span class="ui">Mi ubicación</span>. Twisty no les envía nada más.</li>
+    <li>Como cualquier web, estos servicios reciben tu dirección IP, la identificación de navegador de la app (que incluye el nombre de Twisty y su versión y, como cualquier navegador de móvil, el nombre del sistema y una versión: en Android, la versión de Android y normalmente el modelo del móvil; en iPhone, que es un iPhone y una versión del sistema, que los iPhone recientes dan como una antigua y fija) y las teselas que se piden. Las teselas muestran la zona que estás viendo, que incluye tu entorno cuando una ruta sale de <span class="ui">Mi ubicación</span>. Twisty no les envía nada más.</li>
     <li>Se aplican sus propias políticas de privacidad: <a href="https://openfreemap.org/privacy">openfreemap.org/privacy</a> (y la de Cloudflare, <a href="https://www.cloudflare.com/privacypolicy/">cloudflare.com/privacypolicy</a>), <a href="https://aws.amazon.com/es/privacy/">aws.amazon.com/es/privacy</a> y el apartado de privacidad del aviso legal del IGN, <a href="https://www.ign.es/web/ign/portal/info-aviso-legal">ign.es/web/ign/portal/info-aviso-legal</a>.</li>
   </ul>
 
@@ -218,22 +226,28 @@
   <h3>e) Enlaces de Créditos</h3>
   <p>Los enlaces de <span class="ui">Créditos</span> se abren en tu navegador. Esta página está alojada en GitHub Pages, que registra la dirección IP de quien la visita por seguridad: <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">Declaración de privacidad de GitHub</a>.</p>
 
-  <p>Todas estas conexiones usan HTTPS.</p>
+  <h3>f) Las tiendas de apps</h3>
+  <p>Las tiendas de apps nos muestran estadísticas de descargas y, si aceptaste en los ajustes del móvil compartir diagnósticos con los desarrolladores, informes de errores. No te identifican, y Twisty no les añade nada.</p>
+
+  <p>Todas estas conexiones usan HTTPS. Twisty no contiene código de analítica, publicidad ni rastreo de terceros. Los servicios de arriba solo reciben lo que necesita cada petición, y la política publicada de cada uno (enlazada arriba) limita lo que hace con ello; ninguno recibe tus datos de nosotros.</p>
 
   <h2>4. Apps de tu móvil</h2>
   <p>En Android, para listar las apps de navegación que pueden abrir un archivo GPX, Twisty pregunta a Android qué apps instaladas abren archivos GPX. Solo se consultan esas apps. La lista, y la app que eliges usar siempre, se quedan en tu móvil.</p>
   <p>En iPhone, Twisty no mira tus apps: <span class="ui">Otra app (GPX)</span> abre el menú de compartir del sistema, donde iOS ofrece las apps que aceptan el archivo.</p>
 
-  <h2>5. Menores</h2>
+  <h2>5. Base legal y transferencias</h2>
+  <p>Lo que sale de tu móvil para las funciones que pides (buscar una dirección, abrir o compartir una ruta) se trata para prestártelas (art. 6.1.b del RGPD); las imágenes del mapa se piden por el interés legítimo de mostrarte el mapa (art. 6.1.f). Algunos servicios del apartado 3 están fuera de la UE: la OpenStreetMap Foundation está en el Reino Unido, cubierto por una decisión de adecuación de la UE, y Cloudflare, Amazon, Google y GitHub son empresas de Estados Unidos certificadas en el Marco de Privacidad de Datos UE-EE. UU.</p>
+
+  <h2>6. Menores</h2>
   <p>Twisty está pensada para motoristas adultos y no se dirige a menores.</p>
 
-  <h2>6. Tus derechos</h2>
-  <p>No tenemos datos personales tuyos, así que no hay nada que podamos entregarte, corregir o borrar. Los datos de tu móvil están bajo tu control (apartado 1). Para los datos que reciben los servicios del apartado 3, dirígete a ellos a través de las políticas enlazadas arriba. En España también puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es/">aepd.es</a>).</p>
+  <h2>7. Tus derechos</h2>
+  <p>Tienes derecho a acceder a tus datos personales, rectificarlos y suprimirlos, a limitar su tratamiento u oponerte a él, y a su portabilidad. No tenemos datos personales tuyos, así que una petición a nosotros normalmente no encontrará nada que entregarte, corregir o borrar, pero puedes escribir a <a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a> y te responderemos en el plazo de un mes. Los datos de tu móvil están bajo tu control (apartado 1). Para los datos que reciben los servicios del apartado 3, dirígete a ellos a través de las políticas enlazadas arriba. En España también puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es/">aepd.es</a>).</p>
 
-  <h2>7. Cambios</h2>
+  <h2>8. Cambios</h2>
   <p>Si cambia el modo en que Twisty trata los datos, actualizaremos esta página y su fecha antes de la actualización de la app que traiga el cambio.</p>
 
-  <h2>8. Contacto</h2>
+  <h2>9. Contacto</h2>
   <p><a href="mailto:sanchezpacodev@gmail.com">sanchezpacodev@gmail.com</a></p>
 </article>
 
