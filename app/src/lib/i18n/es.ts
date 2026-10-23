@@ -29,6 +29,11 @@ export const es: Messages = {
     searchAddresses: (query) => `Buscar calles y direcciones para «${query}»`,
     noAddresses: (query) => `No se han encontrado direcciones para «${query}».`,
     addressSearchUnavailable: 'La búsqueda de direcciones no está disponible ahora mismo.',
+    locationDenied: 'Twisty no puede usar tu ubicación. Actívala en Ajustes.',
+    locationUnavailable: 'No te encontramos. ¿Tienes la ubicación activada?',
+    tryAgain: 'Reintentar',
+    recent: 'Recientes',
+    chooseOnMap: 'Elegir en el mapa',
   },
   options: {
     label: 'Opciones',
@@ -233,6 +238,8 @@ export const es: Messages = {
     showRegion: { canaries: 'Ver Canarias', mainland: 'Ver la Península' },
     showRide: 'Ver toda la ruta',
     locateMe: 'Ver dónde estoy',
+    setHere: { from: 'Poner la salida aquí', to: 'Poner la llegada aquí', via: 'Poner la parada aquí' },
+    cancelPick: 'Cancelar',
   },
   share: {
     button: 'Compartir ruta',
@@ -267,7 +274,6 @@ export const es: Messages = {
     noConnection: 'No hay conexión por carretera entre estos dos lugares.',
     sameSpot: 'La salida y la llegada caen en el mismo punto del mapa de carreteras: elige una llegada más lejos.',
     tracksDownload: 'No se han podido descargar las pistas. Revisa la conexión y vuelve a intentarlo.',
-    location: 'No se ha podido obtener tu ubicación.',
     unexpected: 'Algo ha fallado al planificar la ruta.',
   },
 }

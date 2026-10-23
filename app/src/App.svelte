@@ -6,8 +6,8 @@
   import { type AppError, type FailedAt, PlanningError } from './lib/errors'
   import { credits } from './lib/creditsState.svelte'
   import type { LonLat } from './lib/geo'
-  import { isSidePanel } from './lib/layout'
-  import { locateRider, placeHere, riderPosition, type RiderFix } from './lib/locate'
+  import { untrack } from 'svelte'
+  import { type LocationProblem, locateRider, locationProblem, placeHere, riderPosition, type RiderFix } from './lib/locate'
   import { loadPlaceIndex, type Place } from './lib/geocoding'
   import { i18n } from './lib/i18n/i18n.svelte'
   import { PlannerClient } from './lib/planner/plannerClient'
@@ -68,6 +68,14 @@
   let locating = $state(false)
   /** The rider's last fix, from either way of asking for it; never stored or sent. */
   let rider = $state.raw<RiderFix | null>(null)
+  /** Why the last ask for the rider's position for the trip failed, and how to ask again; gone once the start changes. */
+  let locationTrouble = $state.raw<{ problem: LocationProblem; retry: () => void } | null>(null)
+  $effect(() => {
+    void from
+    untrack(() => (locationTrouble = null))
+  })
+  /** The map asks the rider where to put an end or a stop: a crosshair over the map's centre, confirmed by a tap. */
+  let mapPick = $state<{ role: 'from' | 'to' | 'via'; index?: number } | null>(null)
   /** Changes with every plan result, so the map knows a new route from a step of the slider. */
   let planKey = $state(0)
   let ridesPlanned = $state(0)
@@ -290,47 +298,55 @@
     return Math.max(0, affordable)
   }
 
-  async function pickOnMap(role: 'from' | 'to' | 'via', position: LonLat) {
+  async function pickOnMap(role: 'from' | 'to' | 'via', position: LonLat, index?: number) {
     // A pick on a saved ride edits the saved ride's trip, not the one the fields held before it was opened.
     leaveSaved()
     const place = (await loadPlaceIndex()).describe(position, i18n.t.places.nearPlace)
     if (role !== 'via') return changeEnd(role, place)
-    if (!from || !to || via.length >= MAX_VIA) return
+    if (!from || !to) return
+    // A stop field chosen on the map keeps its place among the stops.
+    if (index !== undefined && index < via.length) return changeVia(via.map((stop, i) => (i === index ? place : stop)))
+    if (via.length >= MAX_VIA) return
     // A stop dropped on the map goes where it lengthens the trip least; the rider can move it in the fields.
     const at = insertionIndex(positions(from, via, to), place.position)
     changeVia([...via.slice(0, at), place, ...via.slice(at)])
   }
 
-  /** The rider's position, or null after showing why there is none. */
-  async function locate(): Promise<Place | null> {
+  /** The rider's position, or null after saying why there is none under the start, with `retry` to ask again. */
+  async function locate(retry: () => void): Promise<Place | null> {
     locating = true
     try {
       rider = await locateRider(riderPosition())
-      if (error === 'location') error = null
+      locationTrouble = null
       return placeHere(rider, i18n.t.places.myLocation)
-    } catch {
-      error = 'location'
+    } catch (failure) {
+      locationTrouble = { problem: await locationProblem(failure), retry }
       return null
     } finally {
       locating = false
     }
   }
 
-  /** The map's own "where am I": the trip stays as it is, so a failure is a toast and not the panel's error. */
-  async function locateOnMap(): Promise<RiderFix | null> {
+  /** The map's own "where am I": the trip stays as it is, so a failure is the map's to tell. */
+  async function locateOnMap(): Promise<RiderFix | LocationProblem> {
     try {
       rider = await locateRider(riderPosition())
       return rider
-    } catch {
-      const anchor = isSidePanel() ? document.querySelector<HTMLElement>('.foot__credit') : document.querySelector<HTMLElement>('aside.panel')
-      showToast(i18n.t.errors.location, anchor, { kind: 'problem' })
-      return null
+    } catch (failure) {
+      return locationProblem(failure)
     }
   }
 
   async function locateStart() {
-    const here = await locate()
+    const here = await locate(locateStart)
     if (here) changeEnd('from', here)
+  }
+
+  function confirmMapPick(position: LonLat) {
+    if (!mapPick) return
+    const { role, index } = mapPick
+    mapPick = null
+    void pickOnMap(role, position, index)
   }
 
   /**
@@ -338,8 +354,7 @@
    * A trip with a "here" end waits for one position, used for both ends of a loop; the fields change only then, so the
    * previous trip is not planned with half of this one.
    */
-  function pickTrip(index: number) {
-    const trip = history[index]
+  function openTrip(trip: HistoryTrip) {
     includeTracks = tracksFor(trip.includeTracks)
     const plan = (places: ReturnType<typeof restoreTrip>) => {
       if (!places) return
@@ -348,7 +363,7 @@
       from = places.from
       to = places.to
     }
-    if (needsHere(trip)) locate().then((here) => plan(restoreTrip(trip, here)))
+    if (needsHere(trip)) locate(() => openTrip(trip)).then((here) => plan(restoreTrip(trip, here)))
     else plan(restoreTrip(trip, null))
   }
 
@@ -453,6 +468,9 @@
     {listOpen}
     {rider}
     onlocate={locateOnMap}
+    picking={mapPick?.role ?? null}
+    onpickhere={confirmMapPick}
+    oncancelpick={() => (mapPick = null)}
   />
   <Panel
     from={savedView ? savedPlace(savedView.from) : from}
@@ -483,11 +501,14 @@
     ontracks={(include) => (includeTracks = include)}
     onlocate={locateStart}
     {locating}
+    locationProblem={locationTrouble?.problem ?? null}
+    onretrylocate={() => locationTrouble?.retry()}
+    onchooseonmap={(role, index) => (mapPick = { role, index })}
     onselect={select}
     onscrub={scrub}
     onfocus={focusTwisty}
     {history}
-    onpicktrip={pickTrip}
+    onpicktrip={(index) => openTrip(history[index])}
     onremovetrip={forgetTrip}
     onclearhistory={() => commitHistory([])}
     onhandover={handOver}

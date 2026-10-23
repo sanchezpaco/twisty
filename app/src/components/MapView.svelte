@@ -24,7 +24,8 @@
   import { onBackButton } from '../lib/backButton'
   import type { LonLat } from '../lib/geo'
   import { isSidePanel, onLayoutChange, sidePanelCover, sidePanelFitMargin } from '../lib/layout'
-  import type { RiderFix } from '../lib/locate'
+  import type { LocationProblem, RiderFix } from '../lib/locate'
+  import { showToast } from '../lib/toastState.svelte'
   import {
     addRouteLayers,
     placePeaks,
@@ -75,11 +76,36 @@
     listOpen: boolean
     /** The rider's last known position, drawn as a dot; it stays on the phone. */
     rider: RiderFix | null
-    /** Reads the rider's position, or says why it could not and gives null. */
-    onlocate: () => Promise<RiderFix | null>
+    /** Reads the rider's position, or why there is none. */
+    onlocate: () => Promise<RiderFix | LocationProblem>
+    /** What the rider is choosing on the map, with the crosshair over its centre; null when not choosing. */
+    picking: PickRole | null
+    onpickhere: (position: LonLat) => void
+    oncancelpick: () => void
   }
 
-  let { ride, planKey, from, to, stops, focus, scrubbing, onpick, onmove, coveredHeight, footClearance, planning, stopsCapped, failed, listOpen, rider, onlocate }: Props = $props()
+  let {
+    ride,
+    planKey,
+    from,
+    to,
+    stops,
+    focus,
+    scrubbing,
+    onpick,
+    onmove,
+    coveredHeight,
+    footClearance,
+    planning,
+    stopsCapped,
+    failed,
+    listOpen,
+    rider,
+    onlocate,
+    picking,
+    onpickhere,
+    oncancelpick,
+  }: Props = $props()
 
   const LONG_PRESS_MS = 550
   /** The pick menu stays inside the map: it is this wide, centred on the press, and this tall above it. */
@@ -390,6 +416,17 @@
   })
 
   $effect(() => {
+    if (picking) return onBackButton(() => (oncancelpick(), true))
+  })
+
+  // The padding keeps the map's centre in the middle of what the sheet leaves free: that is where the crosshair stands.
+  function pickHere() {
+    if (!map) return
+    const { lng, lat } = map.getCenter()
+    onpickhere([lng, lat])
+  }
+
+  $effect(() => {
     const data = riderPositionData(rider)
     if (loaded && map) (map.getSource(RIDER_POSITION) as GeoJSONSource | undefined)?.setData(data)
   })
@@ -421,7 +458,12 @@
     locatingRider = true
     const fix = await onlocate()
     locatingRider = false
-    if (!fix || !map) return
+    if (typeof fix === 'string') {
+      const anchor = isSidePanel() ? document.querySelector<HTMLElement>('.foot__credit') : document.querySelector<HTMLElement>('aside.panel')
+      const message = fix === 'denied' ? i18n.t.places.locationDenied : i18n.t.places.locationUnavailable
+      return showToast(message, anchor, { kind: 'problem', action: { label: i18n.t.places.tryAgain, run: locateMe } })
+    }
+    if (!map) return
     const target = mapPadding(coveredHeight)
     covered = target
     map.easeTo({ center: fix.position, zoom: Math.max(map.getZoom(), RIDER_ZOOM), padding: target, duration: RIDER_EASE_MS, easing: easeOutQuint })
@@ -490,6 +532,8 @@
   }
 
   function openMenu(event: MapMouseEvent | MapTouchEvent) {
+    // While a place is chosen with the crosshair, the map only moves.
+    if (picking) return
     menu = { x: event.point.x, y: event.point.y, position: [event.lngLat.lng, event.lngLat.lat] }
   }
 
@@ -620,7 +664,27 @@
 
 <RegionInset region={overviewOf === 'canaries' ? 'mainland' : 'canaries'} shown={insetShown} coveredHeight={footClearance} {footHeight} onpick={showRegion} />
 
-<MapCorner {rideHidden} locating={locatingRider} coveredHeight={footClearance} {footHeight} onshowride={showRide} onlocate={locateMe} />
+{#if picking}
+  <!-- The map moves under a fixed crosshair: what lies under it when the rider confirms is the place. -->
+  <div class="pick-target" style:--sheet-covered="{coveredHeight}px" aria-hidden="true">
+    <svg viewBox="0 0 40 40" width="40" height="40">
+      <circle cx="20" cy="20" r="11" fill="none" stroke="currentColor" stroke-width="2.5" />
+      <path d="M20 2v9M20 29v9M2 20h9M29 20h9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="20" cy="20" r="2.5" fill="currentColor" />
+    </svg>
+  </div>
+  <div class="pick-bar" style:--sheet-covered="{footClearance}px" style:--foot-height="{footHeight}px">
+    <button class="pick-bar__set" onclick={pickHere}>{i18n.t.map.setHere[picking]}</button>
+    <button class="pick-bar__cancel" onclick={oncancelpick} aria-label={i18n.t.map.cancelPick} title={i18n.t.map.cancelPick}>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+{/if}
+
+<!-- While a place is chosen on the map, the pill's × would stand beside the corner's round buttons: they step aside. -->
+{#if !picking}<MapCorner {rideHidden} locating={locatingRider} coveredHeight={footClearance} {footHeight} onshowride={showRide} onlocate={locateMe} />{/if}
 
 <!-- Light status-bar icons would vanish on a pale map or a photo, so the top edge of those is shaded. -->
 <div class="map-scrim" class:map-scrim--on={mapTheme.current !== 'dark'} aria-hidden="true"></div>
@@ -764,6 +828,60 @@
     color: var(--amber);
   }
 
+  /* In the middle of the map the sheet leaves free, where the camera's padded centre is. */
+  .pick-target {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: calc((var(--app-height, 100%) - var(--sheet-covered)) / 2);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+    pointer-events: none;
+    transition: top 0.3s var(--ease-out);
+  }
+
+  /* Above the sheet and the credit, centred, clear of the corner buttons on the right. */
+  .pick-bar {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    bottom: calc(var(--sheet-covered) + var(--foot-height) + 14px);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: rise 0.22s var(--ease-out);
+    transition: bottom 0.3s var(--ease-out);
+  }
+
+  .pick-bar__set {
+    min-height: var(--touch-target);
+    padding: 0 20px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--gradient);
+    box-shadow: var(--map-shadow);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pick-bar__cancel {
+    display: grid;
+    place-items: center;
+    width: var(--touch-target);
+    height: var(--touch-target);
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--map-shadow);
+    color: var(--text-muted);
+  }
+
   .pick-menu {
     position: absolute;
     z-index: 5;
@@ -830,6 +948,13 @@
     from {
       opacity: 0;
       transform: translate(-50%, calc(-100% - 4px)) scale(0.94);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 8px);
     }
   }
 

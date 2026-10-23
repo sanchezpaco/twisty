@@ -31,9 +31,29 @@
     offer?: Place | null
     /** A stop's own controls (move, remove), at the end of the field in place of clearing it. */
     tools?: Snippet
+    /** Places the rider went to lately, offered while the field is empty. */
+    recent?: Place[]
+    /** Offered while the field is empty: the rider chooses the place on the map instead. */
+    onmap?: () => void
   }
 
-  let { role, index, value, near, showDistance, placeholder, busy = false, onchange, onchosen, dropdown = true, list = $bindable(), offer = null, tools }: Props = $props()
+  let {
+    role,
+    index,
+    value,
+    near,
+    showDistance,
+    placeholder,
+    busy = false,
+    onchange,
+    onchosen,
+    dropdown = true,
+    list = $bindable(),
+    offer = null,
+    tools,
+    recent = [],
+    onmap,
+  }: Props = $props()
 
   let input: HTMLInputElement
 
@@ -56,10 +76,15 @@
   let addressResults = $state(false)
   let addressesFromRider = $state(false)
 
+  /** An empty field has nothing to search: it offers the recent places, and the map. */
+  const empty = $derived(query.trim() === '' && !addressResults)
+  const listed = $derived(empty ? recent : suggestions)
   /** What the list shows: the offered place first, unless an address search is showing its answers. */
-  const shown = $derived(offer && !addressResults ? [offer, ...suggestions.filter((place) => place.position.join() !== offer.position.join())] : suggestions)
+  const shown = $derived(offer && !addressResults ? [offer, ...listed.filter((place) => place.position.join() !== offer.position.join())] : listed)
+  /** Where the recent places begin in the list, under their heading; null when there are none. */
+  const recentFrom = $derived(empty && shown.length > (offer ? 1 : 0) ? (offer ? 1 : 0) : null)
   const optionCount = $derived(shown.length + (offerAddressSearch ? 1 : 0))
-  const open = $derived(focused && (optionCount > 0 || addressMessage !== null))
+  const open = $derived(focused && (optionCount > 0 || addressMessage !== null || (empty && onmap !== undefined)))
 
   $effect(() => {
     query = value?.label ?? ''
@@ -74,8 +99,10 @@
           highlighted,
           showDistance: addressResults ? addressesFromRider : showDistance,
           query,
+          recentFrom,
           onchoose: choose,
           onaddresses: findAddresses,
+          onmap: empty ? onmap : undefined,
         }
       : null
   })

@@ -1,6 +1,6 @@
 /** Problems the rider can be told about; each one has a message in every language (see `i18n`). */
 export type PlanningErrorCode = 'tooFar' | 'noConnection' | 'sameSpot' | 'tracksDownload' | 'unexpected'
-export type AppError = PlanningErrorCode | 'location'
+export type AppError = PlanningErrorCode
 
 /**
  * Where a trip fails: the leg with no road between its points (`noConnection`) or whose points snap to one spot of the graph

@@ -36,6 +36,11 @@ export const en = {
     searchAddresses: (query: string) => `Search streets and addresses for “${query}”`,
     noAddresses: (query: string) => `No addresses found for “${query}”.`,
     addressSearchUnavailable: 'Address search is unavailable right now.',
+    locationDenied: "Twisty can't use your location. Allow it in Settings.",
+    locationUnavailable: "Couldn't find you. Is location on?",
+    tryAgain: 'Try again',
+    recent: 'Recent',
+    chooseOnMap: 'Choose on the map',
   },
   options: {
     label: 'Options',
@@ -241,6 +246,8 @@ export const en = {
     showRegion: { canaries: 'Show the Canary Islands', mainland: 'Show mainland Spain' } satisfies Record<Region, string>,
     showRide: 'Show whole ride',
     locateMe: 'Show my location',
+    setHere: { from: 'Set as start', to: 'Set as finish', via: 'Set as stop' },
+    cancelPick: 'Cancel',
   },
   share: {
     button: 'Share ride',
@@ -275,7 +282,6 @@ export const en = {
     noConnection: 'There is no road connection between these two places.',
     sameSpot: 'Start and finish are on the same spot of the road map: choose a finish farther away.',
     tracksDownload: 'Could not download the tracks. Check your connection and try again.',
-    location: 'Could not get your location.',
     unexpected: 'Something went wrong while planning.',
   } satisfies Record<AppError, string>,
 }

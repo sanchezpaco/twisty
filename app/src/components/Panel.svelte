@@ -5,7 +5,9 @@
   import type { LonLat } from '../lib/geo'
   import type { Place } from '../lib/geocoding'
   import { onBackButton } from '../lib/backButton'
+  import type { LocationProblem } from '../lib/locate'
   import { TRACKS_OFFERED } from '../lib/offRoad'
+  import { recentPlaces } from '../lib/recentPlaces'
   import { isSidePanel, onLayoutChange } from '../lib/layout'
   import { gpxFileName } from '../lib/gpx'
   import { MAX_VIA } from '../lib/googleMaps'
@@ -77,6 +79,11 @@
     onlocate: () => void
     /** The rider's position is on its way to the start: from the tap until a fix or an error. */
     locating: boolean
+    /** Why the rider's position could not be had for the trip, said under the start; null when nothing failed. */
+    locationProblem: LocationProblem | null
+    onretrylocate: () => void
+    /** The rider chooses this field's place on the map: the editor closes and the map shows a crosshair. */
+    onchooseonmap: (role: 'from' | 'to' | 'via', index?: number) => void
     onselect: (index: number) => void
     /** A finger is on the slider, or has left it. */
     onscrub: (scrubbing: boolean) => void
@@ -257,6 +264,20 @@
     const at = props.error === 'tooFar' ? point : atLeg && leg !== undefined ? (leg + 1 < last ? leg + 1 : leg) : undefined
     return at !== undefined && at > 0 && at < last ? at - 1 : null
   })
+  /** Recent places for a field: none that the trip already has elsewhere. */
+  function recentFor(...taken: (Place | null)[]): Place[] {
+    return recentPlaces(props.history, savedRides.store.rides, taken.filter((place): place is Place => place !== null).map((place) => place.position))
+  }
+
+  /** On a phone the map is under the editor: choosing on it closes the editor first. Beside the map, the long-press does. */
+  function chooseOnMap(role: 'from' | 'to' | 'via', index?: number): (() => void) | undefined {
+    if (sidePanel) return undefined
+    return () => {
+      closeEditor()
+      props.onchooseonmap(role, index)
+    }
+  }
+
   // "My location" is offered as a start until the rider starts typing something else.
   const offersMyLocation = $derived(activeRole === 'from' && (!openList || openList.query.trim() === (props.from?.label ?? '').trim()))
 
@@ -539,6 +560,8 @@
           onchosen={() => placeChosen('from')}
           dropdown={sidePanel}
           bind:list={startList}
+          recent={recentFor(props.to, ...props.via)}
+          onmap={chooseOnMap('from')}
         />
         <!-- "My location" belongs to the start, whatever lies between it and the finish. -->
         <button class="row-action" class:row-action--busy={props.locating} onmousedown={keepFocus} onclick={props.onlocate} title={i18n.t.places.locate} aria-label={i18n.t.places.locate}>
@@ -548,6 +571,12 @@
           </svg>
         </button>
       </div>
+      {#if props.locationProblem}
+        <p class="locate-problem" role="alert">
+          <span>{props.locationProblem === 'denied' ? i18n.t.places.locationDenied : i18n.t.places.locationUnavailable}</span>
+          <button onmousedown={keepFocus} onclick={props.onretrylocate}>{i18n.t.places.tryAgain}</button>
+        </p>
+      {/if}
       {#each shownStops as stop, index (index)}
         <div
           class="place-row place-row--via"
@@ -567,6 +596,8 @@
             onchosen={(place) => stopChosen(index, place)}
             dropdown={sidePanel}
             bind:list={stopLists[index]}
+            recent={recentFor(props.from, props.to, ...shownStops.filter((_, i) => i !== index))}
+            onmap={chooseOnMap('via', index)}
           >
             {#snippet tools()}
               <button class="stop-tool" onclick={() => removeStop(index)} aria-label={i18n.t.via.remove(stop?.label ?? i18n.t.via.placeholder)}>×</button>
@@ -601,6 +632,8 @@
           dropdown={sidePanel}
           bind:list={finishList}
           offer={loopOffer}
+          recent={recentFor(props.from, ...props.via)}
+          onmap={chooseOnMap('to')}
         />
         <!-- The swap turns the whole trip round: it stays with the finish. -->
         <button class="row-action" onmousedown={keepFocus} onclick={props.onswap} title={i18n.t.places.swap} aria-label={i18n.t.places.swap}>
@@ -642,10 +675,6 @@
 
   {#if editorOpen && !sidePanel}
     <div class="editor-list">
-      <!-- The details below the fields are out of sight while a field is edited, and this is where the rider is looking. -->
-      {#if props.error === 'location'}
-        <div class="error error--editing" role="alert"><p>{i18n.t.errors.location}</p></div>
-      {/if}
       {#if offersMyLocation}
         <button
           class="here"
@@ -1341,8 +1370,28 @@
     font-size: 14px;
   }
 
-  .error--editing {
-    margin-bottom: 8px;
+  /* Under the start field, in the error's colour but one line: what failed was the start, not the trip. */
+  .locate-problem {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 10px;
+    margin: -2px 0 2px 12px;
+    color: #ff8fab;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+
+  /* 44 px to hit, a line to look at: the margins give the height back to the layout. */
+  .locate-problem button {
+    min-height: var(--touch-target);
+    margin: -12px 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--amber);
+    font-size: 13.5px;
+    font-weight: 600;
   }
 
   @keyframes ride {

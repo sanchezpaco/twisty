@@ -12,7 +12,38 @@ export const LOCATE_MAX_AGE_MS = 2 * 60_000
 export const KNOWN_FIX_MAX_AGE_MS = 10 * 60_000
 export const KNOWN_FIX_TIMEOUT_MS = 3_000
 
-export class LocationError extends Error {}
+/** `code` is the web API's: 1 when the permission was refused, 2 when there is no position, 3 when it took too long. */
+export class LocationError extends Error {
+  constructor(
+    message: string,
+    readonly code?: number,
+  ) {
+    super(message)
+  }
+}
+
+/** Why there is no position, as far as the rider can act on it: allow the app in Settings, or turn location on. */
+export type LocationProblem = 'denied' | 'unavailable'
+
+const PERMISSION_DENIED = 1
+
+/** The web API says when the permission was refused; the native plugin does not, so its permission state is asked after. */
+export function locationProblemOf(code: number | undefined, nativePermissions: { location: string; coarseLocation: string } | null): LocationProblem {
+  if (code === PERMISSION_DENIED) return 'denied'
+  if (nativePermissions?.location === 'denied' && nativePermissions.coarseLocation === 'denied') return 'denied'
+  return 'unavailable'
+}
+
+/** Why a fix failed; on the device the plugin's permission state tells a refusal from a phone without a fix. */
+export async function locationProblem(error: unknown): Promise<LocationProblem> {
+  const code = error instanceof LocationError ? error.code : undefined
+  if (code === PERMISSION_DENIED || !Capacitor.isNativePlatform()) return locationProblemOf(code, null)
+  try {
+    return locationProblemOf(code, await NativeGeolocation.checkPermissions())
+  } catch {
+    return 'unavailable'
+  }
+}
 
 type PositionSource = Pick<Geolocation, 'getCurrentPosition'>
 
@@ -48,7 +79,7 @@ export function locateRider(geolocation: Pick<Geolocation, 'getCurrentPosition'>
     if (!geolocation) return reject(new LocationError('geolocation is not available'))
     geolocation.getCurrentPosition(
       ({ coords }) => resolve({ position: [coords.longitude, coords.latitude], accuracyM: coords.accuracy }),
-      (failure) => reject(new LocationError(failure.message)),
+      (failure) => reject(new LocationError(failure.message, failure.code)),
       { enableHighAccuracy: false, timeout: LOCATE_TIMEOUT_MS, maximumAge: LOCATE_MAX_AGE_MS },
     )
   })

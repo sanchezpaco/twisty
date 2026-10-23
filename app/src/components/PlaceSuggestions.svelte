@@ -10,8 +10,12 @@
     /** Whether the distance to each place is shown: only when the other end of the trip is set. */
     showDistance: boolean
     query: string
+    /** Where the recent places begin, under their heading; null when the list has none. */
+    recentFrom: number | null
     onchoose: (place: Place) => void
     onaddresses: () => void
+    /** The last row: choose the place on the map. */
+    onmap?: () => void
   }
 </script>
 
@@ -36,6 +40,7 @@
 
 <ul class="suggestions" class:suggestions--dropdown={dropdown} role="listbox">
   {#each list.suggestions as place, index (place.position.join() + index)}
+    {#if index === list.recentFrom}<li class="heading" role="presentation">{i18n.t.places.recent}</li>{/if}
     <li role="option" aria-selected={index === list.highlighted}>
       <!-- Keeps the focus where it is, so the keyboard stays up while the other field takes over. -->
       <button
@@ -74,6 +79,22 @@
   {/if}
   {#if list.addressMessage}
     <li class="message">{list.addressMessage}</li>
+  {/if}
+  {#if list.onmap}
+    <li class="map-row">
+      <button
+        class="map-pick"
+        onmousedown={(event) => {
+          event.preventDefault()
+          list.onmap?.()
+        }}
+      >
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <path d="M9 4 3 6.5v13L9 17l6 2.5 6-2.5v-13L15 6.5 9 4Zm0 0v13m6-10.5v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+        </svg>
+        <span>{i18n.t.places.chooseOnMap}</span>
+      </button>
+    </li>
   {/if}
 </ul>
 
@@ -146,6 +167,25 @@
     color: var(--amber);
     font-size: 13.5px;
     font-weight: 500;
+  }
+
+  /* Like the street search: an action in the list, not a place. */
+  .suggestions .map-pick {
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+    color: var(--amber);
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .heading {
+    padding: 12px 11px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
   }
 
   .message {

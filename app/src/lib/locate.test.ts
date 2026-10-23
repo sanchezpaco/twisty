@@ -9,7 +9,7 @@ const native = vi.hoisted(() => ({
 vi.mock('@capacitor/core', () => ({ Capacitor: { isNativePlatform: () => native.isNative, getPlatform: () => native.platform } }))
 vi.mock('@capacitor/geolocation', () => ({ Geolocation: { checkPermissions: async () => native.permissions, getCurrentPosition: (options: unknown) => native.fix(options) } }))
 
-import { knownPosition, LOCATE_MAX_AGE_MS, LOCATE_TIMEOUT_MS, LocationError, locateRider, locationAllowed, nativePosition, placeHere, riderPosition } from './locate'
+import { knownPosition, LOCATE_MAX_AGE_MS, LOCATE_TIMEOUT_MS, LocationError, locateRider, locationAllowed, locationProblem, locationProblemOf, nativePosition, placeHere, riderPosition } from './locate'
 
 type Geo = Parameters<typeof locateRider>[0]
 
@@ -17,8 +17,8 @@ const answering = (coords: { longitude: number; latitude: number; accuracy?: num
   getCurrentPosition: (ok) => ok({ coords } as GeolocationPosition),
 })
 
-const failing = (message: string): Geo => ({
-  getCurrentPosition: (_ok, fail) => fail?.({ message } as GeolocationPositionError),
+const failing = (message: string, code?: number): Geo => ({
+  getCurrentPosition: (_ok, fail) => fail?.({ message, code } as GeolocationPositionError),
 })
 
 describe('locateRider', () => {
@@ -137,5 +137,50 @@ describe('nativePosition', () => {
       throw new Error('timeout')
     }
     expect(await knownPosition(nativePosition, async () => true)).toBeNull()
+  })
+})
+
+describe('locationProblemOf', () => {
+  it('reads a refusal from the web API', () => {
+    expect(locationProblemOf(1, null)).toBe('denied')
+  })
+
+  it('reads a timeout or a phone without a fix as unavailable', () => {
+    expect(locationProblemOf(3, null)).toBe('unavailable')
+    expect(locationProblemOf(2, null)).toBe('unavailable')
+    expect(locationProblemOf(undefined, null)).toBe('unavailable')
+  })
+
+  it('reads a refusal from the native permission state when the plugin gives no code', () => {
+    expect(locationProblemOf(undefined, { location: 'denied', coarseLocation: 'denied' })).toBe('denied')
+  })
+
+  it('keeps an approximate permission as allowed: the fix failed for another reason', () => {
+    expect(locationProblemOf(undefined, { location: 'denied', coarseLocation: 'granted' })).toBe('unavailable')
+  })
+})
+
+describe('locationProblem', () => {
+  beforeEach(() => {
+    native.isNative = false
+    native.permissions = { location: 'prompt', coarseLocation: 'prompt' }
+  })
+
+  it('carries the web API code of a failed fix', async () => {
+    const error = await locateRider(failing('User denied Geolocation', 1)).catch((e) => e)
+    expect(await locationProblem(error)).toBe('denied')
+  })
+
+  it('asks the plugin on the device when the failure has no refusal code', async () => {
+    native.isNative = true
+    native.permissions = { location: 'denied', coarseLocation: 'denied' }
+    expect(await locationProblem(new LocationError('Location permission was denied'))).toBe('denied')
+    native.permissions = { location: 'granted', coarseLocation: 'granted' }
+    expect(await locationProblem(new LocationError('Timeout expired', 3))).toBe('unavailable')
+  })
+
+  it('does not ask the plugin in a browser', async () => {
+    native.permissions = { location: 'denied', coarseLocation: 'denied' }
+    expect(await locationProblem(new LocationError('Timeout expired', 3))).toBe('unavailable')
   })
 })
