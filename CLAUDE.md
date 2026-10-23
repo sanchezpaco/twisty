@@ -67,6 +67,9 @@ The Android project lives in `app/android` (Capacitor). Native changes go there;
 - Small, focused commits. Imperative mood, lowercase subject, no trailing period.
 - Keep `ROADMAP.md` up to date: tick items when they land, add items when scope is discovered.
 - Keep `PRD.md` in sync when product scope or requirements change.
+- **The repo is public**: nothing private in any commit, screenshot or report (other projects, machine paths, device
+  serials, account ids, the maintainer's places, trips or personal email). Machine-specific setup lives in the
+  git-ignored `CLAUDE.local.md`. The history before 2026-10-23 stays in a private archive.
 
 ## UX bar
 

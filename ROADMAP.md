@@ -695,8 +695,9 @@ Step 3 — Europe, then the world:
     majors to fix before release R1-R10 (routing), A1-A10 (app), D1-D5 (director); the rest filed there.
   - [ ] Step 2: B1-B4, R1-R10, A1-A10. Landed: R1-R10, B1's notice, B2, B4 and the Privacy link, A1-A7, A9, the
     holdout set (with the U-turn margin), the closure and ford chips, the closure note naming the roads (c4e690c) and
-    the Canary Islands box (6a359a9). Left: B1's download and B3's page, both ready on main (`make data-release`,
-    `docs/privacy/index.html`, reviewed by data-policy) and published with the public repo (Pages from `docs/`). Maintainer, 2026-10-19: Android backup stays on (the policy
+    the Canary Islands box (6a359a9). B1's download and B3's page went live with the public repo on 2026-10-23:
+    Pages from `docs/` (https://sanchezpaco.github.io/twisty/privacy/) and the `data-v2-20261019` release (the
+    `make data-release` zip). Left: the privacy URL in Play and App Store Connect. Maintainer, 2026-10-19: Android backup stays on (the policy
     says so); A10 dropped on the ux-designer's call. Maintainer, 2026-10-22: the repo goes public only when the project
     is ready, so before step 6 (testers count as the public under ODbL); contact email sanchezpacodev@gmail.com.
   - [x] A shared ride that ends at "My location" carries the rider's position: a loop with Back to the start, or a
