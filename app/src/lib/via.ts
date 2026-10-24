@@ -63,3 +63,18 @@ export function dropIndex(middles: number[], from: number, y: number): number {
   // A neighbour's middle counts as reached in the direction of the drag: above it must be passed, below it reached.
   return middles.filter((middle, index) => (index < from ? middle < y : index > from && middle <= y)).length
 }
+
+/** The stops without the one tapped on the map: every stop on that point goes, as the map shows them as one. */
+export function withoutStopAt<T extends { position: LonLat }>(stops: T[], at: LonLat): T[] {
+  return stops.filter((stop) => !samePoint(stop.position, at))
+}
+
+/**
+ * The trip ended at the stop tapped on the map: that stop is the finish, and the old finish and the stops after the new
+ * one go, as the ride no longer reaches them. Null when no stop is on that point.
+ */
+export function endAtStop<T extends { position: LonLat }>(stops: T[], at: LonLat): { via: T[]; to: T } | null {
+  const index = stops.findIndex((stop) => samePoint(stop.position, at))
+  if (index < 0) return null
+  return { via: stops.slice(0, index), to: stops[index] }
+}

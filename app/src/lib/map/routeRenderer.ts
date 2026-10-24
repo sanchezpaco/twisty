@@ -14,6 +14,8 @@ interface Measured {
   cumulative: number[]
   /** Distance along the whole shown stretch where this segment starts. */
   offset: number
+  /** A twisty's number, as its badge and its row in the list show it; a tap on its line finds it by this. */
+  twisty?: number
 }
 
 interface Shown {
@@ -181,9 +183,10 @@ export class RouteRenderer {
 
 function measure(segments: RouteSegment[]): Measured[] {
   let offset = 0
+  let twisties = 0
   return segments.map((segment) => {
     const cumulative = cumulativeDistancesM(segment.line)
-    const measured = { segment, cumulative, offset }
+    const measured = { segment, cumulative, offset, ...(segment.kind === 'twisty' && { twisty: ++twisties }) }
     offset += cumulative[cumulative.length - 1]
     return measured
   })
@@ -197,11 +200,11 @@ const total = (measured: Measured[]) => {
 /** The stretch drawn up to `share` (0 to 1) of its length. */
 function revealed(measured: Measured[], share: number): Feature[] {
   const reveal = total(measured) * share
-  return measured.flatMap(({ segment, cumulative, offset }) => {
+  return measured.flatMap(({ segment, cumulative, offset, twisty }) => {
     const visible = reveal - offset
     if (visible <= 0) return []
     const length = cumulative[cumulative.length - 1]
-    return [segmentFeature(visible >= length ? segment : { ...segment, line: truncate(segment.line, cumulative, visible) })]
+    return [segmentFeature(visible >= length ? segment : { ...segment, line: truncate(segment.line, cumulative, visible) }, twisty)]
   })
 }
 
@@ -212,8 +215,8 @@ function truncate(line: LonLat[], cumulative: number[], distanceM: number): LonL
 
 const collection = (features: Feature[]): FeatureCollection => ({ type: 'FeatureCollection', features })
 
-function segmentFeature(segment: RouteSegment): Feature {
-  return lineFeature(segment.line, { kind: segment.kind, rating: segment.rating })
+function segmentFeature(segment: RouteSegment, twisty?: number): Feature {
+  return lineFeature(segment.line, { kind: segment.kind, rating: segment.rating, ...(twisty && { twisty }) })
 }
 
 function lineFeature(coordinates: LonLat[], properties: Record<string, unknown>): Feature {

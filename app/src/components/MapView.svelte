@@ -4,6 +4,7 @@
   import MapStylePicker from './MapStylePicker.svelte'
   import RegionInset from './RegionInset.svelte'
   import { i18n } from '../lib/i18n/i18n.svelte'
+  import { RIDE_TAP_LAYERS, tappedTwisty } from '../lib/map/rideTaps'
   import { applyTheme } from '../lib/map/themeApply'
   import { IMAGERY_LAYERS, LOOKS, type MapTheme } from '../lib/map/theme'
   import { chooseTheme, imagery, mapTheme } from '../lib/map/themeState.svelte'
@@ -84,6 +85,12 @@
     picking: PickRole | null
     onpickhere: (position: LonLat) => void
     oncancelpick: () => void
+    /** A pin dragged to a new place; a loop's one pin moves both ends. */
+    onmovepin: (pin: PinKind, position: LonLat) => void
+    /** A stop tapped on the map: removed, or made the finish. */
+    onstop: (action: 'remove' | 'finish', position: LonLat) => void
+    /** A twisty tapped on the map, by its number in the list. */
+    ontwisty: (number: number) => void
   }
 
   let {
@@ -107,9 +114,18 @@
     picking,
     onpickhere,
     oncancelpick,
+    onmovepin,
+    onstop,
+    ontwisty,
   }: Props = $props()
 
   const LONG_PRESS_MS = 550
+  /** A pin let go this close to where it was picked up has not moved: it goes back, and nothing is planned. */
+  const DRAG_SLOP_PX = 4
+  /** A stop is a small point: a tap this close to it counts, which gives it a finger-sized target. */
+  const STOP_HIT_PX = 22
+  /** A twisty's glowing line is wide, so a tap needs less slack around it than a stop. */
+  const RIDE_HIT_PX = 12
   /** The pick menu stays inside the map: it is this wide, centred on the press, and this tall above it. */
   const MENU_HALF_WIDTH_PX = 100
   const MENU_EDGE_PX = 8
@@ -164,7 +180,8 @@
   /** The camera is on its way to the region the box offered; the box comes back with the other one when it lands. */
   let regionFlight = $state(false)
   let imageryFailures = 0
-  let menu = $state<{ x: number; y: number; position: LonLat } | null>(null)
+  /** The long-press menu, or with `stop` the menu of the stop tapped there. */
+  let menu = $state<{ x: number; y: number; position: LonLat; stop?: LonLat } | null>(null)
   /** Part of the ride is off the free map; read when the camera stops, never on every frame. */
   let rideHidden = $state(false)
   let locatingRider = $state(false)
@@ -204,16 +221,24 @@
     map.on('zoom', readPnoa)
     map.on('move', readOverview)
     watchImagery(map)
-    map.on('contextmenu', (event) => openMenu(event))
+    // A press on a pin is the pin's: it is picked up, never a press on the map under it.
+    map.on('contextmenu', (event) => onPin(event) || openMenu(event))
     map.on('click', (event) => {
+      if (onPin(event)) return
+      const stop = picking ? null : stopAt(event)
       if (longPressOpenedMenu) longPressOpenedMenu = false
       else if (menu) menu = null
+      else if (stop) openMenu(event, stop)
       else if (!from || !to) openMenu(event)
+      else if (ride && !picking) {
+        const twisty = twistyAt(event)
+        if (twisty !== null) ontwisty(twisty)
+      }
     })
     map.on('touchstart', (event: MapTouchEvent) => {
       clearTimeout(longPress)
       longPressOpenedMenu = false
-      if (event.points.length === 1) {
+      if (event.points.length === 1 && !onPin(event)) {
         longPress = setTimeout(() => {
           longPressOpenedMenu = true
           openMenu(event)
@@ -492,7 +517,8 @@
     if (loaded && map) (map.getSource(ROUTE_ENDS) as GeoJSONSource | undefined)?.setData(ends)
   })
   $effect(() => {
-    const features = stops.map(({ label, position }) => ({ type: 'Feature' as const, properties: { label }, geometry: { type: 'Point' as const, coordinates: position } }))
+    // The index finds the stop's own position again: a drawn point comes back from the map rounded to its tile.
+    const features = stops.map(({ label, position }, index) => ({ type: 'Feature' as const, properties: { label, index }, geometry: { type: 'Point' as const, coordinates: position } }))
     if (loaded && map) (map.getSource(ROUTE_STOPS) as GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features })
   })
 
@@ -536,10 +562,61 @@
     map.once('moveend', () => (regionFlight = false))
   }
 
-  function openMenu(event: MapMouseEvent | MapTouchEvent) {
+  function openMenu(event: MapMouseEvent | MapTouchEvent, stop?: LonLat) {
     // While a place is chosen with the crosshair, the map only moves.
     if (picking) return
-    menu = { x: event.point.x, y: event.point.y, position: [event.lngLat.lng, event.lngLat.lat] }
+    menu = { x: event.point.x, y: event.point.y, position: [event.lngLat.lng, event.lngLat.lat], stop }
+  }
+
+  const onPin = (event: MapMouseEvent | MapTouchEvent) => (event.originalEvent.target as Element | null)?.closest?.('.place-marker') != null
+
+  /** The stop under a tap, if any. */
+  function stopAt(event: MapMouseEvent): LonLat | null {
+    const { x, y } = event.point
+    const [hit] = map!.queryRenderedFeatures(
+      [
+        [x - STOP_HIT_PX, y - STOP_HIT_PX],
+        [x + STOP_HIT_PX, y + STOP_HIT_PX],
+      ],
+      { layers: [ROUTE_STOPS] },
+    )
+    return hit ? (stops[hit.properties.index as number]?.position ?? null) : null
+  }
+
+  /** The twisty under a tap, by its number, if the tap landed on one. */
+  function twistyAt(event: MapMouseEvent): number | null {
+    const { x, y } = event.point
+    const layers = RIDE_TAP_LAYERS.filter((id) => map!.getLayer(id))
+    const box: [[number, number], [number, number]] = [
+      [x - RIDE_HIT_PX, y - RIDE_HIT_PX],
+      [x + RIDE_HIT_PX, y + RIDE_HIT_PX],
+    ]
+    return tappedTwisty(map!.queryRenderedFeatures(box, { layers }))
+  }
+
+  function stopAction(action: 'remove' | 'finish') {
+    if (menu?.stop) onstop(action, menu.stop)
+    menu = null
+  }
+
+  /** A pin follows the finger, lifted while held, and a drop somewhere new moves that end of the trip. */
+  function makeDraggable(marker: Marker, role: Role) {
+    let start = marker.getLngLat()
+    marker.on('dragstart', () => {
+      clearTimeout(longPress)
+      menu = null
+      start = marker.getLngLat()
+      marker.getElement().classList.add('place-marker--lifted')
+    })
+    marker.on('dragend', () => {
+      marker.getElement().classList.remove('place-marker--lifted')
+      const end = marker.getLngLat()
+      if (map!.project(start).dist(map!.project(end)) < DRAG_SLOP_PX) {
+        marker.setLngLat(start)
+        return
+      }
+      onmovepin(role === 'from' && loop ? 'loop' : role, [end.lng, end.lat])
+    })
   }
 
   function pick(role: PickRole) {
@@ -565,7 +642,9 @@
     } else {
       const element = document.createElement('div')
       element.innerHTML = '<span class="place-marker__pulse"></span><span class="place-marker__dot"></span>'
-      markers[role] = new Marker({ element: dressPin(element, kind) }).setLngLat(position).addTo(map)
+      const marker = new Marker({ element: dressPin(element, kind), draggable: true }).setLngLat(position).addTo(map)
+      makeDraggable(marker, role)
+      markers[role] = marker
     }
   }
 
@@ -723,14 +802,19 @@
   <div
     class="pick-menu"
     style:left="clamp({MENU_HALF_WIDTH_PX + MENU_EDGE_PX}px, {menu.x}px, calc(100% - {MENU_HALF_WIDTH_PX + MENU_EDGE_PX}px))"
-    style:top="max({menu.y}px, {from && to && !stopsCapped ? MENU_HEIGHT_WITH_STOP_PX : MENU_HEIGHT_PX}px)"
+    style:top="max({menu.y}px, {from && to && !stopsCapped && !menu.stop ? MENU_HEIGHT_WITH_STOP_PX : MENU_HEIGHT_PX}px)"
     role="menu"
   >
+    {#if menu.stop}
+      <button role="menuitem" onclick={() => stopAction('remove')}><span class="badge badge--remove">×</span>{i18n.t.map.removeStop}</button>
+      <button role="menuitem" onclick={() => stopAction('finish')}><span class="badge badge--to">B</span>{i18n.t.map.finishHere}</button>
+    {:else}
     <button role="menuitem" onclick={() => pick('from')}><span class="badge badge--from">A</span>{i18n.t.map.startHere}</button>
     {#if from && to && !stopsCapped}
       <button role="menuitem" onclick={() => pick('via')}><span class="badge badge--via"><i></i></span>{i18n.t.map.addStopHere}</button>
     {/if}
     <button role="menuitem" onclick={() => pick('to')}><span class="badge badge--to">B</span>{i18n.t.map.finishHere}</button>
+    {/if}
   </div>
 {/if}
 
@@ -949,6 +1033,12 @@
     box-shadow: 0 0 0 2px #15171c, 0 0 0 3px rgba(255, 255, 255, 0.35);
   }
 
+  .badge--remove {
+    border: 1.5px solid var(--text-muted);
+    color: var(--text);
+    font-size: 15px;
+  }
+
   @keyframes pop {
     from {
       opacity: 0;
@@ -977,6 +1067,23 @@
     font: 700 12px var(--font-display);
     border: 2.5px solid var(--bg);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    cursor: grab;
+    transition:
+      transform 120ms var(--ease-out),
+      box-shadow 120ms var(--ease-out);
+  }
+
+  /* Picked up: the pin rises off the map under the finger, so it is clear it moves. */
+  :global(.place-marker--lifted .place-marker__dot) {
+    transform: translateY(-8px) scale(1.18);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.7);
+    cursor: grabbing;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.place-marker__dot) {
+      transition: none;
+    }
   }
 
   :global(.place-marker--from .place-marker__dot) {

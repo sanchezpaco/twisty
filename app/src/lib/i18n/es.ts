@@ -113,6 +113,8 @@ export const es: Messages = {
     withTracks: 'con pistas',
     plan: (from, to) => `Planear de ${from} a ${to}`,
     remove: (from, to) => `Quitar el viaje de ${from} a ${to}`,
+    cleared: 'Viajes recientes borrados',
+    removed: 'Viaje quitado',
   },
   saved: {
     button: 'Guardar ruta',
@@ -230,6 +232,8 @@ export const es: Messages = {
     startHere: 'Salir de aquí',
     addStopHere: 'Pasar por aquí',
     finishHere: 'Llegar aquí',
+    removeStop: 'Quitar parada',
+    finishMoved: (place) => `Llegada cambiada a ${place}`,
     style: 'Estilo del mapa',
     themes: { dark: 'Oscuro', light: 'Claro', satellite: 'Satélite' },
     imageryUnavailable: 'El satélite no está disponible',

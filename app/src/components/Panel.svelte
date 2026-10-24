@@ -41,6 +41,11 @@
   const MAX_COVER_FRACTION = 0.52
   /** On the start screen the middle snap adds the intro, as long as it leaves the map this much of the screen. */
   const START_HALF_MAX_FRACTION = 0.6
+  /** The sheet's own settle (its transition), after which a row can be measured where it will stay. */
+  const SHEET_SETTLE_MS = 300
+  /** How long a row tapped on the map stays marked, and the room left between it and the sheet's edge. */
+  const FLASH_MS = 1600
+  const ROW_MARGIN_PX = 12
   /**
    * The credit and the region box stand above a sheet up to this much of the screen, the start screen's intro included. A
    * taller sheet covers them whole: they then stay on the camera's cover, which stops at MAX_COVER_FRACTION, well below.
@@ -88,6 +93,8 @@
     /** A finger is on the slider, or has left it. */
     onscrub: (scrubbing: boolean) => void
     onfocus: (twisty: RideTwisty) => void
+    /** A twisty tapped on the map, whose row is brought into view and flashed. */
+    tappedTwisty: { number: number } | null
     /** Rides handed to a navigation app, and the last one left on screen: the start screen offers them again. */
     history: HistoryTrip[]
     onpicktrip: (index: number) => void
@@ -450,6 +457,37 @@
     else (role === 'from' ? finishField : startField).focus()
   }
 
+  // The map → list direction: the row of a twisty tapped on the map comes into view and flashes. On the phone the sheet
+  // rises to full for it: the middle snap shows the slider and little else, and the map has framed the twisty for when
+  // the sheet comes back down.
+  let flashed = $state<number | null>(null)
+  $effect(() => {
+    const tapped = props.tappedTwisty
+    if (!tapped) return
+    untrack(() => {
+      if (!sidePanel) snapName = 'full'
+      flashed = tapped.number
+    })
+    const reveal = setTimeout(() => showRow(tapped.number), sidePanel ? 0 : SHEET_SETTLE_MS)
+    const done = setTimeout(() => (flashed = null), FLASH_MS)
+    return () => {
+      clearTimeout(reveal)
+      clearTimeout(done)
+    }
+  })
+
+  function showRow(number: number) {
+    const row = body.querySelector<HTMLElement>(`[data-twisty="${number}"]`)
+    if (!row) return
+    const view = body.getBoundingClientRect()
+    // On the phone the pinned footer covers the sheet's foot; beside the map the actions stand over the list's end.
+    const actionsTop = panel.querySelector<HTMLElement>('.actions')?.getBoundingClientRect().top ?? Infinity
+    const bottom = Math.min(view.bottom, innerHeight - (sidePanel ? 0 : footerPx), actionsTop) - ROW_MARGIN_PX
+    const rect = row.getBoundingClientRect()
+    if (rect.bottom > bottom) body.scrollTop += rect.bottom - bottom
+    else if (rect.top < view.top) body.scrollTop -= view.top - rect.top + ROW_MARGIN_PX
+  }
+
   // A twisty picked from the list is shown on the map, which the full sheet would be covering.
   function showTwisty(twisty: RideTwisty) {
     if (snap.name === 'full') snapName = 'half'
@@ -730,7 +768,7 @@
           <span>{props.via.length > 0 ? i18n.t.planning.legs(props.via.length + 1) : props.includeTracks ? i18n.t.planning.tracks : i18n.t.planning.roads}</span>
         </div>
       {:else if ride}
-        <RideSummary {ride} refining={props.refining} onlyOption={props.options.length === 1 && !props.refining} onfocus={showTwisty} legNames={legPlaces.map((place) => place.label)} />
+        <RideSummary {ride} refining={props.refining} onlyOption={props.options.length === 1 && !props.refining} onfocus={showTwisty} {flashed} legNames={legPlaces.map((place) => place.label)} />
       {:else if showsSavedList && savedList && sidePanel}
         <SavedRides folderId={savedList.folderId} inline onfolder={(folderId) => (savedList = { folderId })} onopen={props.onopensaved} onback={() => (savedList = null)} />
       {:else}

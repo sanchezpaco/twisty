@@ -24,6 +24,7 @@
     recordHandedOver,
     recordPlanned,
     removeTrip,
+    restoreTrips,
     restoreTrip,
     saveHistory,
     type TripInput,
@@ -32,7 +33,7 @@
   import { clearToast, showToast, toasts } from './lib/toastState.svelte'
   import { BUILD, type Drag, everyFrame, loadScrubMemory, nextFrame, rememberDrag, saveScrubMemory, startDrag } from './lib/scrubMode'
   import { loadTrip, saveTrip, takeTrip } from './lib/tripStorage'
-  import { distinctStops, insertionIndex } from './lib/via'
+  import { distinctStops, endAtStop, insertionIndex, withoutStopAt } from './lib/via'
   import { MAX_VIA } from './lib/googleMaps'
 
   // The slider opens on the twistiest option that costs at most this much extra time.
@@ -103,6 +104,10 @@
   let savedId = $state<string | null>(null)
   const savedView = $derived(savedId === null ? null : (savedRides.store.rides.find((ride) => ride.id === savedId) ?? null))
   const savedOption = $derived(savedView && rideOfSaved(savedView))
+  /** The ride the map draws: the saved one on screen, or the stop of the slider. */
+  const mapRide = $derived(savedOption ?? shownOptions[shownSelected] ?? null)
+  /** A twisty tapped on the map, for the list to show; a new object on each tap, so a second tap shows it again. */
+  let tappedTwisty = $state<{ number: number } | null>(null)
   const savedPlace = (place: SavedPlace): Place => ({ label: place.label, position: place.position })
   /** Changes with every saved ride opened, so the map frames it as a new route. */
   let savedKey = $state(0)
@@ -312,6 +317,35 @@
     changeVia([...via.slice(0, at), place, ...via.slice(at)])
   }
 
+  /** A pin dragged on the map; the one pin of a loop takes both ends along, so the trip stays a loop. */
+  async function movePin(pin: 'from' | 'to' | 'loop', position: LonLat) {
+    if (pin !== 'loop') return pickOnMap(pin, position)
+    leaveSaved()
+    const place = (await loadPlaceIndex()).describe(position, i18n.t.places.nearPlace)
+    from = place
+    to = place
+  }
+
+  /** A stop tapped on the map, removed or made the finish; Undo puts the trip back as it was. */
+  function stopOnMap(action: 'remove' | 'finish', position: LonLat) {
+    leaveSaved()
+    const stop = endAtStop(via, position)
+    if (!stop || !to) return
+    const before = { to, via }
+    if (action === 'remove') via = withoutStopAt(via, position)
+    else ({ via, to } = stop)
+    const message = action === 'remove' ? i18n.t.via.removed(stop.to.label) : i18n.t.map.finishMoved(stop.to.label)
+    showToast(message, document.querySelector<HTMLElement>('aside.panel'), {
+      action: {
+        label: i18n.t.saved.undo,
+        run: () => {
+          leaveSaved()
+          ;({ via, to } = before)
+        },
+      },
+    })
+  }
+
   /** The rider's position, or null after saying why there is none under the start, with `retry` to ask again. */
   async function locate(retry: () => void): Promise<Place | null> {
     locating = true
@@ -416,7 +450,16 @@
   }
 
   function forgetTrip(index: number) {
-    commitHistory(removeTrip(history, index))
+    forgetTrips(removeTrip(history, index), i18n.t.history.removed)
+  }
+
+  /** Recent trips go at once, as the rider asked, and come back with Undo for a few seconds. */
+  function forgetTrips(left: HistoryTrip[], message: string) {
+    const before = history
+    commitHistory(left)
+    showToast(message, document.querySelector<HTMLElement>('aside.panel'), {
+      action: { label: i18n.t.saved.undo, run: () => commitHistory(restoreTrips(history, before)) },
+    })
   }
 
   function scrub(active: boolean) {
@@ -447,11 +490,19 @@
   function focusTwisty(twisty: RideTwisty) {
     focus = [...twisty.line]
   }
+
+  /** A twisty tapped on the map: the map shows it whole, and the list brings its row into view. */
+  function showTappedTwisty(number: number) {
+    const twisty = mapRide?.twisties[number - 1]
+    if (!twisty) return
+    focusTwisty(twisty)
+    tappedTwisty = { number }
+  }
 </script>
 
 <main>
   <MapView
-    ride={savedOption ?? shownOptions[shownSelected] ?? null}
+    ride={mapRide}
     planKey={savedOption ? savedKey : planKey}
     from={savedView ? savedView.from.position : (from?.position ?? null)}
     to={savedView ? savedView.to.position : (to?.position ?? null)}
@@ -471,6 +522,9 @@
     picking={mapPick?.role ?? null}
     onpickhere={confirmMapPick}
     oncancelpick={() => (mapPick = null)}
+    onmovepin={movePin}
+    ontwisty={showTappedTwisty}
+    onstop={stopOnMap}
   />
   <Panel
     from={savedView ? savedPlace(savedView.from) : from}
@@ -507,10 +561,11 @@
     onselect={select}
     onscrub={scrub}
     onfocus={focusTwisty}
+    {tappedTwisty}
     {history}
     onpicktrip={(index) => openTrip(history[index])}
     onremovetrip={forgetTrip}
-    onclearhistory={() => commitHistory([])}
+    onclearhistory={() => forgetTrips([], i18n.t.history.cleared)}
     onhandover={handOver}
     {savedView}
     onopensaved={(ride) => openSaved(ride.id)}

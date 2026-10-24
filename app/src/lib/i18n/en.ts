@@ -118,6 +118,8 @@ export const en = {
     withTracks: 'with tracks',
     plan: (from: string, to: string) => `Plan ${from} to ${to}`,
     remove: (from: string, to: string) => `Remove the trip from ${from} to ${to}`,
+    cleared: 'Recent trips cleared',
+    removed: 'Trip removed',
   },
   saved: {
     button: 'Save ride',
@@ -238,6 +240,8 @@ export const en = {
     startHere: 'Start here',
     addStopHere: 'Add stop here',
     finishHere: 'Finish here',
+    removeStop: 'Remove stop',
+    finishMoved: (place: string) => `Finish moved to ${place}`,
     style: 'Map style',
     themes: { dark: 'Dark', light: 'Light', satellite: 'Satellite' } satisfies Record<MapTheme, string>,
     imageryUnavailable: 'Satellite is unavailable',

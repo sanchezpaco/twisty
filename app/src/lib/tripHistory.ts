@@ -61,6 +61,15 @@ export function removeTrip(list: HistoryTrip[], index: number): HistoryTrip[] {
   return list.filter((_, at) => at !== index)
 }
 
+/**
+ * Undo of a removal: the trips as they were, with any trip recorded since kept too (it is newer, so its entry wins over
+ * the same trip's older one), newest first.
+ */
+export function restoreTrips(current: HistoryTrip[], before: HistoryTrip[]): HistoryTrip[] {
+  const merged = [...current, ...before.filter((old) => !current.some((entry) => sameTrip(entry, old)))]
+  return keepsOnePlanned(merged.sort((a, b) => b.at - a.at)).slice(0, HISTORY_MAX)
+}
+
 /** Whole calendar days between two moments, in the rider's time zone. */
 export function daysAgo(at: number, now: number): number {
   const day = (ms: number) => {

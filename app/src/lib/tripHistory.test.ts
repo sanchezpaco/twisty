@@ -9,6 +9,7 @@ import {
   recordHandedOver,
   recordPlanned,
   removeTrip,
+  restoreTrips,
   restoreTrip,
   sameTrip,
   serializeHistory,
@@ -150,6 +151,24 @@ describe('the rider\'s own position', () => {
 describe('removing and storing', () => {
   it('removes one entry by position', () => {
     expect(names(removeTrip([handed('A', 'B'), handed('C', 'D')], 0))).toEqual(['C>D'])
+  })
+
+  it('puts cleared trips back as they were', () => {
+    const before = [handed('A', 'B', 3), handed('C', 'D', 2), planned('E', 'F', 1)]
+    expect(restoreTrips([], before)).toEqual(before)
+  })
+
+  it('keeps a trip recorded since the clear, and its newer entry, when the clear is undone', () => {
+    const before = [handed('A', 'B', 3), planned('C', 'D', 2)]
+    const since = [handed('C', 'D', 5), planned('G', 'H', 4)]
+    expect(names(restoreTrips(since, before))).toEqual(['C>D', 'G>H?', 'A>B'])
+  })
+
+  it('keeps one never-handed trip and the limit after an undo', () => {
+    const before = [planned('A', 'B', 2), ...Array.from({ length: 4 }, (_, i) => handed(`P${i}`, 'Z', 1))]
+    const result = restoreTrips([planned('C', 'D', 3), handed('E', 'F', 3)], before)
+    expect(names(result).filter((name) => name.endsWith('?'))).toEqual(['C>D?'])
+    expect(result).toHaveLength(HISTORY_MAX)
   })
 
   it('round-trips the list', () => {

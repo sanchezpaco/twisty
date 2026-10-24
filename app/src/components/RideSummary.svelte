@@ -12,11 +12,13 @@
     /** There is no other stop to slide to: the hint about sliding would send the rider nowhere. */
     onlyOption: boolean
     onfocus: (twisty: RideTwisty) => void
+    /** The number of a twisty tapped on the map, whose row flashes. */
+    flashed?: number | null
     /** The trip's places in riding order, which name its legs: start, stops, finish. */
     legNames?: string[]
   }
 
-  let { ride, refining, onlyOption, onfocus, legNames = [] }: Props = $props()
+  let { ride, refining, onlyOption, onfocus, flashed = null, legNames = [] }: Props = $props()
   /** Below this a leg's curves read as none: "0.0 km of curves" would only be noise. */
   const LEG_CURVES_MIN_M = 500
   // A trip with stops lists its legs; their names come from the trip, their numbers from the ride.
@@ -91,7 +93,7 @@
     {#each listed as { twisty, number, added }, index (number)}
       {@const road = splitRoadLabel(twisty.label || i18n.t.ride.unnamedRoad)}
       {@const roads = twistyRoads(twisty, i18n.t.ride.unnamedRoad)}
-      <li style:animation-delay="{index * 60}ms">
+      <li style:animation-delay="{index * 60}ms" data-twisty={number} class:flash={number === flashed}>
         <button onclick={() => onfocus(twisty)}>
           <span class="number" style:border-color={RATING_COLORS[twisty.rating - 1]}>{number}</span>
           <span class="name">{road.title}</span>
@@ -329,6 +331,28 @@
   @media (hover: hover) {
     .twisties button:hover {
       background: var(--surface-hover);
+    }
+  }
+
+  /* The row of a twisty tapped on the map: a short glow that fades, so the eye finds it in the list. */
+  .twisties li.flash button {
+    animation: row-flash 1.2s var(--ease-out);
+  }
+
+  @keyframes row-flash {
+    from {
+      background: color-mix(in srgb, var(--amber) 26%, transparent);
+    }
+    to {
+      background: transparent;
+    }
+  }
+
+  /* Without motion the row is marked plainly for as long as the flash would last. */
+  @media (prefers-reduced-motion: reduce) {
+    .twisties li.flash button {
+      animation: none;
+      background: color-mix(in srgb, var(--amber) 18%, transparent);
     }
   }
 

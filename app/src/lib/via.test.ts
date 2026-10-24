@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { LonLat } from './geo'
-import { backToStart, distinctStops, dropIndex, insertionIndex, isLoop, moveVia } from './via'
+import { backToStart, distinctStops, dropIndex, endAtStop, insertionIndex, isLoop, moveVia, withoutStopAt } from './via'
 
 describe('a loop back to the start', () => {
   it('finishes at the start, still "here" when the start is the rider\'s position', () => {
@@ -86,5 +86,24 @@ describe('a stop dropped among the others', () => {
     const stops = ['Biescas', 'Broto', 'Aínsa']
     expect(moveVia(stops, 0, dropIndex(middles, 0, 180))).toEqual(['Broto', 'Biescas', 'Aínsa'])
     expect(moveVia(stops, 2, dropIndex(middles, 2, 90))).toEqual(['Aínsa', 'Biescas', 'Broto'])
+  })
+})
+
+describe('a stop tapped on the map', () => {
+  const stop = (label: string, position: LonLat) => ({ label, position })
+  const ainsa = stop('Aínsa', [0.1398, 42.4183])
+  const graus = stop('Graus', [0.3375, 42.1886])
+  const torla = stop('Torla', [-0.1111, 42.6276])
+
+  it('removes every stop on that point, as the map draws them as one', () => {
+    expect(withoutStopAt([ainsa, graus, { ...graus }, torla], graus.position)).toEqual([ainsa, torla])
+  })
+
+  it('ends the trip there: the stops before it stay, the ones after go with the old finish', () => {
+    expect(endAtStop([ainsa, graus, torla], graus.position)).toEqual({ via: [ainsa], to: graus })
+  })
+
+  it('does nothing for a point with no stop', () => {
+    expect(endAtStop([ainsa], graus.position)).toBeNull()
   })
 })
