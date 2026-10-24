@@ -503,7 +503,7 @@
     if (!twisty) return
     focusTwisty(twisty)
     if (isSidePanel()) tappedTwisty = { number }
-    else showToast(twistyCaption(number, twisty, i18n.t.ride, formatKm), document.querySelector<HTMLElement>('aside.panel'))
+    else showToast(twistyCaption(number, twisty, i18n.t.ride, formatKm), document.querySelector<HTMLElement>('aside.panel'), { kind: 'info' })
   }
 </script>
 

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { portal } from '../lib/portal'
+  import type { ToastKind } from '../lib/toastState.svelte'
   import RideIcon from './RideIcon.svelte'
 
   interface Props {
@@ -13,8 +14,8 @@
     ondone: () => void
     /** A way back from what the toast reports, such as Undo. */
     action?: { label: string; run: () => void }
-    /** A problem gets no check mark: nothing was done. */
-    kind?: 'done' | 'problem'
+    /** Only something done gets a check mark. */
+    kind?: ToastKind
   }
 
   let { message, anchor, ondone, action, kind = 'done', below = false }: Props = $props()

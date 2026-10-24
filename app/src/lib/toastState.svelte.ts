@@ -1,3 +1,7 @@
+
+/** What the toast says: something done gets a check mark; a problem, or a plain piece of information, does not. */
+export type ToastKind = 'done' | 'problem' | 'info'
+
 /** What a toast offers to do about what it reports, such as Undo. */
 export interface ToastAction {
   label: string
@@ -7,8 +11,7 @@ export interface ToastAction {
 interface ShownToast {
   id: number
   message: string
-  /** A problem gets no check mark: nothing was done. */
-  kind: 'done' | 'problem'
+  kind: ToastKind
   action?: ToastAction
   /** The element the toast stands above, or below. */
   anchor: HTMLElement | null
@@ -25,7 +28,7 @@ export const toasts = {
   },
 }
 
-export function showToast(message: string, anchor: HTMLElement | null, options: { kind?: 'done' | 'problem'; action?: ToastAction; below?: boolean } = {}): void {
+export function showToast(message: string, anchor: HTMLElement | null, options: { kind?: ToastKind; action?: ToastAction; below?: boolean } = {}): void {
   shown = { id: ++count, message, kind: options.kind ?? 'done', action: options.action, anchor, below: options.below ?? false }
 }
 
