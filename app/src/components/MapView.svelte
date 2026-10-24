@@ -4,6 +4,7 @@
   import MapStylePicker from './MapStylePicker.svelte'
   import RegionInset from './RegionInset.svelte'
   import { i18n } from '../lib/i18n/i18n.svelte'
+  import { placeMenu } from '../lib/map/menuPlacement'
   import { RIDE_TAP_LAYERS, tappedTwisty } from '../lib/map/rideTaps'
   import { applyTheme } from '../lib/map/themeApply'
   import { IMAGERY_LAYERS, LOOKS, type MapTheme } from '../lib/map/theme'
@@ -132,6 +133,8 @@
   const MENU_HEIGHT_PX = 140
   /** With "Add stop here" between the two ends. */
   const MENU_HEIGHT_WITH_STOP_PX = 186
+  /** The menu's distance from the pressed point, as its transform sets it. */
+  const MENU_GAP_PX = 14
   const TERRAIN_EXAGGERATION = 1.5
   /** How long the sheet takes to settle on a snap: the map eases its padding for as long, along the same curve. */
   const SHEET_SETTLE_MS = 300
@@ -175,13 +178,14 @@
   let pnoaInView = $state(false)
   let footHeight = $state(0)
   let mapHeight = $state(0)
+  let mapWidth = $state(0)
   /** The region the camera overlooks whole, or null closer in. */
   let overviewOf = $state<Region | null>(null)
   /** The camera is on its way to the region the box offered; the box comes back with the other one when it lands. */
   let regionFlight = $state(false)
   let imageryFailures = 0
-  /** The long-press menu, or with `stop` the menu of the stop tapped there. */
-  let menu = $state<{ x: number; y: number; position: LonLat; stop?: LonLat } | null>(null)
+  /** The long-press menu, or with `stop` the menu of the stop tapped there; `left` is its centre, `below` under the point. */
+  let menu = $state<{ left: number; y: number; position: LonLat; stop?: LonLat; below: boolean } | null>(null)
   /** Part of the ride is off the free map; read when the camera stops, never on every frame. */
   let rideHidden = $state(false)
   let locatingRider = $state(false)
@@ -565,7 +569,19 @@
   function openMenu(event: MapMouseEvent | MapTouchEvent, stop?: LonLat) {
     // While a place is chosen with the crosshair, the map only moves.
     if (picking) return
-    menu = { x: event.point.x, y: event.point.y, position: [event.lngLat.lng, event.lngLat.lat], stop }
+    const { x, y } = event.point
+    const { x: left, below } = menuPlacement(x, y, menuHeight(stop))
+    menu = { left, y, position: [event.lngLat.lng, event.lngLat.lat], stop, below }
+  }
+
+  const menuHeight = (stop?: LonLat) => (from && to && !stopsCapped && !stop ? MENU_HEIGHT_WITH_STOP_PX : MENU_HEIGHT_PX)
+
+  /** The menu keeps clear of A and B where it can: under the point, or slid aside. */
+  function menuPlacement(x: number, y: number, height: number) {
+    const pins = Object.values(markers).flatMap((marker) => (marker ? [map!.project(marker.getLngLat())] : []))
+    const edge = MENU_HALF_WIDTH_PX + MENU_EDGE_PX
+    const size = { halfWidth: MENU_HALF_WIDTH_PX, height: height - MENU_GAP_PX, gap: MENU_GAP_PX }
+    return placeMenu({ x, y }, pins, size, { minX: edge, maxX: mapWidth - edge, bottom: mapHeight - coveredHeight })
   }
 
   const onPin = (event: MapMouseEvent | MapTouchEvent) => (event.originalEvent.target as Element | null)?.closest?.('.place-marker') != null
@@ -734,7 +750,7 @@
   }
 </script>
 
-<div class="map" bind:this={container} bind:clientHeight={mapHeight} style:--sheet-covered="{coveredHeight}px" style:background={LOOKS[mapTheme.current].colors.background}></div>
+<div class="map" bind:this={container} bind:clientHeight={mapHeight} bind:clientWidth={mapWidth} style:--sheet-covered="{coveredHeight}px" style:background={LOOKS[mapTheme.current].colors.background}></div>
 
 <MapCredit
   theme={mapTheme.current}
@@ -801,8 +817,9 @@
 {#if menu}
   <div
     class="pick-menu"
-    style:left="clamp({MENU_HALF_WIDTH_PX + MENU_EDGE_PX}px, {menu.x}px, calc(100% - {MENU_HALF_WIDTH_PX + MENU_EDGE_PX}px))"
-    style:top="max({menu.y}px, {from && to && !stopsCapped && !menu.stop ? MENU_HEIGHT_WITH_STOP_PX : MENU_HEIGHT_PX}px)"
+    class:pick-menu--below={menu.below}
+    style:left="{menu.left}px"
+    style:top={menu.below ? `${menu.y}px` : `max(${menu.y}px, ${menuHeight(menu.stop)}px)`}
     role="menu"
   >
     {#if menu.stop}
@@ -1043,6 +1060,19 @@
     from {
       opacity: 0;
       transform: translate(-50%, calc(-100% - 4px)) scale(0.94);
+    }
+  }
+
+  /* Under the point, clear of a pin above it. */
+  .pick-menu--below {
+    transform: translate(-50%, 14px);
+    animation-name: pop-below;
+  }
+
+  @keyframes pop-below {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 4px) scale(0.94);
     }
   }
 
