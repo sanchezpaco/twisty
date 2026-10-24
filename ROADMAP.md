@@ -564,10 +564,12 @@ every sanity check report-only, Google pin fidelity).
   all 15). Owner: app, one branch per batch:
   - [x] qol-map (1e967c8, 2026-10-23): "Show whole ride" and "Locate me" with a position dot, one bottom-right map
     cluster; Android back walks the views and starts over from a ride; back on a bare start screen exits again (broken
-    since 4c02e22). Checked on the Fold and the iPhone; the Huawei frame check is open (one 250-416 ms frame at the
-    start of some pans on the Fold, mostly before the button changes).
-  - [ ] qol-places: a failed "My location" shown inline with Try again (it hid Recent trips); recent places and
-    "Choose on the map" on an empty field.
+    since 4c02e22). Checked on the Fold and the iPhone; on the Huawei (2026-10-24) no long frame falls at the button
+    change, the long frames are the phone's ordinary pan redraws.
+  - [x] qol-places (1f01c1a, 2026-10-24): a failed "My location" says why under the start (denied or unavailable)
+    with Try again, and Recent trips stay; empty fields offer recent places and, on phones, "Choose on the map" with a
+    crosshair. Native asks for the permission before the timed fix, so the timeout never runs behind the prompt.
+    Checked on the Huawei (denied and location off).
   - [ ] qol-map-edit: drag A and B, tap a stop to remove it or make it the finish; map taps on badges and twisties
     scroll the list; Undo for clearing Recent trips.
   - [ ] qol-polish: an offline notice; the "here" end as an icon in the trip card; 44 px long-press rows; map controls
