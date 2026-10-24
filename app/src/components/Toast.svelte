@@ -21,6 +21,8 @@
   let { message, anchor, ondone, action, kind = 'done', below = false }: Props = $props()
 
   const SHOWN_MS = 2400
+  // A longer message stays long enough to be read through.
+  const READING_MS_PER_CHAR = 50
   // Long enough to reach for Undo with a thumb.
   const SHOWN_WITH_ACTION_MS = 5000
   const FADE_MS = 200
@@ -33,7 +35,7 @@
   })
 
   onMount(() => {
-    const shownMs = action ? SHOWN_WITH_ACTION_MS : SHOWN_MS
+    const shownMs = Math.max(action ? SHOWN_WITH_ACTION_MS : SHOWN_MS, message.length * READING_MS_PER_CHAR)
     const fade = setTimeout(() => (leaving = true), shownMs)
     const done = setTimeout(ondone, shownMs + FADE_MS)
     return () => {
@@ -64,15 +66,19 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    height: 40px;
-    padding: 0 16px;
+    min-height: 40px;
+    /* A long message wraps inside the screen, and inside the side panel it is centred on. */
+    width: max-content;
+    max-width: min(calc(100vw - 32px), 340px);
+    padding: 9px 16px;
     border-radius: 20px;
     background: var(--surface-sheet-solid);
     box-shadow: inset 0 0 0 1px var(--border-strong), var(--shadow);
     color: var(--text);
     font-size: 14px;
     font-weight: 500;
-    white-space: nowrap;
+    line-height: 1.3;
+    text-align: center;
     transform: translateX(-50%);
     animation: rise 0.2s var(--ease-out) both;
     transition: opacity 0.2s;

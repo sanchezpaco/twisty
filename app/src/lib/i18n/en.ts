@@ -9,6 +9,7 @@ export const en = {
   tagline: 'Ride the curves, not the motorway',
   loading: 'Loading Spain’s road network',
   panel: {
+    offline: "You're offline. Routes and towns still work; the map and street search need a connection.",
     expand: 'Expand panel',
     collapse: 'Collapse panel',
     otherFinish: 'Change finish',
@@ -36,6 +37,7 @@ export const en = {
     searchAddresses: (query: string) => `Search streets and addresses for “${query}”`,
     noAddresses: (query: string) => `No addresses found for “${query}”.`,
     addressSearchUnavailable: 'Address search is unavailable right now.',
+    streetSearchOffline: 'Street search needs a connection',
     locationDenied: "Twisty can't use your location. Allow it in Settings.",
     locationUnavailable: "Couldn't find you. Is location on?",
     tryAgain: 'Try again',

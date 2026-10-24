@@ -29,6 +29,7 @@
   import type { LonLat } from '../lib/geo'
   import { isSidePanel, onLayoutChange, sidePanelCover, sidePanelFitMargin } from '../lib/layout'
   import type { LocationProblem, RiderFix } from '../lib/locate'
+  import { mapControls } from '../lib/sheetCover.svelte'
   import { showToast } from '../lib/toastState.svelte'
   import {
     addRouteLayers,
@@ -130,9 +131,9 @@
   /** The pick menu stays inside the map: it is this wide, centred on the press, and this tall above it. */
   const MENU_HALF_WIDTH_PX = 100
   const MENU_EDGE_PX = 8
-  const MENU_HEIGHT_PX = 140
+  const MENU_HEIGHT_PX = 148
   /** With "Add stop here" between the two ends. */
-  const MENU_HEIGHT_WITH_STOP_PX = 186
+  const MENU_HEIGHT_WITH_STOP_PX = 198
   /** The menu's distance from the pressed point, as its transform sets it. */
   const MENU_GAP_PX = 14
   const TERRAIN_EXAGGERATION = 1.5
@@ -179,6 +180,14 @@
   let footHeight = $state(0)
   let mapHeight = $state(0)
   let mapWidth = $state(0)
+  let controls: HTMLElement
+  // Where the top controls end, for the sheet to know when it reaches them; the style strip opening under them moves it.
+  $effect(() => {
+    const measure = () => (mapControls.bottomPx = controls.getBoundingClientRect().bottom)
+    const observer = new ResizeObserver(measure)
+    observer.observe(controls)
+    return () => observer.disconnect()
+  })
   /** The region the camera overlooks whole, or null closer in. */
   let overviewOf = $state<Region | null>(null)
   /** The camera is on its way to the region the box offered; the box comes back with the other one when it lands. */
@@ -789,7 +798,7 @@
 <!-- Light status-bar icons would vanish on a pale map or a photo, so the top edge of those is shaded. -->
 <div class="map-scrim" class:map-scrim--on={mapTheme.current !== 'dark'} aria-hidden="true"></div>
 
-<div class="map-controls">
+<div class="map-controls" class:map-controls--covered={mapControls.covered} bind:this={controls}>
   <div class="map-controls__row">
     <div class="legend" role="img" aria-label={i18n.t.map.legend}>
       <span>{i18n.t.ride.ratingWords[0]}</span>
@@ -864,6 +873,19 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 8px;
+    transition: opacity 0.15s var(--ease-out);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-controls {
+      transition: none;
+    }
+  }
+
+  /* The full sheet reaches them: out of its way rather than cut under its edge. */
+  .map-controls--covered {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .map-controls__row {
@@ -1007,6 +1029,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    min-height: var(--touch-target);
     padding: 9px 14px 9px 8px;
     border: 0;
     border-radius: var(--radius-sm);

@@ -5,6 +5,7 @@
   import { createFieldFocus } from '../lib/fieldFocus'
   import { i18n } from '../lib/i18n/i18n.svelte'
   import { knownPosition, locationAllowed, riderPosition } from '../lib/locate'
+  import { network, streetSearchRow } from '../lib/network.svelte'
   import PlaceSuggestions, { type PlaceList } from './PlaceSuggestions.svelte'
 
   interface Props {
@@ -83,8 +84,10 @@
   const shown = $derived(offer && !addressResults ? [offer, ...listed.filter((place) => place.position.join() !== offer.position.join())] : listed)
   /** Where the recent places begin in the list, under their heading; null when there are none. */
   const recentFrom = $derived(empty && shown.length > (offer ? 1 : 0) ? (offer ? 1 : 0) : null)
-  const optionCount = $derived(shown.length + (offerAddressSearch ? 1 : 0))
-  const open = $derived(focused && (optionCount > 0 || addressMessage !== null || (empty && onmap !== undefined)))
+  // Offline the street search is said to need a connection instead of being offered, so nothing is sent.
+  const streetRow = $derived(streetSearchRow(offerAddressSearch, network.online))
+  const optionCount = $derived(shown.length + (streetRow === 'offer' ? 1 : 0))
+  const open = $derived(focused && (optionCount > 0 || addressMessage !== null || streetRow === 'offline' || (empty && onmap !== undefined)))
 
   $effect(() => {
     query = value?.label ?? ''
@@ -94,8 +97,8 @@
     list = open
       ? {
           suggestions: shown,
-          offerAddressSearch,
-          addressMessage,
+          offerAddressSearch: streetRow === 'offer',
+          addressMessage: streetRow === 'offline' ? i18n.t.places.streetSearchOffline : addressMessage,
           highlighted,
           showDistance: addressResults ? addressesFromRider : showDistance,
           query,
@@ -157,7 +160,7 @@
 
   function activate(index: number) {
     if (index < shown.length) choose(shown[index])
-    else findAddresses()
+    else if (streetRow === 'offer') findAddresses()
   }
 
   function clear() {

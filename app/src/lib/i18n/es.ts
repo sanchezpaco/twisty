@@ -5,6 +5,7 @@ export const es: Messages = {
   tagline: 'Curvas, no autovía',
   loading: 'Cargando la red de carreteras de España',
   panel: {
+    offline: 'Sin conexión. Las rutas y los pueblos siguen funcionando; el mapa y la búsqueda de calles necesitan conexión.',
     expand: 'Desplegar panel',
     collapse: 'Plegar panel',
     otherFinish: 'Cambiar llegada',
@@ -29,6 +30,7 @@ export const es: Messages = {
     searchAddresses: (query) => `Buscar calles y direcciones para «${query}»`,
     noAddresses: (query) => `No se han encontrado direcciones para «${query}».`,
     addressSearchUnavailable: 'La búsqueda de direcciones no está disponible ahora mismo.',
+    streetSearchOffline: 'La búsqueda de calles necesita conexión',
     locationDenied: 'Twisty no puede usar tu ubicación. Actívala en Ajustes.',
     locationUnavailable: 'No te encontramos. ¿Tienes la ubicación activada?',
     tryAgain: 'Reintentar',

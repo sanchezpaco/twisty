@@ -34,6 +34,7 @@
   import { twistyCaption } from './lib/curves'
   import { formatKm } from './lib/format'
   import { isSidePanel } from './lib/layout'
+  import { watchNetwork } from './lib/network.svelte'
   import { BUILD, type Drag, everyFrame, loadScrubMemory, nextFrame, rememberDrag, saveScrubMemory, startDrag } from './lib/scrubMode'
   import { loadTrip, saveTrip, takeTrip } from './lib/tripStorage'
   import { distinctStops, endAtStop, insertionIndex, withoutStopAt } from './lib/via'
@@ -167,6 +168,9 @@
     const trip = currentTrip()
     if (trip) commitHistory(recordPlanned(history, trip))
   }
+
+  // A dropped connection is said once: routes and towns still work, the map and street search wait for it.
+  $effect(() => watchNetwork(() => showToast(i18n.t.panel.offline, document.querySelector<HTMLElement>('aside.panel'), { kind: 'info' })))
 
   $effect(() => {
     const leaveWhenHidden = () => document.visibilityState === 'hidden' && leaveRide()

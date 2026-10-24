@@ -20,6 +20,7 @@
   import type { SavedRide } from '../lib/savedRide'
   import { savedRides } from '../lib/savedRidesState.svelte'
   import { cycleSnap, type SnapName, snapsFor } from '../lib/sheet'
+  import { mapControls, reachesControls } from '../lib/sheetCover.svelte'
   import { createSheetDrag } from '../lib/sheetDrag'
   import type { HistoryTrip } from '../lib/tripHistory'
   import Logo from './Logo.svelte'
@@ -333,9 +334,13 @@
     begin: () => (dragging = true),
     // The position is written as a transform and nothing else: a custom property would restyle everything inside the
     // sheet each time it changes, which on an old phone costs several milliseconds.
-    move: (visiblePx) => (panel.style.transform = sheetTransform(visiblePx)),
+    move: (visiblePx) => {
+      panel.style.transform = sheetTransform(visiblePx)
+      trackControls(visiblePx)
+    },
     settle: (target) => {
       dragging = false
+      trackControls(target.visiblePx)
       // Svelte only writes the transform when the snap changes, so a sheet that settles where it was is put back here.
       panel.style.transform = sheetTransform(target.visiblePx)
       snapName = target.name
@@ -343,6 +348,21 @@
   })
 
   $effect(() => onLayoutChange(() => (sidePanel = isSidePanel())))
+
+  // The map's top controls fade out of the way of a sheet that reaches them, as it is dragged too; written only when that
+  // changes, so a drag does not restyle the map on every frame.
+  function trackControls(visiblePx: number) {
+    const covered = !sidePanel && reachesControls(visiblePx, panelHeight, mapControls.bottomPx)
+    if (covered !== mapControls.covered) mapControls.covered = covered
+  }
+  // At rest the snap decides; during a drag only the finger does. `covered` is written here, so it is not read as a cause.
+  $effect(() => {
+    const visiblePx = snap.visiblePx
+    void [panelHeight, sidePanel, mapControls.bottomPx]
+    untrack(() => {
+      if (!dragging) trackControls(visiblePx)
+    })
+  })
 
   // The place search is a phone screen: a foldable that opens while it is up goes back to the side panel.
   $effect(() => {
@@ -540,12 +560,24 @@
       </div>
     {/if}
 
+    <!-- The rider's own position is the crosshair, as in Recent trips: "My location" did not fit beside the other end. -->
+    {#snippet endName(place: Place | null)}
+      {#if place?.here}
+        <svg class="trip__here" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      {:else}
+        <span class="trip__name">{place?.label}</span>
+      {/if}
+    {/snippet}
+
     {#if ride}
       <div class="trip-line">
         <div class="trip" use:sheetDrag.handle>
-          <button onclick={() => editTrip(startField)} aria-label={i18n.t.panel.changeStart(props.from?.label ?? '')}>
+          <button class:trip__end--here={props.from?.here} onclick={() => editTrip(startField)} aria-label={i18n.t.panel.changeStart(props.from?.label ?? '')}>
             <span class="dot dot--from">A</span>
-            <span class="trip__name">{props.from?.label}</span>
+            {@render endName(props.from)}
           </button>
           {#if props.via.length > 0}
             <!-- One dot per stop on the arrow: it opens the stops to manage, with no field (and no keyboard) taken. -->
@@ -560,9 +592,9 @@
               <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
           {/if}
-          <button onclick={() => editTrip(finishField)} aria-label={i18n.t.panel.changeFinish(props.to?.label ?? '')}>
+          <button class:trip__end--here={props.to?.here} onclick={() => editTrip(finishField)} aria-label={i18n.t.panel.changeFinish(props.to?.label ?? '')}>
             <span class="dot dot--to">B</span>
-            <span class="trip__name">{props.to?.label}</span>
+            {@render endName(props.to)}
           </button>
         </div>
         <!-- Its own button outside the row: inside, next to B, it would read as "clear the finish", and the row is a drag handle. -->
@@ -963,6 +995,16 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  .trip__here {
+    flex: none;
+    color: var(--text-muted);
+  }
+
+  /* An end that is only the crosshair takes its own width, and the other end gets the room. */
+  .trip .trip__end--here {
+    flex: none;
   }
 
   .dot {
