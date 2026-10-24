@@ -254,6 +254,9 @@ Read before briefing an agent; add a line whenever a run wastes a round trip.
   once came back on relaunch; wait about 10 s before the cold relaunch.
 - **A check removes what it injected:** hide CSS left in the page after an iPhone location check made the map look
   black to the maintainer, who reported it as a new bug. Remove injected styles when the check ends, before detaching.
+- **A device soak restores storage in its own step:** the restore from the soak's backup runs whatever the soak did.
+  When WebContent restarted mid-soak, the page reloaded under the script, which hung before its cleanup and left an
+  experiment key and the run's trips on the maintainer's phone until restored by hand.
 - **iOS 26 gives no screen capture from a Mac:** devicectl and idevicescreenshot fail; the WebKit inspector's
   `Page.snapshotRect` shows Twisty's page only. Anything outside the page (share sheet, Google Maps, prompts) is the
   maintainer's report.
