@@ -11,6 +11,7 @@
     LngLatBounds,
     Map as MapLibreMap,
     Marker,
+    setWorkerCount,
     setWorkerUrl,
     type MapMouseEvent,
     type MapTouchEvent,
@@ -18,6 +19,7 @@
     type PaddingOptions,
   } from 'maplibre-gl'
   import 'maplibre-gl/dist/maplibre-gl.css'
+  import { Capacitor } from '@capacitor/core'
   // MapLibre resolves its worker relative to its own module, which bundlers relocate; point at it explicitly.
   import mapWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
   import { onDestroy, onMount, untrack } from 'svelte'
@@ -173,6 +175,9 @@
 
   onMount(() => {
     setWorkerUrl(mapWorkerUrl)
+    // Each map worker keeps its own tiles and route data, which WebKit on iOS does not give back: with three, WebContent
+    // stayed over 1 GB after 24 trips; with one it settles where the map alone does, about 860 MB on an iPhone 13 mini.
+    if (Capacitor.getPlatform() === 'ios') setWorkerCount(1)
     registerOverlayProtocol()
     map = new MapLibreMap({
       container,
