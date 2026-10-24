@@ -89,3 +89,12 @@ export function roadWarnings(twisty: RideTwisty): RoadWarnings {
 }
 
 export const hasWarning = ({ postedKmh, narrowM, ford, closed }: RoadWarnings) => postedKmh !== null || narrowM !== null || ford || closed
+
+/**
+ * A twisty in one line, as its row in the list reads: number, road, length and character, e.g. "2 · N-260 · 4.9 km ·
+ * Winding". `km` formats a length for the rider's language.
+ */
+export function twistyCaption(number: number, twisty: RideTwisty, texts: { unnamedRoad: string; ratingWords: readonly string[] }, km: (meters: number) => string): string {
+  const road = splitRoadLabel(twisty.label || texts.unnamedRoad).title
+  return `${number} · ${road} · ${km(twisty.lengthM)} km · ${texts.ratingWords[twisty.rating - 1]}`
+}

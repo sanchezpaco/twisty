@@ -31,6 +31,9 @@
   } from './lib/tripHistory'
   import { tracksFor } from './lib/offRoad'
   import { clearToast, showToast, toasts } from './lib/toastState.svelte'
+  import { twistyCaption } from './lib/curves'
+  import { formatKm } from './lib/format'
+  import { isSidePanel } from './lib/layout'
   import { BUILD, type Drag, everyFrame, loadScrubMemory, nextFrame, rememberDrag, saveScrubMemory, startDrag } from './lib/scrubMode'
   import { loadTrip, saveTrip, takeTrip } from './lib/tripStorage'
   import { distinctStops, endAtStop, insertionIndex, withoutStopAt } from './lib/via'
@@ -491,12 +494,16 @@
     focus = [...twisty.line]
   }
 
-  /** A twisty tapped on the map: the map shows it whole, and the list brings its row into view. */
+  /**
+   * A twisty tapped on the map: the map shows it whole. Beside the map the list brings its row into view; on the phone
+   * the sheet stays as it is, so the map stays in view, and a toast names the twisty as its row does.
+   */
   function showTappedTwisty(number: number) {
     const twisty = mapRide?.twisties[number - 1]
     if (!twisty) return
     focusTwisty(twisty)
-    tappedTwisty = { number }
+    if (isSidePanel()) tappedTwisty = { number }
+    else showToast(twistyCaption(number, twisty, i18n.t.ride, formatKm), document.querySelector<HTMLElement>('aside.panel'))
   }
 </script>
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { dominantRating, hasWarning, lengthByRating, listedTwisties, NARROW_CHIP_MIN_M, namedClosures, roadWarnings, splitRoadLabel, twistyRoads, UNNAMED_LINK_MAX_M } from './curves'
+import { dominantRating, hasWarning, lengthByRating, listedTwisties, NARROW_CHIP_MIN_M, namedClosures, roadWarnings, splitRoadLabel, twistyCaption, twistyRoads, UNNAMED_LINK_MAX_M } from './curves'
 import type { RideTwisty } from './routing/ride'
 
 const twisty = (rating: number, lengthM: number): RideTwisty => ({ label: '', rating, lengthM, narrowM: 0, postedKmh: null, fordCount: 0, line: [], leg: 0 })
@@ -100,5 +100,18 @@ describe('twistyRoads', () => {
   it('lists nothing for a twisty on one road, or saved before its roads were kept', () => {
     expect(twistyRoads(chained([{ label: 'AV-901', lengthM: 120_000 }]), 'Unnamed road')).toBeNull()
     expect(twistyRoads(chained(undefined), 'Unnamed road')).toBeNull()
+  })
+})
+
+describe('twistyCaption', () => {
+  const texts = { unnamedRoad: 'Unnamed road', ratingWords: ['Flowing', 'Winding', 'Very winding', 'Twisty', 'Epic'] }
+  const km = (meters: number) => (meters / 1000).toFixed(1).replace('.', ',')
+
+  it("reads like the twisty's row: number, road, length and character", () => {
+    expect(twistyCaption(2, { ...twisty(2, 4_900), label: 'N-260 · Eje Pirenaico' }, texts, km)).toBe('2 · N-260 · 4,9 km · Winding')
+  })
+
+  it('names a road without a name as the list does', () => {
+    expect(twistyCaption(1, twisty(5, 12_300), texts, km)).toBe('1 · Unnamed road · 12,3 km · Epic')
   })
 })
