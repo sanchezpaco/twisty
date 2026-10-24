@@ -556,6 +556,12 @@ every sanity check report-only, Google pin fidelity).
     under the keyboard (València 4th, hidden). Wikiloc does get the GPX from the share sheet, under "More" (the
     maintainer, 2026-10-23); iOS orders that row by use and favourites, not by us. Open: WebContent memory grows with use (480 MB idle, 740 MB after
     several plans); one black screen at launch while Instruments and the inspector overlapped, not reproduced.
+  - [ ] WebContent memory before submission (soak on the 13 mini, main 4eb70a3 Debug, 2026-10-24): about 470 MB
+    fresh, each long plan spikes +250-350 MB, and plans with map use, slider and sheet climb +15 MB a trip with no
+    plateau in 24 trips (peak 1.46 GB, idle flat at 1.15 GB, no jetsam kill). Map use alone plateaus at about 860 MB;
+    plans alone creep +4 MB each. App and GPU processes and the retained JS heap stay flat, so the growth is native
+    WebContent memory the inspector does not break out. Bound it (tile cache cap, release after a plan), attribute
+    the rest, then re-run the soak on a Release build. Owner: app.
 - [x] Start over (a7faf96, 2026-10-23): a × beside the trip row on phones, "Start over" in the side panel, Undo for
   5 s, the cleared ride kept in Recent trips. Camera to the start (3246e95): a start set alone eases to zoom 9 (on a
   phone once the map shows); "My location" shows a locating state and accepts a fix up to 2 min old (a fresh fix took
