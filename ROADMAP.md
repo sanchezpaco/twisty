@@ -581,8 +581,9 @@ every sanity check report-only, Google pin fidelity).
     and a toast names it (number, road, length, rating; the maintainer's choice), the side panel scrolls to its row.
     Fold pass by finger, folded and unfolded: drag p95 17 / 25 ms, nothing over 50 ms.
     - [ ] Pin-drag frames on the Huawei, when it is connected again (the maintainer, 2026-10-24: land on the Fold).
-  - [ ] qol-polish: an offline notice; the "here" end as an icon in the trip card; 44 px long-press rows; map controls
-    fade under the full sheet.
+  - [x] qol-polish (33e885f, 2026-10-24): going offline says once what still works, and street search waits for a
+    connection; the "here" end is the crosshair in the trip card; long-press and stop menu rows are 44 px; the map
+    controls fade as the sheet passes them. Long toasts wrap and stay longer.
   - [ ] qol-extras: a haptic tick per slider stop; a collapsible side panel; first launch on the rider's region from a
     recent fix.
 - [ ] Place search: "valen" puts two Valenzuela hamlets above València when the map sits over Andalucía; a large
