@@ -576,8 +576,11 @@ every sanity check report-only, Google pin fidelity).
     with Try again, and Recent trips stay; empty fields offer recent places and, on phones, "Choose on the map" with a
     crosshair. Native asks for the permission before the timed fix, so the timeout never runs behind the prompt.
     Checked on the Huawei (denied and location off).
-  - [ ] qol-map-edit: drag A and B, tap a stop to remove it or make it the finish; map taps on badges and twisties
-    scroll the list; Undo for clearing Recent trips.
+  - [x] qol-map-edit (7b1ef37, 2026-10-24): drag A and B, tap a stop to remove it or make it the finish (the menu
+    keeps clear of the pins); Undo for clearing Recent trips. A tap on a map twisty frames it: on phones the sheet stays
+    and a toast names it (number, road, length, rating; the maintainer's choice), the side panel scrolls to its row.
+    Fold pass by finger, folded and unfolded: drag p95 17 / 25 ms, nothing over 50 ms.
+    - [ ] Pin-drag frames on the Huawei, when it is connected again (the maintainer, 2026-10-24: land on the Fold).
   - [ ] qol-polish: an offline notice; the "here" end as an icon in the trip card; 44 px long-press rows; map controls
     fade under the full sheet.
   - [ ] qol-extras: a haptic tick per slider stop; a collapsible side panel; first launch on the rider's region from a
