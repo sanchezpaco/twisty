@@ -27,8 +27,11 @@ export type LocationProblem = 'denied' | 'unavailable'
 
 const PERMISSION_DENIED = 1
 
+type NativePermissions = { location: string; coarseLocation: string }
+const anyGranted = ({ location, coarseLocation }: NativePermissions) => location === 'granted' || coarseLocation === 'granted'
+
 /** The web API says when the permission was refused; the native plugin does not, so its permission state is asked after. */
-export function locationProblemOf(code: number | undefined, nativePermissions: { location: string; coarseLocation: string } | null): LocationProblem {
+export function locationProblemOf(code: number | undefined, nativePermissions: NativePermissions | null): LocationProblem {
   if (code === PERMISSION_DENIED) return 'denied'
   if (nativePermissions?.location === 'denied' && nativePermissions.coarseLocation === 'denied') return 'denied'
   return 'unavailable'
@@ -73,10 +76,23 @@ export interface RiderFix {
   accuracyM: number
 }
 
+/** Asks the rider for their location, if not yet answered; true when they allowed it, approximate included. */
+export type PermissionAsk = () => Promise<boolean>
+
+/**
+ * In the app the permission is asked before the fix: the fix's timeout would otherwise run while the rider reads the
+ * system prompt, and fail behind it. In a browser the fix asks itself, and its timeout waits for the answer.
+ */
+export function permissionAsk(): PermissionAsk | undefined {
+  if (!Capacitor.isNativePlatform()) return undefined
+  return async () => anyGranted(await NativeGeolocation.requestPermissions())
+}
+
 /** The rider's position, or a `LocationError` when there is no geolocation, no permission or no fix in time. */
-export function locateRider(geolocation: Pick<Geolocation, 'getCurrentPosition'> | undefined): Promise<RiderFix> {
+export async function locateRider(geolocation: Pick<Geolocation, 'getCurrentPosition'> | undefined, ask?: PermissionAsk): Promise<RiderFix> {
+  if (!geolocation) throw new LocationError('geolocation is not available')
+  if (ask && !(await ask())) throw new LocationError('location permission was refused', PERMISSION_DENIED)
   return new Promise((resolve, reject) => {
-    if (!geolocation) return reject(new LocationError('geolocation is not available'))
     geolocation.getCurrentPosition(
       ({ coords }) => resolve({ position: [coords.longitude, coords.latitude], accuracyM: coords.accuracy }),
       (failure) => reject(new LocationError(failure.message, failure.code)),
@@ -98,8 +114,7 @@ export function placeHere(fix: RiderFix, label: string): Place {
 export async function locationAllowed(permissions: Pick<Permissions, 'query'> | undefined): Promise<boolean> {
   try {
     if (Capacitor.isNativePlatform()) {
-      const { location, coarseLocation } = await NativeGeolocation.checkPermissions()
-      return location === 'granted' || coarseLocation === 'granted'
+      return anyGranted(await NativeGeolocation.checkPermissions())
     }
     return (await permissions?.query({ name: 'geolocation' }))?.state === 'granted'
   } catch {

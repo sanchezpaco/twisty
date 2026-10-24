@@ -4,12 +4,19 @@ const native = vi.hoisted(() => ({
   isNative: false,
   platform: 'web',
   permissions: { location: 'prompt', coarseLocation: 'prompt' } as Record<string, string>,
+  answer: { location: 'granted', coarseLocation: 'granted' } as Record<string, string>,
+  locationOff: false,
   fix: (async () => ({ coords: { longitude: 0, latitude: 0 } })) as (options: unknown) => Promise<{ coords: { longitude: number; latitude: number; accuracy?: number } }>,
 }))
+// With location off the plugin cannot report a permission at all: it rejects.
+const permissionsOr = vi.hoisted(() => (permissions: Record<string, string>) => {
+  if (native.locationOff) throw new Error('Location services are not enabled')
+  return permissions
+})
 vi.mock('@capacitor/core', () => ({ Capacitor: { isNativePlatform: () => native.isNative, getPlatform: () => native.platform } }))
-vi.mock('@capacitor/geolocation', () => ({ Geolocation: { checkPermissions: async () => native.permissions, getCurrentPosition: (options: unknown) => native.fix(options) } }))
+vi.mock('@capacitor/geolocation', () => ({ Geolocation: { checkPermissions: async () => permissionsOr(native.permissions), requestPermissions: async () => permissionsOr(native.answer), getCurrentPosition: (options: unknown) => native.fix(options) } }))
 
-import { knownPosition, LOCATE_MAX_AGE_MS, LOCATE_TIMEOUT_MS, LocationError, locateRider, locationAllowed, locationProblem, locationProblemOf, nativePosition, placeHere, riderPosition } from './locate'
+import { knownPosition, LOCATE_MAX_AGE_MS, LOCATE_TIMEOUT_MS, LocationError, locateRider, locationAllowed, locationProblem, locationProblemOf, nativePosition, permissionAsk, placeHere, riderPosition } from './locate'
 
 type Geo = Parameters<typeof locateRider>[0]
 
@@ -50,6 +57,51 @@ describe('locateRider', () => {
 
   it('rejects when the device has no geolocation', async () => {
     await expect(locateRider(undefined)).rejects.toBeInstanceOf(LocationError)
+  })
+
+  it('starts the timed fix only once the rider has answered the permission prompt', async () => {
+    const steps: string[] = []
+    const geo: Geo = {
+      getCurrentPosition: (ok) => {
+        steps.push('fix')
+        ok({ coords: { longitude: 0, latitude: 0 } } as GeolocationPosition)
+      },
+    }
+    await locateRider(geo, async () => {
+      steps.push('ask')
+      return true
+    })
+    expect(steps).toEqual(['ask', 'fix'])
+  })
+
+  it('refuses without a fix when the rider refused the permission, so the refusal is what they are told', async () => {
+    const fix = vi.fn()
+    const error = await locateRider({ getCurrentPosition: fix }, async () => false).catch((e) => e)
+    expect(fix).not.toHaveBeenCalled()
+    expect(error).toBeInstanceOf(LocationError)
+    expect(await locationProblem(error)).toBe('denied')
+  })
+})
+
+describe('permissionAsk', () => {
+  beforeEach(() => {
+    native.isNative = true
+    native.answer = { location: 'granted', coarseLocation: 'granted' }
+  })
+
+  it('leaves the asking to the fix in a browser', () => {
+    native.isNative = false
+    expect(permissionAsk()).toBeUndefined()
+  })
+
+  it('takes an approximate location as allowed', async () => {
+    native.answer = { location: 'denied', coarseLocation: 'granted' }
+    expect(await permissionAsk()?.()).toBe(true)
+  })
+
+  it('says no when the rider refused both', async () => {
+    native.answer = { location: 'denied', coarseLocation: 'denied' }
+    expect(await permissionAsk()?.()).toBe(false)
   })
 })
 
@@ -163,6 +215,7 @@ describe('locationProblemOf', () => {
 describe('locationProblem', () => {
   beforeEach(() => {
     native.isNative = false
+    native.locationOff = false
     native.permissions = { location: 'prompt', coarseLocation: 'prompt' }
   })
 
@@ -177,6 +230,15 @@ describe('locationProblem', () => {
     expect(await locationProblem(new LocationError('Location permission was denied'))).toBe('denied')
     native.permissions = { location: 'granted', coarseLocation: 'granted' }
     expect(await locationProblem(new LocationError('Timeout expired', 3))).toBe('unavailable')
+  })
+
+  it('says location is off when the device cannot even ask for it, without waiting for a fix', async () => {
+    native.isNative = true
+    native.locationOff = true
+    const fix = vi.fn()
+    const error = await locateRider({ getCurrentPosition: fix }, permissionAsk()).catch((e) => e)
+    expect(fix).not.toHaveBeenCalled()
+    expect(await locationProblem(error)).toBe('unavailable')
   })
 
   it('does not ask the plugin in a browser', async () => {

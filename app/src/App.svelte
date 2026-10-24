@@ -7,7 +7,7 @@
   import { credits } from './lib/creditsState.svelte'
   import type { LonLat } from './lib/geo'
   import { untrack } from 'svelte'
-  import { type LocationProblem, locateRider, locationProblem, placeHere, riderPosition, type RiderFix } from './lib/locate'
+  import { type LocationProblem, locateRider, locationProblem, permissionAsk, placeHere, riderPosition, type RiderFix } from './lib/locate'
   import { loadPlaceIndex, type Place } from './lib/geocoding'
   import { i18n } from './lib/i18n/i18n.svelte'
   import { PlannerClient } from './lib/planner/plannerClient'
@@ -316,7 +316,7 @@
   async function locate(retry: () => void): Promise<Place | null> {
     locating = true
     try {
-      rider = await locateRider(riderPosition())
+      rider = await locateRider(riderPosition(), permissionAsk())
       locationTrouble = null
       return placeHere(rider, i18n.t.places.myLocation)
     } catch (failure) {
@@ -330,7 +330,7 @@
   /** The map's own "where am I": the trip stays as it is, so a failure is the map's to tell. */
   async function locateOnMap(): Promise<RiderFix | LocationProblem> {
     try {
-      rider = await locateRider(riderPosition())
+      rider = await locateRider(riderPosition(), permissionAsk())
       return rider
     } catch (failure) {
       return locationProblem(failure)
